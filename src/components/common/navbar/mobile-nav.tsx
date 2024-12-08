@@ -1,6 +1,5 @@
 "use client";
 import {
-  DrawerActionTrigger,
   DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
@@ -11,21 +10,32 @@ import {
 } from "@/components/ui/drawer";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-import { Box, IconButton, Stack, StackSeparator, Text } from "@chakra-ui/react";
+import {
+  Box,
+  IconButton,
+  Stack,
+  StackSeparator,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaPaperPlane } from "react-icons/fa6";
-import { navData } from "@/utilities/constants";
-import { Button } from "@/components/ui/button";
+import { FaChevronDown } from "react-icons/fa";
+import { useColorModeValue } from "@/components/ui/color-mode";
+interface NavType {
+  label: string;
+  link?: string;
+  subItems?: {
+    label: string;
+    link: string;
+  }[];
+}
 
-const MobileNav = () => {
-  const router = useRouter();
+const MobileNav = ({ navData }: { navData: NavType[] }) => {
   const [open, setOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
 
-  const navigate = (link: string) => {
-    router.push(link);
-  };
+  const linkColor = useColorModeValue("gray.500", "gray.800");
   return (
     <Box>
       <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
@@ -36,13 +46,13 @@ const MobileNav = () => {
             zIndex={2}
             w="30px"
             h="30px"
-            color="black"
+            color={linkColor}
             bg="none"
             _hover={{ background: "none" }}
             aria-label="menu"
           />
         </DrawerTrigger>
-        <DrawerContent>
+        <DrawerContent bg={"brand.200"}>
           <DrawerBody>
             <Stack
               direction="column"
@@ -50,36 +60,19 @@ const MobileNav = () => {
               fontWeight="300"
               lineHeight="44px"
               fontSize="20px"
-              color="white"
-              separator={<StackSeparator bg="primary" h="1px" />}
+              color={linkColor}
+              separator={<StackSeparator bg="blue" h="1px" />}
+              width={"100%"}
             >
               {navData.map((nav) => (
-                <Text
-                  key={nav.label}
-                  onClick={() => navigate(nav.href)}
-                  color="white"
-                  fontWeight="600"
-                  fontSize="xl"
-                  _hover={{
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                >
-                  {nav.label}
-                </Text>
+                <MobileNavItem key={nav.label} {...nav} />
               ))}
-              <Link href="/donate">
-                <Button hideBelow="md" colorPalette="primary">
-                  Apply Now <FaPaperPlane />
-                </Button>
-              </Link>
             </Stack>
           </DrawerBody>
           <DrawerFooter>
-            <DrawerActionTrigger asChild>
-              <Button variant="outline">Cancel</Button>
-            </DrawerActionTrigger>
-            <Button>Save</Button>
+            <Text fontSize="sm" color={linkColor}>
+              © {currentYear} Halal Safari Operators. All rights reserved.
+            </Text>
           </DrawerFooter>
           <DrawerCloseTrigger />
         </DrawerContent>
@@ -89,3 +82,55 @@ const MobileNav = () => {
 };
 
 export default MobileNav;
+const MobileNavItem = ({ label, subItems, link }: NavType) => {
+  const { open, onToggle } = useDisclosure();
+  const linkColor = useColorModeValue("gray.500", "gray.800");
+  const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
+  return (
+    <Box w="100%">
+      <Link href={link ?? "#"} passHref>
+        <Stack
+          direction="row"
+          align="center"
+          justify="space-between"
+          w="100%"
+          onClick={onToggle}
+        >
+          <Text
+            color={linkColor}
+            _hover={{
+              bg: "brand.100",
+              color: linkHoverColor,
+            }}
+          >
+            {label}
+          </Text>
+          {subItems && <FaChevronDown />}
+        </Stack>
+      </Link>
+      {subItems && (
+        <Stack
+          display={open ? "block" : "none"}
+          w="100%"
+          separator={<StackSeparator bg="green" h="1px" />}
+        >
+          {subItems.map((child) => (
+            <Link key={child.label} href={child.link} passHref>
+              <Text
+                p={0}
+                pl={4}
+                color={linkColor}
+                _hover={{
+                  bg: "blue.900",
+                  color: linkHoverColor,
+                }}
+              >
+                {child.label}
+              </Text>
+            </Link>
+          ))}
+        </Stack>
+      )}
+    </Box>
+  );
+};

@@ -1,7 +1,12 @@
 "use client";
 
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+} from "@chakra-ui/icons";
+import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -34,21 +39,27 @@ const MenuDropdown = ({ item }: Props) => {
 
   const handleMouseEnter = () => setIsOpen(true);
   const handleMouseLeave = () => setIsOpen(false);
+  const linkColor = useColorModeValue("gray.500", "gray.800");
+  const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
 
   if (!item.subItems) {
     return (
       <Link href={item.link || "/"} passHref>
-        <Text
+        <Box
           fontWeight="semibold"
           fontSize="lg"
-          color="gray.700"
-          _hover={{ color: "brand.primary", transform: "scale(1.1)" }}
+          color={linkColor}
+          _hover={{
+            color: linkHoverColor,
+            transform: "scale(1.1)",
+            fontWeight: "bold",
+          }}
           cursor="pointer"
           tabIndex={0}
           transition="all 0.3s ease"
         >
           {item.label}
-        </Text>
+        </Box>
       </Link>
     );
   }
@@ -59,12 +70,19 @@ const MenuDropdown = ({ item }: Props) => {
         alignItems="center"
         cursor="pointer"
         aria-haspopup="menu"
-        _hover={{ color: "brand.primary" }}
+        _hover={{
+          color: "brand.primary",
+          fontWeight: "bold",
+        }}
       >
         <Text fontWeight="semibold" fontSize="lg">
           {item.label}
         </Text>
-        <ChevronDownIcon ml={2} boxSize={5} />
+        {isOpen ? (
+          <ChevronUpIcon ml={2} boxSize={5} />
+        ) : (
+          <ChevronDownIcon ml={2} boxSize={5} />
+        )}
       </Flex>
 
       {isOpen && (
@@ -82,23 +100,31 @@ const MenuDropdown = ({ item }: Props) => {
           role="menu"
         >
           {item.subItems.map((subItem, index) => (
-            <Link key={index} href={subItem.link || "/"} passHref>
-              <Text
+            <Link
+              key={index}
+              href={subItem.link || "/"}
+              role="menuitem"
+              passHref
+            >
+              <Box
                 px={4}
                 py={3}
                 fontWeight="medium"
-                color="gray.600"
+                color={linkColor}
                 _hover={{
                   bg: "gray.100",
-                  color: "brand.primary",
-                  transform: "translateX(5px)",
+                  color: linkHoverColor,
+                  transform: "translateX(1px)",
+                  fontWeight: "bold",
                 }}
                 cursor="pointer"
                 tabIndex={0}
                 transition="all 0.3s ease"
+                role="menuitem"
+                transitionBehavior={"in-out"}
               >
                 {subItem.label}
-              </Text>
+              </Box>
             </Link>
           ))}
         </Box>

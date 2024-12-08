@@ -1,13 +1,16 @@
+"use client";
 import { Box, Button, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 import { marginX, navData } from "@/utilities/constants";
 import MenuDropdown from "./menu-dropdown";
+import { useColorModeValue } from "@/components/ui/color-mode";
+import MobileNav from "./mobile-nav";
 
 const MainNav = () => {
   return (
-    <Box bg="brand.200">
+    <Box bg={useColorModeValue("white", "brand.200")}>
       <Flex justify="space-between" py="2" align="center" marginX={marginX}>
         <Box>
           <Link href="/">
@@ -36,10 +39,13 @@ const MainNav = () => {
                 bg: "brand.primary",
               }}
             >
-              Book Now <MdArrowOutward />
+              Customize Booking <MdArrowOutward />
             </Button>
           </Link>
         </Flex>
+        <Box display={{ base: "block", xl: "none" }}>
+          <MobileNav navData={navData} />
+        </Box>
       </Flex>
     </Box>
   );
