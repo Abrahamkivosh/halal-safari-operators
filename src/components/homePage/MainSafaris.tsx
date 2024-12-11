@@ -1,98 +1,102 @@
+// src/components/homePage/MainSafaris.tsx
 "use client";
-import { marginX } from "@/utilities/constants";
-import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-import Image from "next/image";
+
+import { Box, SimpleGrid, Heading, Text, Image } from "@chakra-ui/react";
 import Link from "next/link";
+import React from "react";
 
 const MainSafaris = () => {
-  return (
-    <Box mt={{ base: "1.5rem", sm: "3rem" }}>
-      <Box>
-        <Heading
-          as="h2"
-          textAlign="center"
-          fontSize={{ base: "4xl", sm: "6xl" }}
-          color="brand.primary"
-          className="welcomeText"
-          dangerouslySetInnerHTML={{
-            __html: "Our Safaris",
-          }}
-          lineHeight={{ base: "1.2", sm: "1.1" }}
-        />
-      </Box>
-      <SimpleGrid
-        marginX={marginX}
-        columns={{ base: 1, md: 2 }}
-        gap={8}
-        alignItems="center"
-        mt={{ base: "1rem", sm: "1.5rem" }}
-        my={{ base: "1rem", sm: "4rem" }}
-      >
-        {/* Kenya Tour */}
-        <Link href="/kenya-tour" passHref>
-          <Box
-            position="relative"
-            height={{ base: "20rem", sm: "30rem" }}
-            overflow="hidden"
-            borderRadius="xl"
-            boxShadow="xl"
-            role="group"
-            bgImage={`url("/images/nairobi.jpg")`}
-            bgSize="cover"
-            bgRepeat="no-repeat"
-          >
-            {/* Overlay */}
-            <Box
-              w="100%"
-              h="100%"
-              bg="rgba(0, 0, 0, 1)"
-              opacity="0"
-              _groupHover={{ opacity: "1" }}
-              transition="opacity 0.3s ease-in-out"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              color="black"
-              zIndex={1}
-            >
-              <Text fontSize="2xl" fontWeight="bold" textAlign="center">
-                Explore Kenya
-              </Text>
-            </Box>
-          </Box>
-        </Link>
+  const destinations = [
+    {
+      id: 1,
+      image: "/images/nairobi.jpg",
+      title: " Explore Safaris In Kenya",
+      subTitle: "Discover the best of Kenya's wildlife",
+      link: "/safaris/kenya",
+    },
+    {
+      id: 2,
+      image: "/images/tanzania.jpg",
+      title: " Explore Safaris In Tanzania",
+      subTitle: "Experience the beauty of Tanzania",
+      link: "/safaris/tanzania",
+    },
+  ];
 
-        {/* Tanzania Tour */}
-        <Link href="/tanzania-tour" passHref>
-          <Box
-            position="relative"
-            height={{ base: "20rem", sm: "30rem" }}
-            overflow="hidden"
-            borderRadius="xl"
-            boxShadow="xl"
-            role="group"
-            bgImage={`url("/images/tanzania.jpg")`}
-            bgSize="cover"
-            bgRepeat="no-repeat"
-          >
+  return (
+    <Box mt={{ base: "1.5rem", sm: "3rem" }} px={{ base: "1rem", sm: "3rem" }}>
+      {/* Section Heading */}
+      <Heading
+        as="h2"
+        fontSize={{ base: "3xl", sm: "5xl" }}
+        color="brand.primary"
+        textAlign="center"
+        mb={{ base: "1.5rem", sm: "3rem" }}
+        lineHeight="1.2"
+      >
+        Our Safaris
+      </Heading>
+
+      {/* Destinations Grid */}
+      <SimpleGrid columns={{ base: 1, sm: 1, md: 2 }} gap="2rem">
+        {destinations.map((destination) => (
+          <Link key={destination.id} href={destination.link} passHref>
             <Box
-              w="100%"
-              h="100%"
-              bg="rgba(0, 0, 0, 0.6)"
-              opacity="0"
-              _groupHover={{ opacity: "1" }}
-              transition="opacity 0.3s ease-in-out"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              color="white"
+              key={destination.id}
+              position="relative"
+              overflow="hidden"
+              borderRadius="lg"
+              boxShadow="lg"
+              transition="transform 0.3s ease, box-shadow 0.3s ease"
+              _hover={{
+                transform: "scale(1.05)",
+                boxShadow: "xl",
+              }}
             >
-              <Text fontSize="2xl" fontWeight="bold" textAlign="center">
-                Discover Tanzania
-              </Text>
+              {/* Background Image */}
+              <Image
+                src={destination.image}
+                alt={destination.title}
+                objectFit="cover"
+                width="100%"
+                height="100%"
+                borderRadius="lg"
+                style={{ aspectRatio: "4/3" }}
+              />
+
+              {/* Overlay */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                width="100%"
+                height="100%"
+                bg="rgba(0, 0, 0, 0.4)"
+                opacity="0"
+                _hover={{ opacity: "1" }}
+                transition="opacity 0.3s ease-in-out"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                color="white"
+                textAlign="center"
+                p="1rem"
+              >
+                <Heading
+                  fontWeight="bold"
+                  mb="0.5rem"
+                  fontSize={{ base: "xl", sm: "3xl" }}
+                >
+                  {destination.title}
+                </Heading>
+                <Text fontSize={{ base: "md", sm: "lg" }}>
+                  {destination.subTitle}
+                </Text>
+              </Box>
             </Box>
-          </Box>
-        </Link>
+          </Link>
+        ))}
       </SimpleGrid>
     </Box>
   );
