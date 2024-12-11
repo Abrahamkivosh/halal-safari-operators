@@ -50,6 +50,9 @@ const FooterIndex: React.FC = () => {
     },
   ];
 
+  const bgColor = useColorModeValue("brand.primary", "brand.900");
+  const textColor = useColorModeValue("brand.100", "brand.100");
+
   const quickLinks = [
     { href: "/about-us", label: "About Us" },
     { href: "/blogs", label: "Our Blogs" },
@@ -61,8 +64,8 @@ const FooterIndex: React.FC = () => {
   return (
     <Box
       as="footer"
-      bg={useColorModeValue("gray.200", "gray.800")}
-      color={useColorModeValue("gray.700", "gray.300")}
+      bg={bgColor}
+      color={textColor}
       py="8"
       px={{ base: "6", md: "16" }}
     >
@@ -129,7 +132,7 @@ const FooterIndex: React.FC = () => {
         mx="auto"
         width={{ base: "100%", md: "80%" }}
         height="1px"
-        bg={useColorModeValue("gray.300", "gray.700")}
+        bg={useColorModeValue("brand.100", "brand.500")}
       />
 
       {/* Copyright Section */}

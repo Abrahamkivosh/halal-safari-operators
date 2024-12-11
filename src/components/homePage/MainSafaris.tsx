@@ -25,7 +25,6 @@ const MainSafaris = () => {
 
   // Dynamic styles for light/dark mode
   const bgColor = useColorModeValue("brand.secondary", "brand.900");
-
   const headingColor = useColorModeValue("brand.primary", "brand.secondary");
   const overlayBg = useColorModeValue(
     "rgba(0, 0, 0, 0.4)",
@@ -87,8 +86,8 @@ const MainSafaris = () => {
                 width="100%"
                 height="100%"
                 bg={overlayBg}
-                opacity="0"
-                _hover={{ opacity: "1" }}
+                opacity={{ base: "1", md: "0" }} // Always visible on mobile
+                _hover={{ opacity: "1" }} // Hover effect for larger screens
                 transition="opacity 0.3s ease-in-out"
                 display="flex"
                 flexDirection="column"
