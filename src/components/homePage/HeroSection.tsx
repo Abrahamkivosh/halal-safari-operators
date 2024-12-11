@@ -37,13 +37,12 @@ const HeroSection = () => {
     <Box
       position="relative"
       w="100%"
-      h="70vh"
+      h="100vh"
       overflow="hidden"
       display="flex"
       justifyContent="center"
       alignItems="center"
     >
-      {/* Background Images */}
       <Box
         position="absolute"
         top="0"
@@ -61,7 +60,6 @@ const HeroSection = () => {
             h="100%"
             bgImage={`url(${slide.image})`}
             bgSize="cover"
-            bgPosition="center"
             opacity={index === currentIndex ? 1 : 0}
             transform={index === currentIndex ? "scale(1)" : "scale(1.1)"}
             transition="opacity 1.5s ease, transform 1.5s ease"
@@ -69,7 +67,6 @@ const HeroSection = () => {
         ))}
       </Box>
 
-      {/* Text Overlay with Cloudy Background */}
       <Flex
         direction="column"
         textAlign="center"
@@ -80,8 +77,8 @@ const HeroSection = () => {
         p={6}
         borderRadius="lg"
         boxShadow="lg"
-        bg="rgba(255, 255, 255, 0.3)" // Cloudy background color
-        backdropFilter="blur(10px)" // Adds a frosted glass effect
+        bg="rgba(255, 255, 255, 0.3)"
+        backdropFilter="blur(10px)"
         maxW="80%"
         mx="auto"
       >
