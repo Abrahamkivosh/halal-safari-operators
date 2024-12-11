@@ -1,12 +1,8 @@
 "use client";
 
 import { useColorModeValue } from "@/components/ui/color-mode";
-import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  ChevronUpIcon,
-} from "@chakra-ui/icons";
-import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import Link from "next/link";
 import React, { useState } from "react";

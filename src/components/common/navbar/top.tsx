@@ -1,9 +1,10 @@
 "use client";
 
 import { contactsData, marginX, socials } from "@/utilities/constants";
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { keyframes } from "@emotion/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 // Keyframes for hover animations
 const fadeIn = keyframes`
@@ -12,19 +13,20 @@ const fadeIn = keyframes`
 `;
 
 const TopNav = () => {
+  // Dynamic colors for light and dark mode
+  const bgColor = useColorModeValue("brand.primary", "brand.900");
+  const textColor = useColorModeValue("brand.100", "brand.100");
+  const iconColor = useColorModeValue("brand.100", "brand.900");
+  const iconHoverBg = useColorModeValue("brand.100", "brand.500");
+  const iconHoverColor = useColorModeValue("brand.primary", "brand.secondary");
+
   return (
-    <Box
-      bgGradient="to-bl"
-      gradientFrom={"gray.700"}
-      gradientTo={"gray.900"}
-      py="1rem"
-    >
+    <Box bgColor={bgColor} py="1rem">
       <Flex
-        marginX={marginX}
+        mx={marginX}
         justify={{ base: "center", sm: "space-between" }}
         flexDir={{ base: "column", md: "row" }}
         align="center"
-        color="brand.white"
         gap={{ base: 4, sm: 2 }}
       >
         {/* Contact Links */}
@@ -36,17 +38,21 @@ const TopNav = () => {
           {contactsData.map((item, i) => (
             <Link href={item.link} key={i}>
               <Flex
-                display={i == 2 ? { base: "none", lg: "flex" } : "flex"}
+                display={i === 2 ? { base: "none", lg: "flex" } : "flex"}
                 align="center"
                 gap={2}
                 transition="all 0.3s ease"
                 _hover={{
-                  color: "brand.secondary",
-                  transform: "scale(1.1)",
+                  color: iconHoverColor,
+                  transform: "scale(1.05)",
+                  fontWeight: "bold",
                 }}
+                cursor="pointer"
               >
-                <Box as={item.icon} fontSize="1.2rem" />
-                <Text fontSize="lg" fontWeight="medium">
+                <Icon fontSize="1.5rem" color={textColor}>
+                  <item.icon />
+                </Icon>
+                <Text fontSize="lg" fontWeight="medium" color={textColor}>
                   {item.label}
                 </Text>
               </Flex>
@@ -59,20 +65,27 @@ const TopNav = () => {
           {socials.map((item, i) => (
             <Link href={item.link} key={i} target="_blank">
               <Stack
-                p=".5rem"
+                p="0.5rem"
                 borderRadius="full"
-                bg="brand.white"
-                color={"brand.black"}
+                bg={useColorModeValue("brand.primary", "brand.100")}
+                color={textColor}
                 boxShadow="lg"
                 transition="all 0.3s ease"
                 animation={`${fadeIn} 0.5s`}
                 _hover={{
-                  bg: "brand.secondary",
-                  color: "brand.white",
+                  bg: iconHoverBg,
+                  color: iconHoverColor,
                   transform: "translateY(-5px)",
                 }}
+                cursor="pointer"
               >
-                <Box as={item.icon} fontSize="1.5rem" cursor="pointer" />
+                <Icon
+                  fontSize="1.5rem"
+                  color={iconColor}
+                  _hover={{ color: iconHoverColor }}
+                >
+                  <item.icon />
+                </Icon>
               </Stack>
             </Link>
           ))}

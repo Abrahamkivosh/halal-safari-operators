@@ -5,7 +5,7 @@ const config = defineConfig({
       colors: {
         brand: {
           primary: { value: "#5d2c0c" },
-          secondary: { value: "#b89c83" },
+          secondary: { value: "#F3F4F5" },
           white: { value: "#ffffff" },
           black: { value: "#000000" },
           

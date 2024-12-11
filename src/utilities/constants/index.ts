@@ -94,3 +94,16 @@ export const navData: NavType[] = [
   },
 ];
 
+export const partnersData = [
+    {
+    name: "Musaafirvacations",
+    logo: "/images/partiners/musaafirvactions.png",
+    link: "https://musaafirvacations.com/"
+  },
+   {
+    name: "Lagaster",
+    logo: "/images/partiners/lagaster.jpg",
+    link: "https://lagaster.org"
+  },
+
+];
