@@ -50,7 +50,7 @@ const TopNav = () => {
                 cursor="pointer"
               >
                 <Icon fontSize="1.5rem" color={textColor}>
-                  <item.icon />
+                  {<item.icon />}
                 </Icon>
                 <Text fontSize="lg" fontWeight="medium" color={textColor}>
                   {item.label}
@@ -68,7 +68,7 @@ const TopNav = () => {
                 p="0.5rem"
                 borderRadius="full"
                 bg={useColorModeValue("brand.primary", "brand.100")}
-                color={textColor}
+                color={iconColor}
                 boxShadow="lg"
                 transition="all 0.3s ease"
                 animation={`${fadeIn} 0.5s`}
@@ -84,7 +84,7 @@ const TopNav = () => {
                   color={iconColor}
                   _hover={{ color: iconHoverColor }}
                 >
-                  <item.icon />
+                  {<item.icon />}
                 </Icon>
               </Stack>
             </Link>

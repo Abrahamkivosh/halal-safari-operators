@@ -37,7 +37,7 @@ const HeroSection = () => {
     <Box
       position="relative"
       w="100%"
-      h="100vh"
+      h="90vh"
       overflow="hidden"
       display="flex"
       justifyContent="center"
@@ -50,7 +50,7 @@ const HeroSection = () => {
         w="100%"
         h="100%"
         overflow="hidden"
-        zIndex="-1"
+        bg="rgba(0, 0, 0, 0.5)"
       >
         {heroData.map((slide, index) => (
           <Box
@@ -75,20 +75,34 @@ const HeroSection = () => {
         align="center"
         animation="fadeIn 2s ease-in-out"
         p={6}
-        borderRadius="lg"
-        boxShadow="lg"
-        bg="rgba(255, 255, 255, 0.3)"
         backdropFilter="blur(10px)"
         maxW="80%"
         mx="auto"
+        bg="rgba(255, 255, 255, 0.1)"
+        borderRadius="xl"
+        boxShadow="0 8px 32px rgba(0, 0, 0, 0.2)"
+        border="1px solid rgba(255, 255, 255, 0.2)"
+        height={{ base: "100%", md: "auto" }}
       >
         <Heading
           as="h1"
           size="2xl"
-          fontWeight="bold"
           textTransform="uppercase"
           mb={4}
           animation="slideIn 1s ease-in-out"
+          fontSize={{ base: "3xl", md: "5xl" }}
+          fontWeight="bold"
+          color="white"
+          lineHeight="1.2"
+          data-state="open"
+          _open={{
+            animationName: "fade-in, scale-in",
+            animationDuration: "300ms",
+          }}
+          _closed={{
+            animationName: "fade-out, scale-out",
+            animationDuration: "120ms",
+          }}
         >
           {heroData[currentIndex].heading}
         </Heading>
@@ -102,7 +116,7 @@ const HeroSection = () => {
         </Text>
         <Button
           size="lg"
-          bg="teal"
+          bg="brand.primary"
           color="white"
           borderRadius="md"
           px={6}
@@ -110,7 +124,7 @@ const HeroSection = () => {
           _hover={{ bg: "darkcyan" }}
           animation="btnAppear 2s ease"
         >
-          Get Started
+          Book Now
         </Button>
       </Flex>
     </Box>
