@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   icons: [
     {
       rel: "icon",
-      url: "/favicon.ico",
+      url: "/favicon/favicon.ico",
       type: "image/x-icon",
     },
     {
       rel: "apple-touch-icon",
-      url: "/apple-touch-icon.png",
+      url: "/favicon/apple-touch-icon.png",
       sizes: "180x180",
     },
     {
@@ -46,12 +46,13 @@ export const metadata: Metadata = {
     },
     {
       rel: "mask-icon",
-      url: "/safari-pinned-tab.svg",
+      url: "/favicon/favicon-32x32.png",
       color: "#000000",
+      sizes: "32x32",
     },
     {
       rel: "shortcut icon",
-      url: "/favicon.ico",
+      url: "/favicon/favicon.ico",
     },
   ],
   viewport: "width=device-width, initial-scale=1",

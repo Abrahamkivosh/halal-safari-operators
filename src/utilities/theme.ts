@@ -4,16 +4,22 @@ const config = defineConfig({
     tokens: {
       colors: {
         brand: {
-          primary: { value: "#996515" },
-          secondary: { value: "#964B00" },
+          primary: { value: "#5d2c0c" },
+          secondary: { value: "#b89c83" },
           white: { value: "#ffffff" },
           black: { value: "#000000" },
           
-          50: { value: "#e6f2ff" },
-          100: { value: "#e6f2ff" },
-          200: { value: "#bfdeff" },
-          300: { value: "#99caff" },
-          950: { value: "#001a33" },
+          50: { value: "#ded7d2" },
+          100: { value: "#c4b9ad" },
+          200: { value: "#ab9c88" },
+          300: { value: "#917f63" },
+          400: { value: "#77623e" },
+          500: { value: "#5d2c0c" },
+          600: { value: "#4a2209" },
+          700: { value: "#381805" },
+          800: { value: "#251101" },
+          900: { value: "#130b00" },
+          
           
         },
 

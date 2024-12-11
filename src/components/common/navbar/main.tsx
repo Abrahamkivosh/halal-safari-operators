@@ -15,11 +15,11 @@ const MainNav = () => {
         <Box>
           <Link href="/">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Halal Safari Operators"
-              width={110}
-              height={110}
-              blurDataURL="/logo.svg"
+              width={210}
+              height={150}
+              blurDataURL="/logo.png"
             />
           </Link>
         </Box>
@@ -30,7 +30,7 @@ const MainNav = () => {
           ))}
         </Flex>
         <Flex display={{ base: "none", xl: "flex" }} gap={2}>
-          <Link href="" target="_blank">
+          <Link href="/get-a-quote" target="_blank">
             <Button
               borderRadius="xl"
               bg="brand.black"
@@ -39,7 +39,7 @@ const MainNav = () => {
                 bg: "brand.primary",
               }}
             >
-              Customize Booking <MdArrowOutward />
+              Get A Quote <MdArrowOutward />
             </Button>
           </Link>
         </Flex>

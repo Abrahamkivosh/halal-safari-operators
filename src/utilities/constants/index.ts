@@ -58,8 +58,21 @@ export const navData: NavType[] = [
     label: "Home",
     link: "/",
   },
+   {
+    label: "Kenya safaris",
+    link: "/kenya-safaris",
+  },
   {
-    label: "Who we are",
+    label: "Tanazania safaris",
+    link: "/tanzania-safaris",
+  },
+  {
+    label: "Destinations",
+    link: "/destinations",
+  },
+
+  {
+    label: "About Us",
     subItems: [
       {
         label: "Introduction and Background",
@@ -72,36 +85,12 @@ export const navData: NavType[] = [
       {
         label: "Partners",
         link: "/who-we-are/partners",
-      },
-      {
-        label: "Our History",
-        link: "/who-we-are/history",
       }
     ],
   },
- 
-
   {
-    label: "Media & News",
-    subItems: [
-      {
-        label: "Latest News",
-        link: "/latest-news",
-      },
-      {
-        label: "Events",
-        link: "/events",
-      },
-      {
-        label: "Our Stories",
-        link: "/our-stories",
-      },
-    ],
-  },
-  
-  {
-    label: "Contact",
-    link: "/contact",
+    label: "Contact Us",
+    link: "/contact-us",
   },
 ];
 
