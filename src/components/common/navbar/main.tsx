@@ -5,21 +5,30 @@ import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 import { marginX, navData } from "@/utilities/constants";
 import MenuDropdown from "./menu-dropdown";
-import { useColorModeValue } from "@/components/ui/color-mode";
+import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
 import MobileNav from "./mobile-nav";
 
 const MainNav = () => {
+  const { colorMode } = useColorMode();
   return (
     <Box bg={useColorModeValue("white", "brand.200")}>
       <Flex justify="space-between" py="2" align="center" marginX={marginX}>
         <Box>
-          <Link href="/">
+          <Link href="/" passHref>
             <Image
-              src="/logo.png"
+              src={
+                colorMode === "light"
+                  ? "/halal-safari-operator-logo-dark.svg"
+                  : "/halal-safari-operator-logo-light.svg"
+              }
               alt="Halal Safari Operators"
               width={210}
               height={150}
-              blurDataURL="/logo.png"
+              blurDataURL={
+                colorMode === "light"
+                  ? "/halal-safari-operator-logo-dark.svg"
+                  : "/halal-safari-operator-logo-light.svg"
+              }
             />
           </Link>
         </Box>

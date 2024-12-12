@@ -1,5 +1,5 @@
 "use client";
-import { useColorModeValue } from "@/components/ui/color-mode";
+import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
 import { Box, Flex, Text, Stack, HStack, Icon, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -60,6 +60,7 @@ const FooterIndex: React.FC = () => {
     { href: "/b2b", label: "B2B Work With Us" },
     { href: "/contact-us", label: "Contact Us" },
   ];
+  const { colorMode } = useColorMode();
 
   return (
     <Box
@@ -79,11 +80,15 @@ const FooterIndex: React.FC = () => {
         {/* Branding Section */}
         <Section>
           <Image
-            src="/logo.png"
+            src={
+              colorMode === "light"
+                ? "/halal-safari-operator-logo-light.svg"
+                : "/halal-safari-operator-logo-dark.svg"
+            }
             alt="Halal Safari Operators"
             mb="4"
-            w="150px"
-            h="auto"
+            w="auto"
+            h="150px"
           />
           <Text fontSize="sm" lineHeight="tall">
             Giving you the best safari experience in Africa and the Middle East.
