@@ -12,7 +12,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 import {
   Box,
-  IconButton,
+  Button,
   Stack,
   StackSeparator,
   Text,
@@ -41,8 +41,7 @@ const MobileNav = ({ navData }: { navData: NavType[] }) => {
       <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
         <DrawerBackdrop />
         <DrawerTrigger asChild>
-          <IconButton
-            as={RxHamburgerMenu}
+          <Button
             zIndex={2}
             w="30px"
             h="30px"
@@ -50,7 +49,9 @@ const MobileNav = ({ navData }: { navData: NavType[] }) => {
             bg="none"
             _hover={{ background: "none" }}
             aria-label="menu"
-          />
+          >
+            <RxHamburgerMenu size={25} />
+          </Button>
         </DrawerTrigger>
         <DrawerContent bg={"brand.200"}>
           <DrawerBody>

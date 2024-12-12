@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Provider } from "@/components/ui/provider";
@@ -55,7 +55,6 @@ export const metadata: Metadata = {
       url: "/favicon/favicon.ico",
     },
   ],
-  viewport: "width=device-width, initial-scale=1",
   manifest: "/manifest.json",
   openGraph: {
     determiner: "auto",
@@ -112,6 +111,10 @@ export const metadata: Metadata = {
     url: true,
   },
   abstract: "Halal Safari operators",
+};
+
+export const viewport: Viewport = {
+  themeColor: "light",
 };
 
 export default function RootLayout({
