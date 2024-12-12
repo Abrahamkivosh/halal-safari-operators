@@ -1,7 +1,6 @@
 "use client";
 
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import Link from "next/link";
@@ -82,11 +81,6 @@ const MenuDropdown = ({ item }: Props) => {
         <Text fontWeight="semibold" fontSize="lg">
           {item.label}
         </Text>
-        {isOpen ? (
-          <TriangleUpIcon ml={2} boxSize={5} />
-        ) : (
-          <TriangleDownIcon ml={2} boxSize={5} />
-        )}
       </Flex>
 
       {isOpen && (

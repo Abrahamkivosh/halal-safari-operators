@@ -7,6 +7,7 @@ import { marginX, navData } from "@/utilities/constants";
 // import MenuDropdown from "./menu-dropdown";
 import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
 import MobileNav from "./mobile-nav";
+import MenuDropdown from "./menu-dropdown";
 
 const MainNav = () => {
   const { colorMode } = useColorMode();
@@ -33,11 +34,11 @@ const MainNav = () => {
           </Link>
         </Box>
 
-        {/* <Flex align="center" gap={3} display={{ base: "none", xl: "flex" }}>
+        <Flex align="center" gap={3} display={{ base: "none", xl: "flex" }}>
           {navData.map((item, i) => (
             <MenuDropdown key={i} item={item} />
           ))}
-        </Flex> */}
+        </Flex>
         <Flex display={{ base: "none", xl: "flex" }} gap={2}>
           <Link href="/get-a-quote" target="_blank">
             <Button
