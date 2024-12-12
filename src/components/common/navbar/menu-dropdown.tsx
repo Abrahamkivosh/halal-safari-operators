@@ -1,7 +1,7 @@
 "use client";
 
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import Link from "next/link";
@@ -9,14 +9,8 @@ import React, { useState } from "react";
 
 // Animation for dropdown
 const fadeInSlideDown = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 `;
 
 interface Props {
@@ -35,6 +29,12 @@ const MenuDropdown = ({ item }: Props) => {
 
   const handleMouseEnter = () => setIsOpen(true);
   const handleMouseLeave = () => setIsOpen(false);
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") setIsOpen((prev) => !prev);
+    if (event.key === "Escape") setIsOpen(false);
+  };
+
   const linkColor = useColorModeValue("gray.500", "gray.800");
   const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
 
@@ -61,23 +61,31 @@ const MenuDropdown = ({ item }: Props) => {
   }
 
   return (
-    <Box position="relative" onMouseEnter={handleMouseEnter} role="menu">
+    <Box
+      position="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      role="menu"
+    >
       <Flex
         alignItems="center"
         cursor="pointer"
         aria-haspopup="menu"
+        aria-expanded={isOpen}
+        tabIndex={0}
         _hover={{
           color: "brand.primary",
           fontWeight: "bold",
         }}
+        onKeyDown={handleKeyDown}
       >
         <Text fontWeight="semibold" fontSize="lg">
           {item.label}
         </Text>
         {isOpen ? (
-          <ChevronUpIcon ml={2} boxSize={5} />
+          <TriangleUpIcon ml={2} boxSize={5} />
         ) : (
-          <ChevronDownIcon ml={2} boxSize={5} />
+          <TriangleDownIcon ml={2} boxSize={5} />
         )}
       </Flex>
 
@@ -91,17 +99,9 @@ const MenuDropdown = ({ item }: Props) => {
           zIndex={10}
           minW="200px"
           animation={`${fadeInSlideDown} 0.3s ease`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          role="menu"
         >
           {item.subItems.map((subItem, index) => (
-            <Link
-              key={index}
-              href={subItem.link || "/"}
-              role="menuitem"
-              passHref
-            >
+            <Link key={index} href={subItem.link || "/"} passHref>
               <Box
                 px={4}
                 py={3}
@@ -114,10 +114,7 @@ const MenuDropdown = ({ item }: Props) => {
                   fontWeight: "bold",
                 }}
                 cursor="pointer"
-                tabIndex={0}
                 transition="all 0.3s ease"
-                role="menuitem"
-                transitionBehavior={"in-out"}
               >
                 {subItem.label}
               </Box>
