@@ -22,16 +22,6 @@ const NotFound = () => {
       minH="100vh"
       textAlign="center"
     >
-      {/* Decorative Image */}
-      <Image
-        src="/404.svg"
-        alt="404 Error"
-        maxW={{ base: "90%", sm: "400px", md: "500px" }}
-        objectFit="contain"
-        borderRadius="lg"
-        shadow="lg"
-      />
-
       {/* Main Heading */}
       <Heading size="2xl" color={headingColor}>
         Oops! Page Not Found

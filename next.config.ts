@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     optimizePackageImports:["@chakra-ui/react"],
   },
-output: "standalone"
+// output: "standalone"
 
 };
 
