@@ -9,14 +9,13 @@ import { useColorModeValue } from "../ui/color-mode";
 
 const PartnersSection = () => {
   return (
-    <Box py={{ base: "2rem", md: "2rem" }} position={"relative"}>
+    <Box py={{ base: "1rem", md: "1rem" }} position={"relative"}>
       {/* Section Title */}
       <Text
         fontSize={{ base: "2xl", md: "4xl" }}
         fontWeight="bold"
         color="brand.primary"
         textAlign="center"
-        mb="3rem"
         letterSpacing="wide"
       >
         Our Trusted Partners

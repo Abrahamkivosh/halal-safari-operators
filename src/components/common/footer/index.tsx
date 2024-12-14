@@ -51,7 +51,7 @@ const FooterIndex: React.FC = () => {
   ];
 
   const bgColor = useColorModeValue("brand.primary", "brand.900");
-  const textColor = useColorModeValue("brand.100", "brand.100");
+  const textColor = useColorModeValue("brand.100", "brand.secondary");
 
   const quickLinks = [
     { href: "/about-us", label: "About Us" },
@@ -90,7 +90,7 @@ const FooterIndex: React.FC = () => {
             w="auto"
             h="150px"
           />
-          <Text fontSize="sm" lineHeight="tall">
+          <Text fontSize="sm" lineHeight="tall" color={textColor}>
             Giving you the best safari experience in Africa and the Middle East.
           </Text>
           <HStack gap="4" mt="4">
@@ -149,8 +149,7 @@ const FooterIndex: React.FC = () => {
         gap="4"
       >
         <Text fontSize="sm">
-          © {new Date().getFullYear()} halalsafarioperator. All rights
-          reserved.
+          © {new Date().getFullYear()} halalsafarioperator. All rights reserved.
         </Text>
         <HStack gap="4">
           <Link href="/privacy-policy">Privacy Policy</Link>

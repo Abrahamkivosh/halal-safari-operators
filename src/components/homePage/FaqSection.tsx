@@ -47,26 +47,29 @@ const FaqSection = () => {
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.800")}
-      py={{ base: "4rem", md: "6rem" }}
-      px={{ base: "1rem", md: "3rem" }}
-      bgImage={"url('/images/faq.svg')"}
+      py={{ base: "1rem", md: "1rem" }}
+      px={{ base: "1rem", md: "4rem" }}
       bgSize="cover"
       bgPos="center"
       bgRepeat="no-repeat"
     >
-      <Stack gap={{ base: "2rem", md: "4rem" }} mx={marginX} textAlign="center">
+      <Stack gap={{ base: "1rem", md: "1rem" }} mx={marginX} textAlign="center">
         <Heading
           as="h2"
           fontSize={{ base: "2xl", md: "4xl" }}
           textAlign="center"
           color={useColorModeValue("gray.700", "white")}
-          mb={{ base: "2rem", md: "4rem" }}
+          mb={{ base: "1rem", md: "1rem" }}
           textDecoration={"underline"}
           textDecorationColor={useColorModeValue("brand.500", "brand.300")}
         >
           Frequently Asked Questions
         </Heading>
-        <AccordionRoot value={value} onValueChange={(e) => setValue(e.value)}>
+        <AccordionRoot
+          value={value}
+          onValueChange={(e) => setValue(e.value)}
+          padding={0}
+        >
           {faqData.map((faq, index) => (
             <AccordionItem
               key={index}
@@ -75,6 +78,7 @@ const FaqSection = () => {
               borderRadius="md"
               mb="1rem"
               bg={useColorModeValue("white", "gray.700")}
+              padding={0}
               boxShadow="md"
               _hover={{
                 boxShadow: "lg",
@@ -94,7 +98,7 @@ const FaqSection = () => {
                 {faq.question}
               </AccordionItemTrigger>
               <AccordionItemContent
-                pb="1rem"
+                py="1rem"
                 px="1.5rem"
                 color={useColorModeValue("gray.600", "gray.300")}
                 fontSize="md"

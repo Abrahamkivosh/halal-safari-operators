@@ -2,39 +2,10 @@
 import React, { Fragment } from "react";
 import { Box, Text, Stack, Icon, SimpleGrid, Heading } from "@chakra-ui/react";
 import { FaQuoteLeft } from "react-icons/fa";
+import { testimonials } from "@/utilities/constants";
+import Marquee from "react-fast-marquee";
 
 const TestimonialSection = () => {
-  const testimonials = [
-    {
-      id: 1,
-      content:
-        "This was an unforgettable experience! The team went above and beyond to make sure we had the perfect safari adventure. Highly recommended!",
-      name: "Jane Doe",
-      position: "Travel Enthusiast",
-    },
-    {
-      id: 2,
-      content:
-        "The level of professionalism and attention to detail was outstanding. The guides were knowledgeable and the destinations were breathtaking.",
-      name: "John Smith",
-      position: "Photographer",
-    },
-    {
-      id: 3,
-      content:
-        "I’ve traveled to many places, but this was truly exceptional. From planning to execution, everything was seamless and exceeded my expectations.",
-      name: "Emily Rose",
-      position: "Adventure Seeker",
-    },
-    {
-      id: 4,
-      content:
-        "An extraordinary journey! I felt safe, cared for, and inspired every step of the way. Can’t wait to book my next trip with them.",
-      name: "Michael Carter",
-      position: "Nature Lover",
-    },
-  ];
-
   return (
     <Box
       position="relative"
@@ -83,7 +54,7 @@ const TestimonialSection = () => {
 
       {/* Testimonials */}
       <SimpleGrid
-        columns={{ base: 1, md: 2 }}
+        columns={{ base: 1, md: 4 }}
         gap="2rem"
         mx="auto"
         maxW="container.lg"
@@ -91,54 +62,56 @@ const TestimonialSection = () => {
         position="relative"
       >
         {testimonials.map((testimonial) => (
-          <Fragment key={testimonial.id}>
-            <Box
-              bg="white"
-              color="gray.800"
-              boxShadow="2xl"
-              borderRadius="lg"
-              padding={{ base: "1rem", md: "1rem" }}
-              position="relative"
-              borderTop="3px solid"
-              borderColor="green.400"
-              borderBottomLeftRadius="lg"
-              borderBottomRightRadius="lg"
-              _hover={{
-                transform: "scale(1.05) rotate(-1deg)",
-                boxShadow: "3xl",
-              }}
-              transition="all 0.4s ease-in-out"
-              _after={{
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: 0,
-                w: "100%",
-                h: "100%",
-                bgGradient: "linear(to-br, blue.100, purple.100)",
-                zIndex: -1,
-                opacity: 0.4,
-                borderRadius: "lg",
-              }}
-            >
-              {/* Quote Icon */}
-              <Icon fontSize="3xl" color="purple.500" mb="1rem">
-                <FaQuoteLeft />
-              </Icon>
-              {/* Testimonial Content */}
-              <Text fontSize="md" fontStyle="italic" mb="2rem">
-                &quot;{testimonial.content}&quot;
+          <Box
+            bg="white"
+            color="gray.800"
+            boxShadow="2xl"
+            borderRadius="lg"
+            padding={{ base: "1rem", md: "1rem" }}
+            maxW={{ base: "100%", md: "400px" }}
+            width={{ base: "100%", md: "400px" }}
+            position="relative"
+            borderTop="3px solid"
+            borderColor="green.400"
+            borderBottomLeftRadius="lg"
+            borderBottomRightRadius="lg"
+            _hover={{
+              transform: "scale(1.05) rotate(-1deg)",
+              boxShadow: "3xl",
+            }}
+            transition="all 0.4s ease-in-out"
+            _after={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              w: "100%",
+              h: "100%",
+              bgGradient: "linear(to-br, blue.100, purple.100)",
+              zIndex: -1,
+              opacity: 0.4,
+              borderRadius: "lg",
+            }}
+            key={testimonial.id}
+            zIndex={1}
+          >
+            {/* Quote Icon */}
+            <Icon fontSize="3xl" color="purple.500" mb="1rem">
+              <FaQuoteLeft />
+            </Icon>
+            {/* Testimonial Content */}
+            <Text fontSize="md" fontStyle="italic" mb="2rem">
+              &quot;{testimonial.content}&quot;
+            </Text>
+            <Stack gap="0.5rem">
+              <Text fontWeight="bold" fontSize="lg">
+                {testimonial.name}
               </Text>
-              <Stack gap="0.5rem">
-                <Text fontWeight="bold" fontSize="lg">
-                  {testimonial.name}
-                </Text>
-                <Text fontSize="sm" color="gray.500">
-                  {testimonial.position}
-                </Text>
-              </Stack>
-            </Box>
-          </Fragment>
+              <Text fontSize="sm" color="gray.500">
+                {testimonial.position}
+              </Text>
+            </Stack>
+          </Box>
         ))}
       </SimpleGrid>
     </Box>

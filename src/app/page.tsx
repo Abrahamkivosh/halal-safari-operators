@@ -6,6 +6,7 @@ import IntroductionSection from "@/components/homePage/introductionSection";
 import MainSafaris from "@/components/homePage/MainSafaris";
 import PartnersSection from "@/components/homePage/partnersSection";
 import TestimonialSection from "@/components/homePage/testimonialSection";
+import ToursSection from "@/components/homePage/ToursSection";
 import WhyChooseUs from "@/components/homePage/whyChooseUs";
 import React from "react";
 
@@ -17,6 +18,7 @@ const HomePage = () => {
       <MainSafaris />
       <DestinationsSection />
       <WhyChooseUs />
+      <ToursSection />
       <TestimonialSection />
       <PartnersSection />
       <BlogSection />
