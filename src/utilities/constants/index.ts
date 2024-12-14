@@ -77,7 +77,7 @@ export const navData: NavType[] = [
     subItems: [
       {
         label: "Introduction and Background",
-        link: "/who-we-are/introduction-and-background",
+        link: "/who-we-are",
       },
       {
         label: "Our Team",
