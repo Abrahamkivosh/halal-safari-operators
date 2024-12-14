@@ -89,8 +89,8 @@ export const navData: NavType[] = [
     ],
   },
   {
-    label: "Contact Us",
-    link: "/contact-us",
+    label: "Get A Quote",
+    link: "/get-a-quote",
   },
 ];
 

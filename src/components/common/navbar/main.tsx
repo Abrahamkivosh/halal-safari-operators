@@ -13,7 +13,7 @@ const MainNav = () => {
   const { colorMode } = useColorMode();
   return (
     <Box bg={useColorModeValue("white", "brand.200")}>
-      <Flex justify="space-between" py="2" align="center" marginX={marginX}>
+      <Flex justify="space-between" align="center" marginX={marginX}>
         <Box>
           <Link href="/" passHref>
             <Image
@@ -34,7 +34,7 @@ const MainNav = () => {
           </Link>
         </Box>
 
-        <Flex align="center" gap={3} display={{ base: "none", xl: "flex" }}>
+        <Flex align="center" gap={5} display={{ base: "none", xl: "flex" }}>
           {navData.map((item, i) => (
             <MenuDropdown key={i} item={item} />
           ))}
@@ -49,7 +49,7 @@ const MainNav = () => {
                 bg: "brand.primary",
               }}
             >
-              Get A Quote <MdArrowOutward />
+              B2B/Work With Us <MdArrowOutward />
             </Button>
           </Link>
         </Flex>

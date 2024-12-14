@@ -38,7 +38,7 @@ const TestimonialSection = () => {
   return (
     <Box
       position="relative"
-      py={{ base: "6rem", md: "8rem" }}
+      py={{ base: "1rem" }}
       px={{ base: "2rem", md: "4rem" }}
       color="white"
       overflow="hidden"
@@ -74,7 +74,7 @@ const TestimonialSection = () => {
         as="h2"
         fontSize={{ base: "2xl", md: "4xl" }}
         textAlign="center"
-        mb={{ base: "3rem", md: "4rem" }}
+        mb={{ base: "2rem", md: "2rem" }}
         zIndex={1}
         position="relative"
       >
@@ -97,7 +97,7 @@ const TestimonialSection = () => {
               color="gray.800"
               boxShadow="2xl"
               borderRadius="lg"
-              p="2rem"
+              padding={{ base: "1rem", md: "1rem" }}
               position="relative"
               borderTop="3px solid"
               borderColor="green.400"

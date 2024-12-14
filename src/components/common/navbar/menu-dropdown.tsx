@@ -44,10 +44,14 @@ const MenuDropdown = ({ item }: Props) => {
           fontWeight="semibold"
           fontSize="lg"
           color={linkColor}
+          py={2}
           _hover={{
             color: linkHoverColor,
-            transform: "scale(1.1)",
+            transform: "scale(1.05)",
             fontWeight: "bold",
+            borderTop: "2px solid",
+            borderBottom: "2px solid",
+            borderColor: "brand.primary",
           }}
           cursor="pointer"
           tabIndex={0}
@@ -60,12 +64,7 @@ const MenuDropdown = ({ item }: Props) => {
   }
 
   return (
-    <Box
-      position="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      role="menu"
-    >
+    <Box position="relative" onMouseEnter={handleMouseEnter} role="menu">
       <Flex
         alignItems="center"
         cursor="pointer"
@@ -93,6 +92,7 @@ const MenuDropdown = ({ item }: Props) => {
           zIndex={10}
           minW="200px"
           animation={`${fadeInSlideDown} 0.3s ease`}
+          onMouseLeave={handleMouseLeave}
         >
           {item.subItems.map((subItem, index) => (
             <Link key={index} href={subItem.link || "/"} passHref>

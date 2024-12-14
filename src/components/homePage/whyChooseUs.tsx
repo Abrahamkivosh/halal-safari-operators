@@ -57,10 +57,9 @@ const WhyChooseUs = () => {
 
   return (
     <Box
-      mt={{ base: "1.5rem", sm: "3rem" }}
       px={{ base: "1rem", sm: "3rem" }}
       bgImage="url('/images/woman.jpg')"
-      py={{ base: "2rem", sm: "2rem" }}
+      py={{ base: "1rem", sm: "1rem" }}
       bgSize="cover"
       bgBlendMode="overlay"
       bgPos="center"
@@ -80,31 +79,16 @@ const WhyChooseUs = () => {
           fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
           fontWeight="bold"
           data-aos="fade-up"
-          color="brand.primary"
-          mb={{ base: "1.5rem", sm: "1.5rem" }}
+          color="white"
+          mb={{ base: "1rem", sm: "1rem" }}
         >
           Why Choose Us ?
-        </Text>
-        <Text
-          textAlign="center"
-          maxW="80%"
-          mx="auto"
-          fontSize={{ base: "xl", sm: "2xl" }}
-        >
-          We will provide a genuine African experience, regardless of whether
-          this is your first safari or you are a seasoned traveler. Our
-          experience guarantees that you get the most out of your trip, whether
-          you choose to go on safaris, take part in cultural city excursions,
-          climb Kilimanjaro, or relax in a peaceful resort. Find important
-          planning information, reserve a full trip with us, or get in touch
-          with us for a customised vacation. Operating in 16 African nations,
-          with its headquarters in Kenya
         </Text>
       </Stack>
       <SimpleGrid
         columns={{ base: 1, sm: 2, md: 3 }}
         gap="2rem"
-        my={{ base: "1rem", sm: "2rem" }}
+        my={{ base: "1rem", sm: "1rem" }}
       >
         {whyUsData.map((item, index) => (
           <Stack
@@ -113,7 +97,7 @@ const WhyChooseUs = () => {
             align="center"
             textAlign="center"
             boxShadow="lg"
-            p="2rem"
+            p={{ base: "1rem", sm: "1rem" }}
             borderRadius="lg"
             _hover={{
               transform: "scale(1.05)",
@@ -124,10 +108,26 @@ const WhyChooseUs = () => {
             data-aos-delay={index * 100}
             data-aos={dataAOSDisplay[index]}
           >
-            <Icon w={10} h={10} color="brand.primary">
+            <Icon
+              // different color for each icon
+              color={
+                index === 0
+                  ? "yellow.500"
+                  : index === 1
+                  ? "red.500"
+                  : index === 2
+                  ? "green.500"
+                  : index === 3
+                  ? "blue.500"
+                  : "purple.500"
+              }
+              width={20}
+              height={20}
+              p={0}
+            >
               {<item.icon />}
             </Icon>
-            <Text fontSize="xl" fontWeight="bold" color="brand.secondary">
+            <Text fontSize="xl" fontWeight="bold" color="brand.primary" p="0px">
               {item.title}
             </Text>
             <Text fontSize="sm" color="gray.600">
