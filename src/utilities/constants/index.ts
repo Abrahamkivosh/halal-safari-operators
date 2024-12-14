@@ -367,3 +367,43 @@ export const partnersData = [
       }
    
     ];
+
+    export const teams: Team[]  = [
+      {
+        name: "John Doe",
+        profile_pic: "/images/team/noimage.png",
+        position: "CEO & Founder",
+        is_board_member: true,
+        email: "john@halalsafarioperators.com",
+        facebook_link: "https://www.facebook.com/johndoe",
+        linkedin_link: "https://www.linkedin.com/in/johndoe",
+      },
+      {
+        name: "Jane Smith",
+        profile_pic:  "/images/team/noimage.png",
+        position: "COO",
+        is_board_member: true,
+        email: "jane@halalsafarioperators.com",
+        facebook_link: "https://www.facebook.com/janesmith",
+        linkedin_link: "https://www.linkedin.com/in/janesmith",
+      },
+      {
+        name: "Michael Johnson",
+        profile_pic:  "/images/team/noimage.png",
+        position: "CTO",
+        is_board_member: true,
+        email: "micheal@halalsafarioperators.com",
+        facebook_link: "https://www.facebook.com/michaeljohnson",
+        linkedin_link: "https://www.linkedin.com/in/michaeljohnson",
+      },
+      {
+        name: "Emily Brown",
+        profile_pic: "/images/team/noimage.png",
+        position: "Marketing Director",
+        is_board_member: false,
+        email: "emily@halalsafarioperators.com",
+        facebook_link: "https://www.facebook.com/emilybrown",
+        linkedin_link: "https://www.linkedin.com/in/emilybrown",
+      },
+      
+    ];

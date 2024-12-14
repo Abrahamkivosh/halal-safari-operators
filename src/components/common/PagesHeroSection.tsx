@@ -11,6 +11,7 @@ interface Props {
 }
 
 const PagesHeroSection = ({ path, imgUrl, title, h }: Props) => {
+  imgUrl = `url(${imgUrl})`;
   return (
     <Box position="relative">
       <Flex

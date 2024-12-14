@@ -33,3 +33,13 @@ interface TourCardProps {
   link: string;
   rating: number;
 }
+
+interface Team{
+  name: string;
+  profile_pic: string;
+  position: string;
+  is_board_member: boolean;
+  email?: string;
+  facebook_link?: string;
+  linkedin_link?: string;
+}
