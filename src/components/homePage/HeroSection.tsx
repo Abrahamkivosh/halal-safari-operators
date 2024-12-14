@@ -15,7 +15,7 @@ const Hero = () => {
   );
   const textColor = useColorModeValue("white", "gray.200");
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
-  const buttonHoverBg = useColorModeValue("brand.secondary", "brand.primary");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
 
   return (
     <Box
@@ -76,7 +76,7 @@ const Hero = () => {
             We provide the best travel experience for you and your family. Our
             team of experts will help you plan your next trip.
           </Text>
-          <Link href="/contact-us" passHref>
+          <Link href="/get-a-quote" passHref>
             <Button
               size="lg"
               borderRadius="md"
@@ -90,7 +90,7 @@ const Hero = () => {
               color="white"
               _hover={{ bg: buttonHoverBg }} // Dynamic hover background color for light/dark modes
             >
-              Contact Us
+              Get A Qoute
               <RiArrowRightLine />
             </Button>
           </Link>

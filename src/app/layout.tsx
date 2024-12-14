@@ -1,22 +1,23 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
 import { Provider } from "@/components/ui/provider";
 import NavbarIndex from "@/components/common/navbar";
 import FooterIndex from "@/components/common/footer";
 import { layoutMetadata } from "@/utilities/constants/MetaData";
+import WhatsAppComponent from "@/components/common/WhatsApp/WhatsAppComponent";
 // import NextTopLoader from "nextjs-toploader";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = layoutMetadata;
 
@@ -31,11 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         <Provider>
           <NavbarIndex />
           {children}
           <FooterIndex />
+          <WhatsAppComponent />
         </Provider>
       </body>
     </html>

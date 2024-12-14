@@ -10,6 +10,8 @@ import MobileNav from "./mobile-nav";
 import MenuDropdown from "./menu-dropdown";
 
 const MainNav = () => {
+  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
   const { colorMode } = useColorMode();
   return (
     <Box bg={useColorModeValue("white", "brand.200")}>
@@ -43,10 +45,10 @@ const MainNav = () => {
           <Link href="/get-a-quote" target="_blank">
             <Button
               borderRadius="xl"
-              bg="brand.black"
+              bg={buttonBg}
               color="brand.white"
               _hover={{
-                bg: "brand.primary",
+                bg: buttonHoverBg,
               }}
             >
               B2B/Work With Us <MdArrowOutward />
