@@ -11,12 +11,12 @@ interface Props {
 }
 
 const PagesHeroSection = ({ path, imgUrl, title, h }: Props) => {
-  imgUrl = `url(${imgUrl})`;
+  const imagwUrl = imgUrl !== "" ? imgUrl : "/images/elephant.jpg";
   return (
     <Box position="relative">
       <Flex
         minH={h || "55vh"}
-        bgImage={imgUrl || "url('/images/buffalo.jpg')"}
+        bgImage={`url(${imagwUrl})`}
         bgSize="cover"
         bgBlendMode="overlay"
         bgPos="center"
