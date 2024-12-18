@@ -7,20 +7,23 @@ import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Check, X, Clock, Info } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useRouter } from 'next/navigation'
 
 interface PackageCardProps {
-  title: string
-  description: string
-  price: string
-  duration: string
-  highlights: string[]
-  schedule: string[]
-  inclusions: string[]
-  exclusions: string[]
-  images: string[]
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  duration: string;
+  highlights: string[];
+  schedule: string[];
+  inclusions: string[];
+  exclusions: string[];
+  images: string[];
 }
 
 export function PackageCard({
+  id,
   title,
   description,
   price,
@@ -32,6 +35,7 @@ export function PackageCard({
   images
 }: PackageCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const router = useRouter()
 
   return (
     <Card className="overflow-hidden">
@@ -116,10 +120,10 @@ export function PackageCard({
         </div>
 
         <div className="mt-8 space-y-4">
-          <Button className="w-full">Book Now</Button>
-          <Button variant="outline" className="w-full">
+          <Button className="w-full" onClick={() => router.push(`/kenya-safaris/${id}`)}>Book Now</Button>
+          <Button variant="outline" className="w-full" onClick={() => router.push(`/kenya-safaris/${title.toLowerCase().replace(/\s+/g, '-')}`)}>
             <Info className="mr-2 h-4 w-4" />
-            Request More Info
+            View more details
           </Button>
         </div>
       </CardContent>

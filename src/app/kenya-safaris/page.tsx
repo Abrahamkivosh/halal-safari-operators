@@ -1,8 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { PackageCard } from './components/package-card'
 
 export const metadata: Metadata = {
@@ -48,7 +45,8 @@ export default function KenyaSafaris() {
           <h2 className="text-3xl font-bold text-center mb-12">Our Safari Packages</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <PackageCard
-              title="7 Days Masai Mara & Amboseli Safari"
+            id="1"
+              title="7 Days Masai Mara  Amboseli Safari"
               description="Experience the magic of Kenya's most iconic national parks with our comprehensive 7-day safari package."
               price="From $3,100 per person"
               duration="7 Days / 6 Nights"
@@ -88,6 +86,7 @@ export default function KenyaSafaris() {
             />
 
             <PackageCard
+            id="2"
               title="10 Days Ultimate Kenya Safari"
               description="A comprehensive journey through Kenya's finest wildlife destinations including Masai Mara, Amboseli, and Tsavo."
               price="From $4,000 per person"
@@ -128,6 +127,7 @@ export default function KenyaSafaris() {
             />
 
             <PackageCard
+            id="3"
               title="5 Days Express Safari"
               description="Perfect for those short on time but seeking an authentic Kenyan safari experience."
               price="From $2,500 per person"
