@@ -120,7 +120,7 @@ export function PackageCard({
         </div>
 
         <div className="mt-8 space-y-4">
-          <Button className="w-full" onClick={() => router.push(`/kenya-safaris/${id}`)}>Book Now</Button>
+          <Button className="w-full" >Book Now</Button>
           <Button variant="outline" className="w-full" onClick={() => router.push(`/kenya-safaris/${title.toLowerCase().replace(/\s+/g, '-')}`)}>
             <Info className="mr-2 h-4 w-4" />
             View more details
