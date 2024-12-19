@@ -9,15 +9,22 @@ import {
   SimpleGrid,
   Input,
   CheckboxGroup,
-  Flex,
   Fieldset,
+  Code,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useColorModeValue } from "../ui/color-mode";
 import { Field } from "../ui/field";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, useController } from "react-hook-form";
+import {
+  RequestQuotationFormData,
+  requestQuotationFormSchema,
+} from "./validations";
+import getQuotationAction from "@/actions/getQuotation";
 
 // Motion component for animations
 const MotionBox = motion(Box);
@@ -26,6 +33,47 @@ const GetAQuoteComponent = () => {
   const mainBgColor = useColorModeValue("gray.200", "gray.800");
   const textColor = useColorModeValue("gray.700", "white");
   const formBg = useColorModeValue("white", "gray.700");
+
+  const {
+    handleSubmit,
+    register,
+    control,
+    formState: { errors },
+  } = useForm<RequestQuotationFormData>({
+    resolver: zodResolver(requestQuotationFormSchema),
+  });
+  const [is_loading, setLoading] = useState(false);
+
+  const onSubmit = async (data: RequestQuotationFormData) => {
+    setLoading(true);
+    try {
+      const response = await getQuotationAction(data);
+      console.log(response);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const ageOfChildrenControl = useController({
+    name: "ageOfChildren",
+    control,
+    defaultValue: [],
+  });
+
+  const typeOfSafariControl = useController({
+    name: "typeOfSafari",
+    control,
+    defaultValue: [],
+  });
+
+  const notifyControl = useController({
+    name: "notificationPreference",
+    control,
+    defaultValue: [],
+  });
 
   const ageOfChildren = [
     {
@@ -46,7 +94,7 @@ const GetAQuoteComponent = () => {
     },
   ];
 
-  const typeOfSafari = [
+  const typeOfSafaris = [
     {
       title: "Bush Only",
       value: "Bush Only",
@@ -95,6 +143,9 @@ const GetAQuoteComponent = () => {
       value: "whatsapp",
     },
   ];
+  const ageOfChildrenInvalid = !!errors.ageOfChildren;
+  const typeOfSafariInvalid = !!errors.typeOfSafari;
+  const notifyInvalid = !!errors.notificationPreference;
 
   return (
     <Box bgSize="cover" py={12} px={6} position="relative" bg={mainBgColor}>
@@ -138,135 +189,158 @@ const GetAQuoteComponent = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         as="form"
+        onSubmit={handleSubmit(onSubmit)}
       >
         <Stack gap={6}>
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={6}>
-            {/* Name Field */}
             <Field
               required
               label="Your Name"
               helperText="Enter your full name"
-              errorText="This field is required"
+              invalid={errors.name === undefined ? false : true}
+              errorText={errors.name?.message?.toString()}
             >
               <Input
                 placeholder="Enter your full name"
                 bg="gray.100"
                 _focus={{ bg: "white", borderColor: "blue.400" }}
+                {...register("name")}
+                autoCapitalize="words"
+                autoComplete="name"
+                autoFocus
               />
             </Field>
 
-            {/* Email Field */}
             <Field
               required
               label="Email Address"
               helperText="Enter your email address"
-              errorText="This field is required"
+              invalid={errors.email === undefined ? false : true}
+              errorText={errors.email?.message?.toString()}
             >
               <Input
                 type="email"
                 placeholder="Enter your email"
                 bg="gray.100"
                 _focus={{ bg: "white", borderColor: "blue.400" }}
+                {...register("email")}
+                autoComplete="email"
               />
             </Field>
 
-            {/* Phone Field */}
             <Field
               required
               label="Phone Number"
               helperText="Enter your phone number"
-              errorText="This field is required"
+              invalid={errors.phone === undefined ? false : true}
+              errorText={errors.phone?.message?.toString()}
             >
               <Input
                 type="tel"
                 placeholder="Enter your phone number"
                 bg="gray.100"
+                _focus={{ bg: "white", borderColor: "blue.400" }}
+                {...register("phone")}
               />
             </Field>
-            {/* Country */}
             <Field
               required
               label="Country"
               helperText="Enter your country"
-              errorText="This field is required"
+              invalid={errors.country === undefined ? false : true}
+              errorText={errors.country?.message?.toString()}
             >
-              <Input placeholder="Enter your country" bg="gray.100" />
+              <Input
+                placeholder="Enter your country"
+                bg="gray.100"
+                {...register("country")}
+                autoComplete="country"
+              />
             </Field>
-            {/* Duration Of Travel */}
             <Field
               required
               label="Duration of Travel"
               helperText="Enter the duration of your travel"
-              errorText="This field is required"
+              invalid={errors.duration === undefined ? false : true}
+              errorText={errors.duration?.message?.toString()}
             >
               <Input
                 placeholder="Enter the duration of your travel"
                 bg="gray.100"
+                {...register("duration")}
               />
             </Field>
-            {/* Safari Start Date */}
             <Field
               required
               label="Safari Start Date"
               helperText="Enter the start date of your safari"
-              errorText="This field is required"
+              invalid={errors.safariStartDate === undefined ? false : true}
+              errorText={errors.safariStartDate?.message?.toString()}
             >
               <Input
                 type="date"
                 placeholder="Enter the start date of your safari"
                 bg="gray.100"
+                {...register("safariStartDate")}
               />
             </Field>
-            {/* Safari End Date */}
             <Field
               required
               label="Safari End Date"
               helperText="Enter the end date of your safari"
-              errorText="This field is required"
+              invalid={errors.safariEndDate === undefined ? false : true}
+              errorText={errors.safariEndDate?.message?.toString()}
             >
               <Input
                 type="date"
                 placeholder="Enter the end date of your safari"
                 bg="gray.100"
+                {...register("safariEndDate")}
               />
             </Field>
-            {/* Number Of Adults */}
             <Field
               required
               label="Number of Adults"
               helperText="Enter the number of adults"
-              errorText="This field is required"
+              invalid={errors.adults === undefined ? false : true}
+              errorText={errors.adults?.message?.toString()}
             >
               <Input
                 type="number"
                 placeholder="Enter the number of adults"
                 bg="gray.100"
+                {...register("adults", { valueAsNumber: true })}
               />
             </Field>
-            {/* Number Of Children */}
             <Field
               required
               label="Number of Children"
               helperText="Enter the number of children"
-              errorText="This field is required"
+              invalid={errors.children === undefined ? false : true}
+              errorText={errors.children?.message?.toString()}
             >
               <Input
                 type="number"
                 placeholder="Enter the number of children"
                 bg="gray.100"
+                {...register("children", { valueAsNumber: true })}
               />
             </Field>
           </SimpleGrid>
           <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} gap={6}>
-            {/* Age of Children */}
-            <Fieldset.Root>
-              <CheckboxGroup name="ageOfChildren" colorPalette="teal">
-                <Fieldset.Legend mb={2}>Age of Children</Fieldset.Legend>
+            <Fieldset.Root invalid={ageOfChildrenInvalid}>
+              <CheckboxGroup
+                colorPalette="teal"
+                invalid={ageOfChildrenInvalid}
+                onValueChange={ageOfChildrenControl.field.onChange}
+                name={ageOfChildrenControl.field.name}
+              >
+                <Fieldset.Legend mb={2}>Age Of Children</Fieldset.Legend>
 
                 <Fieldset.Content
                   display="flex"
                   flexWrap="wrap"
-                  justifyContent="space-between"
+                  justifyContent="left"
                   flexDir={{ base: "column", md: "row" }}
                 >
                   {ageOfChildren.map((age) => (
@@ -289,25 +363,37 @@ const GetAQuoteComponent = () => {
                   ))}
                 </Fieldset.Content>
               </CheckboxGroup>
+              {errors.notificationPreference && (
+                <Fieldset.ErrorText>
+                  {errors.notificationPreference.message?.toString()}
+                </Fieldset.ErrorText>
+              )}
             </Fieldset.Root>
-            {/* Estimated Budget */}
+
             <Field
               required
               label="Estimated Budget"
               helperText="Enter your estimated budget"
-              errorText="This field is required"
+              invalid={errors.budget === undefined ? false : true}
+              errorText={errors.budget?.message?.toString()}
             >
               <Input
                 type="number"
                 placeholder="Enter your estimated budget"
                 bg="gray.100"
+                {...register("budget", { valueAsNumber: true })}
               />
             </Field>
           </SimpleGrid>
-          {/* Type Of Safari : Select from list */}
-          <Fieldset.Root>
-            <CheckboxGroup name="typeOfSafari" colorPalette="teal">
-              <Fieldset.Legend mb={2}>Type Of Safari</Fieldset.Legend>
+
+          <Fieldset.Root invalid={typeOfSafariInvalid}>
+            <CheckboxGroup
+              colorPalette="teal"
+              invalid={typeOfSafariInvalid}
+              onValueChange={typeOfSafariControl.field.onChange}
+              name={typeOfSafariControl.field.name}
+            >
+              <Fieldset.Legend mb={2}>type Of Safari</Fieldset.Legend>
 
               <Fieldset.Content
                 display="flex"
@@ -315,7 +401,7 @@ const GetAQuoteComponent = () => {
                 justifyContent="space-between"
                 flexDir={{ base: "column", md: "row" }}
               >
-                {typeOfSafari.map((safari) => (
+                {typeOfSafaris.map((safari) => (
                   <Checkbox
                     key={safari.value}
                     value={safari.value}
@@ -335,35 +421,36 @@ const GetAQuoteComponent = () => {
                 ))}
               </Fieldset.Content>
             </CheckboxGroup>
+            {errors.notificationPreference && (
+              <Fieldset.ErrorText>
+                {errors.notificationPreference.message?.toString()}
+              </Fieldset.ErrorText>
+            )}
           </Fieldset.Root>
 
-          {/* Message Field */}
           <Field
             required
             label="Message"
             helperText="Tell us more about your trip requirements"
-            errorText="This field is required"
+            invalid={errors.message === undefined ? false : true}
+            errorText={errors.message?.message?.toString()}
           >
             <Textarea
               placeholder="Tell us more about your trip requirements..."
               rows={4}
               bg="gray.100"
+              {...register("message")}
             />
           </Field>
 
-          {/* Notification Preference */}
-          <Fieldset.Root
-            name="notification_preference"
-            _required={{ color: "red" }}
-          >
+          <Fieldset.Root invalid={notifyInvalid}>
             <CheckboxGroup
-              name="notification_preference"
               colorPalette="teal"
-              _required={{ color: "red" }}
+              invalid={notifyInvalid}
+              onValueChange={notifyControl.field.onChange}
+              name={notifyControl.field.name}
             >
-              <Fieldset.Legend mb={2}>
-                How would you like to be notified?
-              </Fieldset.Legend>
+              <Fieldset.Legend mb={2}>Notification Preference</Fieldset.Legend>
 
               <Fieldset.Content
                 display="flex"
@@ -371,10 +458,10 @@ const GetAQuoteComponent = () => {
                 justifyContent="left"
                 flexDir={{ base: "column", md: "row" }}
               >
-                {notificationPreference.map((notify) => (
+                {notificationPreference.map((age) => (
                   <Checkbox
-                    key={notify.value}
-                    value={notify.value}
+                    key={age.value}
+                    value={age.value}
                     variant={"outline"}
                     mx={1}
                     p={2}
@@ -386,11 +473,16 @@ const GetAQuoteComponent = () => {
                       color: "blue.800",
                     }}
                   >
-                    {notify.title}
+                    {age.title}
                   </Checkbox>
                 ))}
               </Fieldset.Content>
             </CheckboxGroup>
+            {errors.notificationPreference && (
+              <Fieldset.ErrorText>
+                {errors.notificationPreference.message?.toString()}
+              </Fieldset.ErrorText>
+            )}
           </Fieldset.Root>
 
           {/* Submit Button */}
@@ -402,6 +494,8 @@ const GetAQuoteComponent = () => {
             mx="auto"
             borderRadius={10}
             type="submit"
+            loading={is_loading}
+            loadingText="Submitting"
           >
             Request Quote
           </Button>

@@ -1,5 +1,6 @@
 import PagesHeroSection from "@/components/common/PagesHeroSection";
 import GetAQuoteComponent from "@/components/getAQuote";
+import { DemoSample } from "@/components/getAQuote/sample";
 import React from "react";
 
 const page = () => {
