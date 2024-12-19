@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, X, Clock } from 'lucide-react'
-import { getPackageBySlug } from '../data/package'
+import { getPackageBySlug } from '@/utilities/constants'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const safariPackage = getPackageBySlug(params.slug)
