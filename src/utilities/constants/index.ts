@@ -407,3 +407,25 @@ export const partnersData = [
       },
       
     ];
+
+export const aboutUsData = [
+        {
+          image: "/images/lion.jpg",
+          title: "Halal Safari Operator",
+          description:
+            "We are a team of professionals with a passion for travel and adventure. We are committed to providing you with the best experience possible. Our goal is to make your trip as memorable as possible, so you can focus on enjoying the journey.",
+        },
+        {
+          image: "/images/woman.jpg",
+          title: "Our Mission",
+          description:
+            "Our mission is to provide you with the best experience possible. We are committed to making your trip as memorable as possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
+        },
+        {
+          image: "/images/elephant.jpg",
+          title: "Our Vision",
+          description:
+            "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
+        },
+      ];
+    

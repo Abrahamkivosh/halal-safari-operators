@@ -5,7 +5,11 @@ import React from "react";
 const aboutUsPage = () => {
   return (
     <>
-      <PagesHeroSection path="About Us" title="About Us" />
+      <PagesHeroSection
+        path="About Us"
+        title="About Us"
+        imgUrl="/images/elephant.jpg"
+      />
       <AboutUs />
     </>
   );

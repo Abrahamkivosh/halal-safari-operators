@@ -1,4 +1,4 @@
-// src/components/getAQuote/index.tsx
+// src/components/getAQuote/index.tsx 0741073940
 "use client";
 import {
   Box,
@@ -10,10 +10,8 @@ import {
   Input,
   CheckboxGroup,
   Fieldset,
-  Code,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { useColorModeValue } from "../ui/color-mode";
 import { Field } from "../ui/field";
 import { Checkbox } from "../ui/checkbox";
@@ -25,9 +23,6 @@ import {
   requestQuotationFormSchema,
 } from "./validations";
 import getQuotationAction from "@/actions/getQuotation";
-
-// Motion component for animations
-const MotionBox = motion(Box);
 
 const GetAQuoteComponent = () => {
   const mainBgColor = useColorModeValue("gray.200", "gray.800");
@@ -48,7 +43,6 @@ const GetAQuoteComponent = () => {
     setLoading(true);
     try {
       const response = await getQuotationAction(data);
-
       console.log(response);
       setLoading(false);
     } catch (error) {
@@ -178,7 +172,7 @@ const GetAQuoteComponent = () => {
       </Stack>
 
       {/* Form Section */}
-      <MotionBox
+      <Box
         bg={formBg}
         borderRadius="md"
         boxShadow="lg"
@@ -186,9 +180,6 @@ const GetAQuoteComponent = () => {
         p={8}
         mx="auto"
         maxW={{ base: "100%", md: "80%" }}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
         as="form"
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -501,7 +492,7 @@ const GetAQuoteComponent = () => {
             Request Quote
           </Button>
         </Stack>
-      </MotionBox>
+      </Box>
     </Box>
   );
 };

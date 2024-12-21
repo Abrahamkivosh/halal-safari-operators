@@ -43,3 +43,20 @@ interface Team{
   facebook_link?: string;
   linkedin_link?: string;
 }
+
+interface SafariQuoteForm {
+  name: string; // Full name
+  email: string; // Email address
+  phone: string; // Phone number
+  country: string; // Country of origin
+  durationOfTravel: string; // Duration of the trip
+  safariStartDate: string; // Safari start date in YYYY-MM-DD format
+  safariEndDate: string; // Safari end date in YYYY-MM-DD format
+  numberOfAdults: number; // Number of adults
+  numberOfChildren: number; // Number of children
+  ageOfChildren: string[]; // Array of selected age ranges
+  estimatedBudget: number; // Estimated budget
+  typeOfSafari: string[]; // Array of selected safari types
+  message: string; // Additional trip requirements
+  notificationPreference: string[]; // Preferred notification methods
+}
