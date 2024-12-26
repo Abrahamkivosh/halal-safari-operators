@@ -1,36 +1,44 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
-import { notFound } from 'next/navigation'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, X, Clock } from 'lucide-react'
-import { getPackageBySlug } from '@/utilities/constants'
+import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Check, X } from "lucide-react";
+import { getPackageBySlug } from "@/utilities/constants";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const safariPackage = getPackageBySlug(params.slug)
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const safariPackage = getPackageBySlug(params.slug);
   if (!safariPackage) {
     return {
-      title: 'Package Not Found',
-    }
+      title: "Package Not Found",
+    };
   }
   return {
     title: `${safariPackage.title} | Kenya Safaris`,
     description: safariPackage.description,
-  }
+  };
 }
 
-export default function PackageDetails({ params }: { params: { slug: string } }) {
-  const safariPackage = getPackageBySlug(params.slug)
+export default async function PackageDetails({ params }: PageProps) {
+  const safariPackage = getPackageBySlug(params.slug);
 
   if (!safariPackage) {
-    notFound()
+    notFound();
   }
 
   return (
     <main className="min-h-screen py-12 px-4 md:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">{safariPackage.title}</h1>
-        
+
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="md:col-span-2">
             <Image
@@ -47,14 +55,18 @@ export default function PackageDetails({ params }: { params: { slug: string } })
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold mb-2">{safariPackage.price}</p>
-              <p className="text-muted-foreground mb-4">{safariPackage.duration}</p>
+              <p className="text-muted-foreground mb-4">
+                {safariPackage.duration}
+              </p>
               <ul className="space-y-2">
-                {safariPackage.highlights.slice(0, 3).map((highlight, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-primary" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
+                {safariPackage.highlights
+                  .slice(0, 3)
+                  .map((highlight, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <Check className="h-5 w-5 text-primary" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
               </ul>
             </CardContent>
           </Card>
@@ -85,7 +97,9 @@ export default function PackageDetails({ params }: { params: { slug: string } })
           <TabsContent value="itinerary">
             {safariPackage.itinerary.map((day, index) => (
               <div key={index} className="mb-4">
-                <h3 className="text-lg font-semibold">Day {day.day}: {day.title}</h3>
+                <h3 className="text-lg font-semibold">
+                  Day {day.day}: {day.title}
+                </h3>
                 <p className="text-muted-foreground">{day.description}</p>
               </div>
             ))}
@@ -125,18 +139,30 @@ export default function PackageDetails({ params }: { params: { slug: string } })
             <tbody>
               <tr>
                 <td className="border p-2">High Season</td>
-                <td className="border p-2">{safariPackage.prices.highSeason.forTwo}</td>
-                <td className="border p-2">{safariPackage.prices.highSeason.perPerson}</td>
+                <td className="border p-2">
+                  {safariPackage.prices.highSeason.forTwo}
+                </td>
+                <td className="border p-2">
+                  {safariPackage.prices.highSeason.perPerson}
+                </td>
               </tr>
               <tr>
                 <td className="border p-2">Mid Season</td>
-                <td className="border p-2">{safariPackage.prices.midSeason.forTwo}</td>
-                <td className="border p-2">{safariPackage.prices.midSeason.perPerson}</td>
+                <td className="border p-2">
+                  {safariPackage.prices.midSeason.forTwo}
+                </td>
+                <td className="border p-2">
+                  {safariPackage.prices.midSeason.perPerson}
+                </td>
               </tr>
               <tr>
                 <td className="border p-2">Low Season</td>
-                <td className="border p-2">{safariPackage.prices.lowSeason.forTwo}</td>
-                <td className="border p-2">{safariPackage.prices.lowSeason.perPerson}</td>
+                <td className="border p-2">
+                  {safariPackage.prices.lowSeason.forTwo}
+                </td>
+                <td className="border p-2">
+                  {safariPackage.prices.lowSeason.perPerson}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -145,13 +171,31 @@ export default function PackageDetails({ params }: { params: { slug: string } })
         <div>
           <h2 className="text-2xl font-bold mb-4">Seasons</h2>
           <ul className="space-y-2">
-            <li><strong>High Season:</strong> {safariPackage.seasons.high}</li>
-            <li><strong>Mid Season:</strong> {safariPackage.seasons.mid}</li>
-            <li><strong>Low Season:</strong> {safariPackage.seasons.low}</li>
+            <li>
+              <strong>High Season:</strong> {safariPackage.seasons.high}
+            </li>
+            <li>
+              <strong>Mid Season:</strong> {safariPackage.seasons.mid}
+            </li>
+            <li>
+              <strong>Low Season:</strong> {safariPackage.seasons.low}
+            </li>
           </ul>
+        </div>
+        {/* display all package images here */}
+        <div className="grid grid-cols-2 gap-2 mt-8">
+          {safariPackage.images.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt={safariPackage.title}
+              width={500}
+              height={300}
+              className="rounded-lg"
+            />
+          ))}
         </div>
       </div>
     </main>
-  )
+  );
 }
-

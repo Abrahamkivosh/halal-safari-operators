@@ -1,26 +1,19 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Check, X, Clock, Info } from 'lucide-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useRouter } from 'next/navigation'
-
-interface PackageCardProps {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  duration: string;
-  highlights: string[];
-  schedule: string[];
-  inclusions: string[];
-  exclusions: string[];
-  images: string[];
-}
+import { useState } from "react";
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Check, X, Clock, Info } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useRouter } from "next/navigation";
 
 export function PackageCard({
   id,
@@ -32,10 +25,9 @@ export function PackageCard({
   schedule,
   inclusions,
   exclusions,
-  images
+  images,
 }: PackageCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <Card className="overflow-hidden">
@@ -67,7 +59,7 @@ export function PackageCard({
           <p className="text-xl font-bold">{price}</p>
           <p className="text-sm text-muted-foreground">{duration}</p>
         </div>
-        
+
         <div className="py-4">
           <Tabs defaultValue="highlights" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
@@ -120,14 +112,21 @@ export function PackageCard({
         </div>
 
         <div className="mt-8 space-y-4">
-          <Button className="w-full" >Book Now</Button>
-          <Button variant="outline" className="w-full" onClick={() => router.push(`/kenya-safaris/${title.toLowerCase().replace(/\s+/g, '-')}`)}>
+          <Button className="w-full">Book Now</Button>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() =>
+              router.push(
+                `/kenya-safaris/${title.toLowerCase().replace(/\s+/g, "-")}`
+              )
+            }
+          >
             <Info className="mr-2 h-4 w-4" />
             View more details
           </Button>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-

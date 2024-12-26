@@ -60,3 +60,18 @@ interface SafariQuoteForm {
   message: string; // Additional trip requirements
   notificationPreference: string[]; // Preferred notification methods
 }
+
+
+
+interface PackageCardProps {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  duration: string;
+  highlights: string[];
+  schedule: string[];
+  inclusions: string[];
+  exclusions: string[];
+  images: string[];
+}
