@@ -4,6 +4,7 @@ import { Box, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { keyframes } from "@emotion/react";
+import { CONTACT_PHONE } from "@/configs";
 
 // Keyframe animation for bounce effect
 const bounceAnimation = keyframes`
@@ -51,7 +52,7 @@ const WhatsAppComponent = () => {
     >
       <Link
         href={{
-          pathname: `https://wa.me/${process.env.CONTACT_PHONE}`,
+          pathname: `https://wa.me/${CONTACT_PHONE}`,
           query: { text: "Hello! I would like to make an inquiry." },
         }}
         passHref
