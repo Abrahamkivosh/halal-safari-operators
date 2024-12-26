@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import { PackageCard } from './components/package-card'
+import { PackageCard } from '../../components/common/package-card'
 
 export const metadata: Metadata = {
   title: 'Kenya Safaris By Road | Bronze & Silver Packages',

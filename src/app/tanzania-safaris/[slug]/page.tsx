@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
   }
   return {
-    title: `${safariPackage.title} | Kenya Safaris`,
+    title: `${safariPackage.title} | Tanzania Safaris`,
     description: safariPackage.description,
   }
 }
