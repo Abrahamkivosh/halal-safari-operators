@@ -1,11 +1,11 @@
 "use client";
-import { CloseIcon } from "@chakra-ui/icons";
 import { Box, Grid, Heading, List, Table, Tabs, Text } from "@chakra-ui/react";
 import { CheckIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-
-const SafariDetails = (safariPackage) => {
+import { RxCross2 } from "react-icons/rx";
+//
+const SafariDetails = (safariPackage: SafariPackageInterface) => {
   return (
     <Box maxW="6xl" mx="auto">
       <Heading as="h1" size="xl" mb="8">
@@ -99,7 +99,7 @@ const SafariDetails = (safariPackage) => {
           <List.Root gap="2">
             {safariPackage.exclusions.map((item, index) => (
               <List.Item key={index} display="flex" alignItems="center">
-                <CloseIcon color="red.500" />
+                <RxCross2 color="red.500" />
                 {item}
               </List.Item>
             ))}

@@ -62,8 +62,7 @@ interface SafariQuoteForm {
 }
 
 
-
-interface PackageCardProps {
+interface SafariPackageInterface {
   id: string;
   title: string;
   description: string;
@@ -74,4 +73,29 @@ interface PackageCardProps {
   inclusions: string[];
   exclusions: string[];
   images: string[];
+  tourDetails: string;
+  prices: {
+    highSeason: {
+      forTwo: string;
+      perPerson: string;
+    };
+    midSeason: {
+      forTwo: string;
+      perPerson: string;
+    };
+    lowSeason: {
+      forTwo: string;
+      perPerson: string;
+    };
+  };
+  seasons: {
+    high: string;
+    mid: string;
+    low: string;
+  };
+  itinerary: {
+    day: number;
+    title: string;
+    description: string;
+  }[];
 }

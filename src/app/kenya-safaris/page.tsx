@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Box, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { PackageCard } from "../../components/common/package-card";
-import { miniSafariPackages } from "@/utilities/constants";
+import { safariPackages } from "@/utilities/constants";
 
 export default function KenyaSafaris() {
   return (
@@ -86,7 +86,7 @@ export default function KenyaSafaris() {
             maxW="container.xl"
             mx="auto"
           >
-            {miniSafariPackages.map((packageData) => (
+            {safariPackages.map((packageData) => (
               <PackageCard key={packageData.id} {...packageData} />
             ))}
           </SimpleGrid>

@@ -1,5 +1,4 @@
 import { CONTACT_EMAIL } from "@/configs";
-import { inc } from "nprogress";
 import {
   FaEnvelope,
   FaFacebook,
@@ -435,7 +434,7 @@ export const teams: Team[] = [
   },
 ];
 
-export const safariPackages = [
+export const safariPackages: SafariPackageInterface[]  = [
   {
     id: "7-days-masai-mara-amboseli-safari",
     title: "7 Days Masai Mara & Amboseli Safari",
@@ -506,7 +505,6 @@ export const safariPackages = [
         description:
           "Start your day with an early morning game drive, followed by a return to the lodge for breakfast. After breakfast, spend the entire day exploring the park, packed lunch in hand, in search of its famous residents, including predators and their prey such as zebras, wildebeests, giraffes, and hippos, all set against the backdrop of Mount Kilimanjaro. Later, return to your camp for dinner and overnight accommodation at either Ol Tukai Lodge or Amboseli Serena Safari Lodge.",
       },
-      // ... Add the rest of the days here
     ],
   },
   {
@@ -579,7 +577,6 @@ export const safariPackages = [
         description:
           "Start your day with an early morning game drive in Nairobi National Park, one of the only national parks in the world located within a capital city. After the game drive, depart for Amboseli National Park, arriving in time for lunch at your lodge. Enjoy an afternoon game drive in Amboseli, famous for its large elephant herds and stunning views of Mount Kilimanjaro. Dinner and overnight at your Amboseli lodge.",
       },
-      // ... Add the rest of the days here
     ],
   },
   {
@@ -652,7 +649,6 @@ export const safariPackages = [
         description:
           "Enjoy a full day of game drives in the Masai Mara, with the option of an early morning balloon safari (additional cost). The Mara is home to an incredible concentration of wildlife, including the Big Five. Your expert guide will help you spot and learn about the various species. In the evening, enjoy a sundowner before dinner at your lodge.",
       },
-      // ... Add the rest of the days here
     ],
   },
 ];
@@ -661,119 +657,7 @@ export function getPackageBySlug(slug: string) {
   return safariPackages.find((pkg) => pkg.id === slug);
 }
 
-export const miniSafariPackages = [
-  {
-    id: "1",
-    title: "7 Days Masai Mara Amboseli Safari",
-    description:
-      "Experience the magic of Kenya's most iconic national parks with our comprehensive 7-day safari package.",
-    price: "From $3,100 per person",
-    duration: "7 Days / 6 Nights",
-    highlights: [
-      "Daily game drives in 4x4 vehicles",
-      "Witness the Great Migration (seasonal)",
-      "View of Mt. Kilimanjaro from Amboseli",
-      "Luxury lodge accommodation",
-      "Professional English/Spanish speaking guide",
-    ],
-    schedule: [
-      "5:30 AM - Wake up call",
-      "6:00 AM - Morning game drive",
-      "12:00 PM - Lunch at camp/lodge",
-      "3:30 PM - Afternoon game drive",
-      "7:00 PM - Dinner and evening relaxation",
-    ],
-    inclusions: [
-      "All park entrance fees",
-      "Full board accommodation",
-      "Airport transfers",
-      "Professional driver-guide",
-      "Bottled water during game drives",
-    ],
-    exclusions: [
-      "International flights",
-      "Visa fees",
-      "Travel insurance",
-      "Personal expenses",
-      "Tips and gratuities",
-    ],
-    images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
-  },
-  {
-    id: "2",
-    title: "10 Days Ultimate Kenya Safari",
-    description:
-      "A comprehensive journey through Kenya's finest wildlife destinations including Masai Mara, Amboseli, and Tsavo.",
-    price: "From $4,000 per person",
-    duration: "10 Days / 9 Nights",
-    highlights: [
-      "Big Five viewing opportunities",
-      "Visit to Nairobi National Park",
-      "David Sheldrick Elephant Orphanage visit",
-      "Luxury tented camps experience",
-      "Cultural visit to Maasai village",
-    ],
-    schedule: [
-      "5:00 AM - Early morning game drive",
-      "11:00 AM - Brunch at camp",
-      "1:00 PM - Relaxation/Optional activities",
-      "3:30 PM - Evening game drive",
-      "7:30 PM - Dinner under the stars",
-    ],
-    inclusions: [
-      "Nairobi National Park entrance fee",
-      "David Sheldrick Elephant Orphanage visit",
-      "All park and reserve entrance fees",
-      "Full board accommodation",
-      "English or Spanish speaking driver-guide",
-    ],
-    exclusions: [
-      "Lunch on day 1 and last day",
-      "Optional activities",
-      "Alcoholic beverages",
-      "Laundry services",
-      "International/domestic flights",
-    ],
-    images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
-  },
-  {
-    id: "3",
-    title: "5 Days Express Safari",
-    description:
-      "Perfect for those short on time but seeking an authentic Kenyan safari experience.",
-    price: "From $2,500 per person",
-    duration: "5 Days / 4 Nights",
-    highlights: [
-      "Visit to Masai Mara National Reserve",
-      "Chance to see the Big Five",
-      "Comfortable lodge accommodation",
-      "Expert guides and trackers",
-      "Scenic flight options available",
-    ],
-    schedule: [
-      "6:00 AM - Sunrise game drive",
-      "11:00 AM - Brunch at lodge",
-      "2:00 PM - Afternoon wildlife viewing",
-      "6:00 PM - Sundowner experience",
-      "8:00 PM - Dinner and stargazing",
-    ],
-    inclusions: [
-      "All game drives in 4x4 vehicle",
-      "Park entrance fees",
-      "Full board accommodation",
-      "Airport/hotel pickup and drop-off",
-      "Flying doctors emergency evacuation cover",
-    ],
-    exclusions: [
-      "Visa fees (if applicable)",
-      "Travel insurance",
-      "Balloon safari (optional extra)",
-      "Souvenirs and curios",
-      "Tips for driver-guide and camp staff",
-    ],
-    images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
-  },
-];
+
 export const aboutUsData = [
   {
     image: "/images/lion.jpg",

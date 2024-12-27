@@ -76,7 +76,7 @@ const FaqSection = () => {
               value={faq.question}
               border="none"
               borderRadius="md"
-              mb="1rem"
+              mb="0.5rem"
               bg={useColorModeValue("white", "gray.700")}
               padding={0}
               boxShadow="md"
@@ -94,6 +94,7 @@ const FaqSection = () => {
                 fontWeight="bold"
                 fontSize="lg"
                 color={useColorModeValue("gray.700", "white")}
+                bg={useColorModeValue("gray.200", "gray.600")}
               >
                 {faq.question}
               </AccordionItemTrigger>

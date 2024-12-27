@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,12 +7,13 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Check, X, Clock, Info } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter } from "next/navigation";
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import Link from "next/link";
+import Autoplay from "embla-carousel-autoplay";
 
 export function PackageCard({
   id,
@@ -26,41 +26,50 @@ export function PackageCard({
   inclusions,
   exclusions,
   images,
-}: PackageCardProps) {
+}: SafariPackageInterface) {
   const router = useRouter();
 
   return (
     <Card className="overflow-hidden">
       <CardHeader className="p-0">
-        <Carousel className="w-full">
-          <CarouselContent>
+        <Carousel
+          className="w-full"
+          opts={{
+            loop: true, // Ensure the carousel loops for seamless autoplay
+          }}
+          plugins={[Autoplay({ delay: 3000 })]} // Autoplay with a 3-second delay
+        >
+          <CarouselContent
+            className="relative"
+            style={{ scrollBehavior: "smooth" }}
+          >
             {images.map((image, index) => (
               <CarouselItem key={index}>
-                <div className="relative aspect-[16/9]">
+                <Box className="relative aspect-[16/9]">
                   <Image
                     src={image}
                     alt={`Safari image ${index + 1}`}
                     fill
                     className="object-cover"
                   />
-                </div>
+                </Box>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </CardHeader>
       <CardContent className="p-8">
         <CardTitle className="mb-2">{title}</CardTitle>
-        <div className="h-2" />
-        <p className="text-muted-foreground mb-6">{description}</p>
-        <div className="flex justify-between items-center mb-8">
-          <p className="text-xl font-bold">{price}</p>
-          <p className="text-sm text-muted-foreground">{duration}</p>
-        </div>
+        <Text
+          className="text-muted-foreground mb-6"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+        <HStack className="flex justify-between items-center mb-8">
+          <Text className="text-xl font-bold">{price}</Text>
+          <Text className="text-sm text-muted-foreground">{duration}</Text>
+        </HStack>
 
-        <div className="py-4">
+        <HStack className="py-4">
           <Tabs defaultValue="highlights" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="highlights">Highlights</TabsTrigger>
@@ -109,23 +118,17 @@ export function PackageCard({
               </ul>
             </TabsContent>
           </Tabs>
-        </div>
+        </HStack>
 
-        <div className="mt-8 space-y-4">
+        <VStack className="mt-8 space-y-4">
           <Button className="w-full">Book Now</Button>
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() =>
-              router.push(
-                `/kenya-safaris/${title.toLowerCase().replace(/\s+/g, "-")}`
-              )
-            }
-          >
-            <Info className="mr-2 h-4 w-4" />
-            View more details
-          </Button>
-        </div>
+          <Link className="w-full" href={`/kenya-safaris/${id}`} passHref>
+            <Button variant="outline" className="w-full">
+              <Info className="mr-2 h-4 w-4" />
+              View more details
+            </Button>
+          </Link>
+        </VStack>
       </CardContent>
     </Card>
   );

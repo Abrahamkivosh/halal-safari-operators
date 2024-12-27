@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
 import "./globals.scss";
 import { Provider } from "@/components/ui/provider";
 import NavbarIndex from "@/components/common/navbar";
