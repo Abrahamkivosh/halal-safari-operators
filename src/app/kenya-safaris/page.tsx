@@ -3,47 +3,16 @@ import Image from "next/image";
 import { Box, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { PackageCard } from "../../components/common/package-card";
 import { safariPackages } from "@/utilities/constants";
+import PagesHeroSection from "@/components/common/PagesHeroSection";
 
 export default function KenyaSafaris() {
   return (
     <>
-      {/* Hero Section */}
-      <Box position="relative" height={{ base: "60vh", sm: "60vh" }}>
-        <Image
-          src="/kenya.jpg"
-          alt="Masai Mara Safari In Kenya"
-          layout="fill"
-          objectFit="cover"
-          priority
-          objectPosition="center center"
-        />
-        <Flex
-          position="absolute"
-          inset="0"
-          align="center"
-          justify="center"
-          direction="column"
-          color="white"
-          textAlign="center"
-        >
-          <Box
-            bg="rgba(0, 0, 0, 0.2)"
-            p={{ base: 4, md: 6, lg: 8 }}
-            borderRadius="md"
-            boxShadow={{ base: "md", md: "lg" }}
-            fontWeight={600}
-          >
-            <Heading
-              as="h1"
-              fontSize={{ base: "2xl", md: "4xl", lg: "6xl" }}
-              mb={4}
-            >
-              KENYA SAFARIS BY ROAD
-            </Heading>
-            <Text fontSize={{ base: "lg", md: "xl" }}>BRONZE & SILVER</Text>
-          </Box>
-        </Flex>
-      </Box>
+      <PagesHeroSection
+        title="KENYA SAFARIS BY ROAD"
+        path="kenya-safaris"
+        imgUrl="/kenya.jpg"
+      />
 
       {/* Description Section */}
       <Box py={12} px={{ base: 4, md: 6, lg: 8 }}>

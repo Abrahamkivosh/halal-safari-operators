@@ -11,7 +11,6 @@ export const layoutMetadata: Metadata = {
   referrer: "origin",
   robots: "follow, index",
   themeColor: "#000000",
-  colorScheme: "light dark",
   icons: [
     {
       rel: "icon",

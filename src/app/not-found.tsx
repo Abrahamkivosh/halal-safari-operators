@@ -36,7 +36,7 @@ const NotFound = () => {
       <Link href="/" passHref>
         <Button
           size="lg"
-          colorScheme="teal"
+          colorPalette="teal"
           shadow="md"
           _hover={{
             bg: buttonHoverBg,

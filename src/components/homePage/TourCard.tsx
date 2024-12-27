@@ -69,7 +69,7 @@ const TourCard = ({ tour }: { tour: TourCardProps }) => {
         </Stack> */}
 
         <Badge
-          colorScheme="green"
+          colorPalette="green"
           fontSize="1.5rem"
           padding={2}
           borderRadius="full"

@@ -2,21 +2,17 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Stack,
-  Text,
-  Heading,
-  SimpleGrid,
-  Button,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
 import { PackageCard } from "../common/package-card";
 import { safariPackages } from "@/utilities/constants";
 
 const ToursSection = () => {
+  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
+  const textColor = useColorModeValue("brand.600", "gray.200");
+
   return (
     <Box
       py={{ base: "1rem", md: "1rem" }}
@@ -51,11 +47,15 @@ const ToursSection = () => {
         <Link href="/tour" passHref>
           <Button
             size="lg"
-            bg={useColorModeValue("brand.600", "brand.300")}
+            bg={buttonBg}
             color="white"
             _hover={{
-              bg: useColorModeValue("brand.700", "brand.400"),
+              bg: buttonHoverBg,
             }}
+            variant={"plain"}
+            borderRadius="md"
+            height={"auto"}
+            padding={3}
           >
             View More tours
           </Button>

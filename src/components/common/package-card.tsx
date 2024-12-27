@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
+import { useColorModeValue } from "../ui/color-mode";
 
 export function PackageCard({
   id,
@@ -28,6 +29,8 @@ export function PackageCard({
   images,
 }: SafariPackageInterface) {
   const router = useRouter();
+  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
 
   return (
     <Card className="overflow-hidden">
@@ -120,10 +123,29 @@ export function PackageCard({
           </Tabs>
         </HStack>
 
-        <VStack className="mt-8 space-y-4">
-          <Button className="w-full">Book Now</Button>
+        <VStack className="mt-8">
+          <Button
+            width={"100%"}
+            variant={"plain"}
+            borderRadius="md"
+            height={"auto"}
+            bg={buttonBg}
+            color="white"
+            _hover={{ bg: buttonHoverBg }}
+            padding={3}
+          >
+            Book Now
+          </Button>
           <Link className="w-full" href={`/kenya-safaris/${id}`} passHref>
-            <Button variant="outline" className="w-full">
+            <Button
+              variant="outline"
+              width={"100%"}
+              borderRadius="md"
+              height={"auto"}
+              padding={3}
+              color={useColorModeValue("brand.500", "brand.900")}
+              bgColor={useColorModeValue("brand.secondary", "brand.900")}
+            >
               <Info className="mr-2 h-4 w-4" />
               View more details
             </Button>
