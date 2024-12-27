@@ -32,6 +32,16 @@ const MainSafaris = () => {
   );
   const overlayTextColor = useColorModeValue("white", "black");
   const boxShadow = useColorModeValue("lg", "dark-lg");
+  const dataAOSDisplay = [
+    "fade-up",
+    "fade-up-right",
+    "fade-up-left",
+    "fade-right",
+    "fade-left",
+    "fade-down",
+    "fade-down-right",
+    "fade-down-left",
+  ];
 
   return (
     <Box
@@ -47,6 +57,7 @@ const MainSafaris = () => {
         textAlign="center"
         mb={{ base: "1.5rem", sm: "3rem" }}
         lineHeight="1.2"
+        data-aos="fade-right"
       >
         Our Safaris
       </Heading>
@@ -66,6 +77,11 @@ const MainSafaris = () => {
                 boxShadow: "xl",
               }}
               aria-label={`Learn more about ${destination.title}`}
+              data-aos={
+                dataAOSDisplay[
+                  Math.floor(Math.random() * dataAOSDisplay.length)
+                ]
+              }
             >
               {/* Background Image */}
               <Image

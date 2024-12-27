@@ -9,7 +9,11 @@ import { useColorModeValue } from "../ui/color-mode";
 
 const PartnersSection = () => {
   return (
-    <Box py={{ base: "1rem", md: "1rem" }} position={"relative"}>
+    <Box
+      data-aos="fade-up"
+      py={{ base: "1rem", md: "1rem" }}
+      position={"relative"}
+    >
       {/* Section Title */}
       <Text
         fontSize={{ base: "2xl", md: "4xl" }}

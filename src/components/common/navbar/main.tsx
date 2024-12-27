@@ -50,6 +50,7 @@ const MainNav = () => {
               _hover={{
                 bg: buttonHoverBg,
               }}
+              p={2}
             >
               B2B/Work With Us <MdArrowOutward />
             </Button>

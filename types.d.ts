@@ -99,3 +99,12 @@ interface SafariPackageInterface {
     description: string;
   }[];
 }
+
+interface DestinationInterface {
+  id: number,
+  title: string,
+  image: string,
+  subTitle: string,
+  description: string,
+  activities: string[]
+}

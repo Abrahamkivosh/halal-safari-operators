@@ -16,6 +16,17 @@ import { useColorModeValue } from "../ui/color-mode";
 import { blogs } from "@/utilities/constants";
 
 const BlogSection = () => {
+  const dataAOSDisplay = [
+    "fade-up",
+    "fade-up-right",
+    "fade-up-left",
+    "fade-right",
+    "fade-left",
+    "fade-down",
+    "fade-down-right",
+    "fade-down-left",
+  ];
+
   return (
     <Box
       py={{ base: "1rem", md: "1rem" }}
@@ -29,6 +40,7 @@ const BlogSection = () => {
         fontSize={{ base: "2xl", md: "4xl" }}
         color={useColorModeValue("brand.800", "white")}
         mb="2rem"
+        data-aos="fade-up"
       >
         Latest from Our Blog
       </Heading>
@@ -53,6 +65,9 @@ const BlogSection = () => {
               boxShadow: "2xl",
             }}
             position={"relative"}
+            data-aos={
+              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
+            }
           >
             {/* Blog Image */}
             <Image

@@ -28,6 +28,7 @@ const IntroductionSection = () => {
           borderRadius="xl"
           boxShadow={boxShadow}
           display={{ base: "none", sm: "block" }}
+          data-aos="fade-left"
         >
           <Image
             src="/images/maasai.jpg"
@@ -50,6 +51,7 @@ const IntroductionSection = () => {
             color={headingColor}
             textAlign={{ base: "center", sm: "left" }}
             lineHeight={{ base: "1.2", sm: "1.1" }}
+            data-aos="fade-down"
             dangerouslySetInnerHTML={{
               __html: "Welcome To Halal Safari Operator",
             }}
@@ -57,6 +59,7 @@ const IntroductionSection = () => {
 
           <Stack fontSize={{ base: "md", sm: "lg" }} color={textColor}>
             <Text
+              data-aos="fade-up"
               dangerouslySetInnerHTML={{
                 __html:
                   "We will provide a genuine African experience, regardless of whether this is your first safari or you are a seasoned traveler. Explore safaris, delve into cultural city tours, conquer Kilimanjaro, or unwind in a tranquil resort — our expertise ensures you get the most out of your journey. Discover vital planning details, book a complete journey through us, or contact us for personalised trip. Based in Kenya, operating across 16 African countries.",

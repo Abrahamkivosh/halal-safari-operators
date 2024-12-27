@@ -39,6 +39,16 @@ const DestinationsSection = () => {
       subTitle: "Get up close with the elephants of Amboseli",
     },
   ];
+  const dataAOSDisplay = [
+    "fade-up",
+    "fade-up-right",
+    "fade-up-left",
+    "fade-right",
+    "fade-left",
+    "fade-down",
+    "fade-down-right",
+    "fade-down-left",
+  ];
 
   return (
     <Box
@@ -54,6 +64,7 @@ const DestinationsSection = () => {
         textAlign="center"
         mb={{ base: "1.5rem", sm: "3rem" }}
         lineHeight="1.2"
+        data-aos="fade-left"
       >
         Popular Destinations
       </Heading>
@@ -80,6 +91,11 @@ const DestinationsSection = () => {
                 boxShadow: "xl",
               }}
               aspectRatio={4 / 3} // Maintains image ratio
+              data-aos={
+                dataAOSDisplay[
+                  Math.floor(Math.random() * dataAOSDisplay.length)
+                ]
+              }
             >
               {/* Overlay */}
               <Box

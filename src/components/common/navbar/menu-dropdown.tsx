@@ -1,10 +1,12 @@
 "use client";
 
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 // Animation for dropdown
 const fadeInSlideDown = keyframes`
@@ -33,17 +35,17 @@ const MenuDropdown = ({ item }: Props) => {
     if (event.key === "Enter" || event.key === " ") setIsOpen((prev) => !prev);
     if (event.key === "Escape") setIsOpen(false);
   };
+  const pathname = usePathname();
 
   const linkColor = useColorModeValue("gray.500", "gray.800");
   const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
+  const dropdownBg = useColorModeValue("white", "gray.700");
 
   if (!item.subItems) {
     return (
       <Link href={item.link || "/"} passHref>
         <Box
-          fontWeight="semibold"
           fontSize="lg"
-          color={linkColor}
           py={2}
           _hover={{
             color: linkHoverColor,
@@ -56,6 +58,11 @@ const MenuDropdown = ({ item }: Props) => {
           cursor="pointer"
           tabIndex={0}
           transition="all 0.3s ease"
+          borderTop={pathname === item.link ? "2px solid" : "none"}
+          borderBottom={pathname === item.link ? "2px solid" : "none"}
+          borderColor={pathname === item.link ? "brand.primary" : "none"}
+          color={pathname === item.link ? linkHoverColor : linkColor}
+          fontWeight={pathname === item.link ? "bold" : "medium"}
         >
           {item.label}
         </Box>
@@ -64,9 +71,8 @@ const MenuDropdown = ({ item }: Props) => {
   }
 
   return (
-    <Box position="relative" onMouseEnter={handleMouseEnter} role="menu">
-      <Flex
-        alignItems="center"
+    <Box position="relative" onMouseEnter={handleMouseEnter}>
+      <HStack
         cursor="pointer"
         aria-haspopup="menu"
         aria-expanded={isOpen}
@@ -76,17 +82,18 @@ const MenuDropdown = ({ item }: Props) => {
           fontWeight: "bold",
         }}
         onKeyDown={handleKeyDown}
+        fontWeight="semibold"
+        fontSize="lg"
       >
-        <Text fontWeight="semibold" fontSize="lg">
-          {item.label}
-        </Text>
-      </Flex>
+        {item.label}
+        {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+      </HStack>
 
       {isOpen && (
         <Box
           position="absolute"
           mt={2}
-          bg="white"
+          bg={dropdownBg}
           boxShadow="xl"
           borderRadius="md"
           zIndex={10}
@@ -108,7 +115,9 @@ const MenuDropdown = ({ item }: Props) => {
                   fontWeight: "bold",
                 }}
                 cursor="pointer"
+                tabIndex={0}
                 transition="all 0.3s ease"
+                role="menuitem"
               >
                 {subItem.label}
               </Box>

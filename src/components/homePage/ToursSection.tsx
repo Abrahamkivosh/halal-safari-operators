@@ -12,6 +12,16 @@ const ToursSection = () => {
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
   const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
   const textColor = useColorModeValue("brand.600", "gray.200");
+  const dataAOSDisplay = [
+    "fade-up",
+    "fade-up-right",
+    "fade-up-left",
+    "fade-right",
+    "fade-left",
+    "fade-down",
+    "fade-down-right",
+    "fade-down-left",
+  ];
 
   return (
     <Box
@@ -26,6 +36,7 @@ const ToursSection = () => {
         fontSize={{ base: "2xl", md: "4xl" }}
         color={useColorModeValue("brand.800", "white")}
         mb="2rem"
+        data-aos="fade-up"
       >
         Our Best Packages
       </Heading>
@@ -38,7 +49,13 @@ const ToursSection = () => {
         mx="auto"
       >
         {safariPackages.map((packageData) => (
-          <PackageCard key={packageData.id} {...packageData} />
+          <PackageCard
+            key={packageData.id}
+            {...packageData}
+            data-aos={
+              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
+            }
+          />
         ))}
       </SimpleGrid>
 
@@ -56,6 +73,7 @@ const ToursSection = () => {
             borderRadius="md"
             height={"auto"}
             padding={3}
+            data-aos="fade-up"
           >
             View More tours
           </Button>

@@ -1,14 +1,21 @@
 "use client";
 import { Box, Grid, Heading, List, Table, Tabs, Text } from "@chakra-ui/react";
-import { CheckIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { RxCross2 } from "react-icons/rx";
+import { IoMdCheckmark } from "react-icons/io";
+
 //
 const SafariDetails = (safariPackage: SafariPackageInterface) => {
   return (
     <Box maxW="6xl" mx="auto">
-      <Heading as="h1" size="xl" mb="8">
+      <Heading
+        as="h1"
+        fontSize={"3xl"}
+        mb="8"
+        fontWeight={"bold"}
+        textAlign={"center"}
+      >
         {safariPackage.title}
       </Heading>
 
@@ -35,7 +42,8 @@ const SafariDetails = (safariPackage: SafariPackageInterface) => {
           <List.Root gap="2">
             {safariPackage.highlights.slice(0, 3).map((highlight, index) => (
               <List.Item key={index} display="flex" alignItems="center">
-                <CheckIcon color="green.500" />
+                <IoMdCheckmark color="green.500" />
+
                 {highlight}
               </List.Item>
             ))}
@@ -44,9 +52,6 @@ const SafariDetails = (safariPackage: SafariPackageInterface) => {
       </Grid>
 
       <Box mb="12">
-        <Heading as="h2" size="lg" mb="4">
-          Tour Details
-        </Heading>
         <Text color="gray.600">{safariPackage.tourDetails}</Text>
       </Box>
 
@@ -59,17 +64,25 @@ const SafariDetails = (safariPackage: SafariPackageInterface) => {
           p="1"
           gap={2}
         >
-          <Tabs.Trigger value="Highlights">Highlights</Tabs.Trigger>
-          <Tabs.Trigger value="Itinerary">Itinerary</Tabs.Trigger>
-          <Tabs.Trigger value="Inclusions">Inclusions</Tabs.Trigger>
-          <Tabs.Trigger value="Exclusions">Exclusions</Tabs.Trigger>
+          <Tabs.Trigger value="Highlights" fontWeight={600} p={2}>
+            Highlights
+          </Tabs.Trigger>
+          <Tabs.Trigger value="Itinerary" fontWeight={600} p={2}>
+            Itinerary
+          </Tabs.Trigger>
+          <Tabs.Trigger value="Inclusions" fontWeight={600} p={2}>
+            Inclusions
+          </Tabs.Trigger>
+          <Tabs.Trigger value="Exclusions" fontWeight={600} p={2}>
+            Exclusions
+          </Tabs.Trigger>
           <Tabs.Indicator rounded={"l2"} />
         </Tabs.List>
         <Tabs.Content value="Highlights">
           <List.Root gap="2">
             {safariPackage.highlights.map((highlight, index) => (
-              <List.Item key={index} display="flex" alignItems="center">
-                <CheckIcon color="green.500" />
+              <List.Item key={index} display="flex" alignItems="center" gap={2}>
+                <IoMdCheckmark color="green.500" />
                 {highlight}
               </List.Item>
             ))}
@@ -88,8 +101,8 @@ const SafariDetails = (safariPackage: SafariPackageInterface) => {
         <Tabs.Content value="Inclusions">
           <List.Root gap="2">
             {safariPackage.inclusions.map((item, index) => (
-              <List.Item key={index} display="flex" alignItems="center">
-                <CheckIcon color="green.500" />
+              <List.Item key={index} display="flex" alignItems="center" gap={2}>
+                <IoMdCheckmark color="green.500" />
                 {item}
               </List.Item>
             ))}

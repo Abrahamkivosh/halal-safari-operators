@@ -75,20 +75,22 @@ const PageComponent = () => {
                 {destination.title}
               </Heading>
               <Text fontSize="sm" color={mutedTextColor} mb="1rem">
-                {destination.description}
+                {destination.subTitle}
               </Text>
-              <Button
-                size="sm"
-                variant="solid"
-                width="full"
-                color="white"
-                bg={buttonBg}
-                _hover={{ bg: buttonHoverBg }}
-                p={{ base: "0.5rem 1rem", md: "0.75rem 1.5rem" }}
-                fontWeight={600}
-              >
-                Explore More
-              </Button>
+              <Link href={`/destinations/${destination.id}`} passHref>
+                <Button
+                  size="sm"
+                  variant="solid"
+                  width="full"
+                  color="white"
+                  bg={buttonBg}
+                  _hover={{ bg: buttonHoverBg }}
+                  p={{ base: "0.5rem 1rem", md: "0.75rem 1.5rem" }}
+                  fontWeight={600}
+                >
+                  Explore More
+                </Button>
+              </Link>
             </Box>
           </Box>
         ))}

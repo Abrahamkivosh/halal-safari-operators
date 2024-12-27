@@ -1,4 +1,5 @@
 "use client";
+import { marginX } from "@/utilities/constants";
 import { Box, Icon, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import {
@@ -7,6 +8,7 @@ import {
   FaDollarSign,
   FaHeadset,
   FaClock,
+  FaMapSigns,
 } from "react-icons/fa";
 
 const WhyChooseUs = () => {
@@ -42,6 +44,12 @@ const WhyChooseUs = () => {
         "We provide quick responses to all of your inquiries and booking requests. We are dedicated to providing you with the best possible service.",
       icon: FaClock, // Icon for speed and efficiency
     },
+    {
+      title: "Customized Tours & Itineraries",
+      description:
+        "We offer personalized tour plans tailored to your unique preferences and interests, ensuring a memorable journey.",
+      icon: FaMapSigns, // Icon for custom itineraries
+    },
   ];
 
   const dataAOSDisplay = [
@@ -57,7 +65,6 @@ const WhyChooseUs = () => {
 
   return (
     <Box
-      px={{ base: "1rem", sm: "3rem" }}
       bgImage="url('/images/woman.jpg')"
       py={{ base: "1rem", sm: "1rem" }}
       bgSize="cover"
@@ -89,6 +96,7 @@ const WhyChooseUs = () => {
         columns={{ base: 1, sm: 2, md: 3 }}
         gap="2rem"
         my={{ base: "1rem", sm: "1rem" }}
+        mx={marginX}
       >
         {whyUsData.map((item, index) => (
           <Stack

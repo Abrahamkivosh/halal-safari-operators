@@ -10,7 +10,6 @@ export const layoutMetadata: Metadata = {
   applicationName: "Halal Safari operators",
   referrer: "origin",
   robots: "follow, index",
-  themeColor: "#000000",
   icons: [
     {
       rel: "icon",

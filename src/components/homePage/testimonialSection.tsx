@@ -3,9 +3,19 @@ import React, { Fragment } from "react";
 import { Box, Text, Stack, Icon, SimpleGrid, Heading } from "@chakra-ui/react";
 import { FaQuoteLeft } from "react-icons/fa";
 import { testimonials } from "@/utilities/constants";
-import Marquee from "react-fast-marquee";
 
 const TestimonialSection = () => {
+  const dataAOSDisplay = [
+    "fade-up",
+    "fade-up-right",
+    "fade-up-left",
+    "fade-right",
+    "fade-left",
+    "fade-down",
+    "fade-down-right",
+    "fade-down-left",
+  ];
+
   return (
     <Box
       position="relative"
@@ -48,6 +58,7 @@ const TestimonialSection = () => {
         mb={{ base: "2rem", md: "2rem" }}
         zIndex={1}
         position="relative"
+        data-aos="fade-up"
       >
         what our clients had to say
       </Heading>
@@ -94,6 +105,9 @@ const TestimonialSection = () => {
             }}
             key={testimonial.id}
             zIndex={1}
+            data-aos={
+              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
+            }
           >
             {/* Quote Icon */}
             <Icon fontSize="3xl" color="purple.500" mb="1rem">

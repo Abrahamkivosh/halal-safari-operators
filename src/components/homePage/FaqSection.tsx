@@ -62,6 +62,7 @@ const FaqSection = () => {
           mb={{ base: "1rem", md: "1rem" }}
           textDecoration={"underline"}
           textDecorationColor={useColorModeValue("brand.500", "brand.300")}
+          data-aos="fade-up"
         >
           Frequently Asked Questions
         </Heading>
@@ -83,6 +84,7 @@ const FaqSection = () => {
               _hover={{
                 boxShadow: "lg",
               }}
+              data-aos="fade-up"
             >
               <AccordionItemTrigger
                 _focus={{ boxShadow: "outline" }}

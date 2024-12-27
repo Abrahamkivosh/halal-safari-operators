@@ -6,7 +6,8 @@ import NavbarIndex from "@/components/common/navbar";
 import FooterIndex from "@/components/common/footer";
 import { layoutMetadata } from "@/utilities/constants/MetaData";
 import WhatsAppComponent from "@/components/common/WhatsApp/WhatsAppComponent";
-// import NextTopLoader from "nextjs-toploader";
+import NextTopLoader from "nextjs-toploader";
+import AOSAnimate from "@/components/common/AOSAnimate";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -33,8 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <NextTopLoader color="#008000" shadow={"true"} />
         <Provider>
           <NavbarIndex />
+          <AOSAnimate />
           {children}
           <FooterIndex />
           <WhatsAppComponent />

@@ -657,6 +657,9 @@ export const safariPackages: SafariPackageInterface[]  = [
 export async function getPackageBySlug(slug: string) {
   return safariPackages.find((pkg) => pkg.id === slug);
 }
+export async function getDestinationById(id: number) {
+  return destinations.find((destination) => destination.id == id);
+}
 
 
 export const aboutUsData = [
@@ -679,8 +682,9 @@ export const aboutUsData = [
       "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
   },
 ];
-export const destinations = [
+export const destinations: DestinationInterface[] = [
   {
+    id: 1,
     title: "Mount Kilimanjaro, Tanzania",
     image: "/images/packages/Amboseli-Safari.jpeg",
     subTitle:"Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
@@ -692,6 +696,7 @@ export const destinations = [
     ]
   },
   {
+    id: 2,
     title: "Masai Mara, Kenya",
     image: "/images/packages/Masai-Mara-Safari.jpg",
     subTitle:"Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
@@ -703,6 +708,7 @@ export const destinations = [
     ]
   },
   {
+     id: 3,
     title: "Victoria Falls, Zimbabwe",
     image: "/images/packages/Ngorongoro-Safari.jpg",
     subTitle: "Discover the majestic beauty of one of the world's largest waterfalls.",

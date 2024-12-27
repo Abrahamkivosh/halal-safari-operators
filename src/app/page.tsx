@@ -16,9 +16,9 @@ const HomePage = () => {
       <HeroSection />
       <IntroductionSection />
       <MainSafaris />
-      <DestinationsSection />
-      <WhyChooseUs />
       <ToursSection />
+      <WhyChooseUs />
+      <DestinationsSection />
       <TestimonialSection />
       <PartnersSection />
       <BlogSection />

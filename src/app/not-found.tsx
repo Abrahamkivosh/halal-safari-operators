@@ -9,7 +9,8 @@ const NotFound = () => {
   const bgColor = useColorModeValue("brand.50", "gray.500");
   const headingColor = useColorModeValue("teal.600", "brand.100");
   const textColor = useColorModeValue("brand.600", "gray.200");
-  const buttonHoverBg = useColorModeValue("teal.700", "brand.500");
+  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
 
   return (
     <Stack
@@ -23,12 +24,17 @@ const NotFound = () => {
       textAlign="center"
     >
       {/* Main Heading */}
-      <Heading size="2xl" color={headingColor}>
+      <Heading
+        fontSize={"3rem"}
+        color={headingColor}
+        lineHeight={1.2}
+        fontWeight={700}
+      >
         Oops! Page Not Found
       </Heading>
 
       {/* Subtext */}
-      <Text fontSize={{ base: "md", md: "lg" }} color={textColor}>
+      <Text fontSize={"2rem"} color={textColor} fontWeight={500}>
         The page you&apos;re looking for doesn&apos;t exist or has been moved.
       </Text>
 
@@ -36,12 +42,15 @@ const NotFound = () => {
       <Link href="/" passHref>
         <Button
           size="lg"
-          colorPalette="teal"
           shadow="md"
+          bg={buttonBg}
           _hover={{
             bg: buttonHoverBg,
             transform: "scale(1.05)",
           }}
+          color={"white"}
+          p={2}
+          rounded={"2xl"}
         >
           Go Back to Homepage
         </Button>
