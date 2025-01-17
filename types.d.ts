@@ -62,8 +62,54 @@ interface SafariQuoteForm {
 }
 
 
+
+interface DestinationInterface {
+  id: number,
+  title: string,
+  image: string,
+  subTitle: string,
+  description: string,
+  activities: string[]
+}
+interface ContactUSInterface {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+interface ContactUsActionResponseInterface {
+  status: number;
+  body: {
+    message: string;
+  };
+}
+
+
+
+
+
+ interface CategoryInterface {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+
+  // subCategories: SubCategoryInterface[];
+}
+
+ interface SubCategoryInterface {
+    id: string|number;
+    category_id: string;
+  title: string;
+   image: string;
+  description: string;
+  // packages: SafariPackageInterface[];
+}
+
 interface SafariPackageInterface {
   id: string;
+  sub_category_id: string|number;
+  image: string;
   title: string;
   description: string;
   price: string;
@@ -98,13 +144,4 @@ interface SafariPackageInterface {
     title: string;
     description: string;
   }[];
-}
-
-interface DestinationInterface {
-  id: number,
-  title: string,
-  image: string,
-  subTitle: string,
-  description: string,
-  activities: string[]
 }

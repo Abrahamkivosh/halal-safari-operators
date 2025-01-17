@@ -1,9 +1,8 @@
 // src/app/kenya-safaris/page.tsx
-import Image from "next/image";
 import { Box, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-import { PackageCard } from "../../components/common/package-card";
 import { safariPackages } from "@/utilities/constants";
 import PagesHeroSection from "@/components/common/PagesHeroSection";
+import PackageCard from "@/components/common/PackageCard";
 
 export default function KenyaSafaris() {
   return (

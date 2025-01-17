@@ -97,12 +97,12 @@ const MainSafaris = () => {
               {/* Overlay */}
               <Box
                 position="absolute"
-                top="0"
-                left="0"
+                top="50%"
+                left="0%"
                 width="100%"
-                height="100%"
+                // height="100%"
                 bg={overlayBg}
-                opacity={{ base: "1", md: "0" }} // Always visible on mobile
+                opacity={{ base: "1", md: "1" }} // Always visible on mobile
                 _hover={{ opacity: "1" }} // Hover effect for larger screens
                 transition="opacity 0.3s ease-in-out"
                 display="flex"
@@ -112,6 +112,8 @@ const MainSafaris = () => {
                 color={overlayTextColor}
                 textAlign="center"
                 p="1rem"
+                borderRadius={{ base: "lg", md: "lg" }}
+                alignContent={{ base: "center", md: "center" }}
               >
                 <Heading
                   fontWeight="bold"

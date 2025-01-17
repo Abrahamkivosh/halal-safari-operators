@@ -42,7 +42,7 @@ const MainNav = () => {
           ))}
         </Flex>
         <Flex display={{ base: "none", xl: "flex" }} gap={2}>
-          <Link href="/get-a-quote" target="_blank">
+          <Link href="/contact-us" passHref>
             <Button
               borderRadius="xl"
               bg={buttonBg}

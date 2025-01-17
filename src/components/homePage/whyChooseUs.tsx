@@ -2,6 +2,7 @@
 import { marginX } from "@/utilities/constants";
 import { Box, Icon, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import React from "react";
+import Marquee from "react-fast-marquee";
 import {
   FaGlobeAfrica,
   FaShieldAlt,
@@ -92,29 +93,25 @@ const WhyChooseUs = () => {
           Why Choose Us ?
         </Text>
       </Stack>
-      <SimpleGrid
-        columns={{ base: 1, sm: 2, md: 3 }}
-        gap="2rem"
-        my={{ base: "1rem", sm: "1rem" }}
-        mx={marginX}
-      >
+
+      <Marquee autoFill pauseOnHover speed={80} gradient gradientWidth={100}>
         {whyUsData.map((item, index) => (
           <Stack
             key={index}
-            gap="1rem"
             align="center"
             textAlign="center"
             boxShadow="lg"
             p={{ base: "1rem", sm: "1rem" }}
             borderRadius="lg"
             _hover={{
-              transform: "scale(1.05)",
-              boxShadow: "xl",
+              bg: "gray.100",
             }}
             transition="all 0.3s ease"
             bg="gray.50" // Card background
             data-aos-delay={index * 100}
             data-aos={dataAOSDisplay[index]}
+            w={{ base: "90%", sm: "90%", md: "90%", lg: "90%" }}
+            mx="auto"
           >
             <Icon
               // different color for each icon
@@ -143,7 +140,7 @@ const WhyChooseUs = () => {
             </Text>
           </Stack>
         ))}
-      </SimpleGrid>
+      </Marquee>
     </Box>
   );
 };

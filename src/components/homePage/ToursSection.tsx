@@ -5,23 +5,13 @@ import React from "react";
 import { Box, Heading, SimpleGrid, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
-import { PackageCard } from "../common/package-card";
 import { safariPackages } from "@/utilities/constants";
+import PackageCard from "../common/PackageCard";
 
 const ToursSection = () => {
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
   const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
   const textColor = useColorModeValue("brand.600", "gray.200");
-  const dataAOSDisplay = [
-    "fade-up",
-    "fade-up-right",
-    "fade-up-left",
-    "fade-right",
-    "fade-left",
-    "fade-down",
-    "fade-down-right",
-    "fade-down-left",
-  ];
 
   return (
     <Box
@@ -44,18 +34,12 @@ const ToursSection = () => {
       {/* tour Cards */}
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3 }}
-        gap="2rem"
+        gap={6}
         maxW="container.xl"
         mx="auto"
       >
         {safariPackages.map((packageData) => (
-          <PackageCard
-            key={packageData.id}
-            {...packageData}
-            data-aos={
-              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
-            }
-          />
+          <PackageCard key={packageData.id} {...packageData} />
         ))}
       </SimpleGrid>
 

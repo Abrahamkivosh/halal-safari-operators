@@ -1,5 +1,6 @@
 "use client";
 import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
+import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/configs";
 import { Box, Flex, Text, Stack, HStack, Icon, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -57,7 +58,7 @@ const FooterIndex: React.FC = () => {
     { href: "/about-us", label: "About Us" },
     { href: "/blogs", label: "Our Blogs" },
     { href: "/join-our-group-tour", label: "Group Tours" },
-    { href: "/b2b", label: "B2B Work With Us" },
+    { href: "/contact-us", label: "B2B Work With Us" },
     { href: "/contact-us", label: "Contact Us" },
   ];
   const { colorMode } = useColorMode();
@@ -124,9 +125,21 @@ const FooterIndex: React.FC = () => {
         {/* Contact Details */}
         <Section title="Contact Us">
           <Stack gap="2">
-            <Text>Email: info@halalsafarioperator.com</Text>
-            <Text>Phone: +123 456 7890</Text>
-            <Text>Address: 123 Street, City, Country</Text>
+            <Box>
+              Email:{" "}
+              <Link href={`mailto:${CONTACT_EMAIL}`} passHref>
+                <Text fontSize={"lg"}>{CONTACT_EMAIL}</Text>
+              </Link>
+            </Box>
+            <Box>
+              Phone:{" "}
+              <Link href={`tail:${CONTACT_PHONE}`} passHref>
+                <Text fontSize={"lg"}>{CONTACT_PHONE}</Text>
+              </Link>
+            </Box>
+            <Box>
+              Address: <Text fontSize={"lg"}>{CONTACT_ADDRESS}</Text>
+            </Box>
           </Stack>
         </Section>
       </Flex>

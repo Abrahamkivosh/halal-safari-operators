@@ -5,17 +5,6 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { testimonials } from "@/utilities/constants";
 
 const TestimonialSection = () => {
-  const dataAOSDisplay = [
-    "fade-up",
-    "fade-up-right",
-    "fade-up-left",
-    "fade-right",
-    "fade-left",
-    "fade-down",
-    "fade-down-right",
-    "fade-down-left",
-  ];
-
   return (
     <Box
       position="relative"
@@ -65,7 +54,7 @@ const TestimonialSection = () => {
 
       {/* Testimonials */}
       <SimpleGrid
-        columns={{ base: 1, md: 4 }}
+        columns={{ base: 1, md: 2, lg: 4 }}
         gap="2rem"
         mx="auto"
         maxW="container.lg"
@@ -79,8 +68,7 @@ const TestimonialSection = () => {
             boxShadow="2xl"
             borderRadius="lg"
             padding={{ base: "1rem", md: "1rem" }}
-            maxW={{ base: "100%", md: "400px" }}
-            width={{ base: "100%", md: "400px" }}
+            width={{ base: "100%" }}
             position="relative"
             borderTop="3px solid"
             borderColor="green.400"
@@ -98,16 +86,12 @@ const TestimonialSection = () => {
               left: 0,
               w: "100%",
               h: "100%",
-              bgGradient: "linear(to-br, blue.100, purple.100)",
               zIndex: -1,
               opacity: 0.4,
               borderRadius: "lg",
             }}
             key={testimonial.id}
             zIndex={1}
-            data-aos={
-              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
-            }
           >
             {/* Quote Icon */}
             <Icon fontSize="3xl" color="purple.500" mb="1rem">

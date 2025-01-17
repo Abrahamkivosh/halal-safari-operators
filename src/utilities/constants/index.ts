@@ -111,6 +111,80 @@ export const partnersData = [
   },
 ];
 
+export async function getPackageBySlug(slug: string) {
+  return safariPackages.find((pkg) => pkg.id === slug);
+}
+export async function getDestinationById(id: number) {
+  return destinations.find((destination) => destination.id == id);
+}
+
+export async function getCategoryById(id: string) {
+  return categories.find((category) => category.id === id);
+}
+export async function getSubCategoriesByCategoryId( category_id: string){
+  return subCategories.filter((subCategory) => subCategory.category_id === category_id);
+}
+
+
+export const aboutUsData = [
+  {
+    image: "/images/lion.jpg",
+    title: "Halal Safari Operator",
+    description:
+      "We are a team of professionals with a passion for travel and adventure. We are committed to providing you with the best experience possible. Our goal is to make your trip as memorable as possible, so you can focus on enjoying the journey.",
+  },
+  {
+    image: "/images/woman.jpg",
+    title: "Our Mission",
+    description:
+      "Our mission is to provide you with the best experience possible. We are committed to making your trip as memorable as possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
+  },
+  {
+    image: "/images/elephant.jpg",
+    title: "Our Vision",
+    description:
+      "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
+  },
+];
+export const destinations: DestinationInterface[] = [
+  {
+    id: 1,
+    title: "Mount Kilimanjaro, Tanzania",
+    image: "/images/packages/Amboseli-Safari.jpeg",
+    subTitle:"Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
+    description: "Mount Kilimanjaro is the highest peak in Africa and one of the most iconic mountains in the world. Located in Tanzania, this majestic mountain offers breathtaking views and thrilling adventures for climbers of all levels. Whether you're an experienced mountaineer or a first-time trekker, Kilimanjaro has something for everyone. Join us on an unforgettable journey to the Roof of Africa and discover the magic of this natural wonder.",
+    activities: [
+      "Climbing",
+      "Safari",
+      "Cultural Tours"
+    ]
+  },
+  {
+    id: 2,
+    title: "Masai Mara, Kenya",
+    image: "/images/packages/Masai-Mara-Safari.jpg",
+    subTitle:"Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
+    description: "The Masai Mara is one of Africa's most iconic safari destinations, known for its incredible wildlife migration and diverse ecosystems. Located in Kenya, this vast savannah is home to a wide variety of animals, including the Big Five (lion, elephant, buffalo, leopard, and rhinoceros), as well as cheetahs, zebras, giraffes, and more. Join us on an unforgettable safari adventure and witness the magic of the Masai Mara for yourself.",
+    activities: [
+      "Game Drives",
+      "Balloon Safaris",
+      "Cultural Visits"
+    ]
+  },
+  {
+     id: 3,
+    title: "Victoria Falls, Zimbabwe",
+    image: "/images/packages/Ngorongoro-Safari.jpg",
+    subTitle: "Discover the majestic beauty of one of the world's largest waterfalls.",
+    description: "Victoria Falls is one of the world's largest waterfalls, located on the border of Zimbabwe and Zambia. Known as the 'Smoke that Thunders,' this majestic natural wonder is a sight to behold, with its powerful cascades and misty spray visible from miles away. Join us on an unforgettable journey to Victoria Falls and experience the beauty and power of this iconic waterfall up close.",
+    activities: [
+      "Helicopter Rides",
+      "River Cruises",
+      "Bungee Jumping"
+    ]
+  },
+];
+
 export const testimonials = [
   {
     id: 1,
@@ -435,12 +509,84 @@ export const teams: Team[] = [
   },
 ];
 
+
+
+export const categories: CategoryInterface[] = [
+  {
+    id: 'kenya-safaris',
+    image: "/images/packages/Amboseli-Safari.jpeg",
+    title: "Kenya Safaris",
+    description: "Discover the magic of Kenya with our range of safari packages to the country's most iconic destinations.",
+    
+  },
+  {
+    id: 'tanzania-safaris',
+    title: "Tanzania Safaris",
+    image: "/images/packages/Lion-giraffe-Serengeti-National-Park-Tanzania.jpg",
+    description: "Embark on an unforgettable journey through Tanzania's most renowned national parks and conservation areas.",
+  }
+]
+
+export const subCategories: SubCategoryInterface[] = [
+  {
+    id:1,
+    category_id: "kenya-safaris",
+    title: "7 Days Safaris",
+    image: "/images/packages/Masai-Mara-Safari.jpg",
+    description: "Experience the best of Kenya with our 7-day safari packages to the country's most iconic destinations.",
+  },
+  {
+    id:2,
+    category_id: "kenya-safaris",
+    title: "10 Days Safaris",
+    image: "/images/packages/Ngorongoro-Safari.jpg",
+    description: "Embark on an unforgettable 10-day safari adventure through Kenya's most renowned national parks and reserves.",
+  },
+  {
+    id: 3,
+    category_id:  "kenya-safaris",
+    title: "5 Days Safaris",
+    image: "images/buffalo.jpg",
+    description: "Discover the beauty of Kenya with our 5-day safari packages to the country's most iconic destinations.",
+  },
+  {
+    id: 5,
+    category_id: "kenya-safaris",
+    image: "images/elephant.jpg",
+    title: "3 Days Safaris",
+    description: "Experience the magic of Kenya with our 3-day safari packages to the country's most renowned national parks.",
+  },
+  {
+    id: 6,
+    category_id: "tanzania-safaris",
+    image: "images/dodoma.jpg",
+    title: "7 Days Safaris",
+    description: "Embark on an unforgettable 7-day safari adventure through Tanzania's most iconic national parks and reserves.",
+  },
+  {
+    id: 7,
+    category_id: "tanzania-safaris",
+    title: "10 Days Safaris",
+     image: "images/elephant.jpg",
+    description: "Discover the beauty of Tanzania with our 10-day safari packages to the country's most renowned destinations.",
+  },
+  {
+    id: 8,
+    category_id: "tanzania-safaris",
+    title: "5 Days Safaris",
+     image: "images/elephant.jpg",
+    description: "Experience the best of Tanzania with our 5-day safari packages to the country's most iconic destinations.",
+  },
+ 
+]
+
 export const safariPackages: SafariPackageInterface[]  = [
   {
     id: "7-days-masai-mara-amboseli-safari",
+    sub_category_id:1,
+    image: "/images/packages/Masai-Mara-Safari.jpg",
     title: "7 Days Masai Mara & Amboseli Safari",
-    description:
-      "Experience the magic of Kenya's most iconic national parks with our comprehensive 7-day safari package.",
+    description: "Experience the magic of Kenya's most iconic national parks with our comprehensive 7-day safari package.",
     price: "From $3,100 per person",
     duration: "7 Days / 6 Nights",
     highlights: [
@@ -510,6 +656,8 @@ export const safariPackages: SafariPackageInterface[]  = [
   },
   {
     id: "10-days-ultimate-kenya-safari",
+     sub_category_id:1,
+    image: "/images/dodoma.jpg",
     title: "10 Days Ultimate Kenya Safari",
     description:
       "A comprehensive journey through Kenya's finest wildlife destinations including Masai Mara, Amboseli, and Tsavo.",
@@ -582,6 +730,8 @@ export const safariPackages: SafariPackageInterface[]  = [
   },
   {
     id: "5-days-express-safari",
+     sub_category_id:1,
+    image: "/images/lion.jpg",
     title: "5 Days Express Safari",
     description:
       "Perfect for those short on time but seeking an authentic Kenyan safari experience.",
@@ -651,72 +801,5 @@ export const safariPackages: SafariPackageInterface[]  = [
           "Enjoy a full day of game drives in the Masai Mara, with the option of an early morning balloon safari (additional cost). The Mara is home to an incredible concentration of wildlife, including the Big Five. Your expert guide will help you spot and learn about the various species. In the evening, enjoy a sundowner before dinner at your lodge.",
       },
     ],
-  },
-];
-
-export async function getPackageBySlug(slug: string) {
-  return safariPackages.find((pkg) => pkg.id === slug);
-}
-export async function getDestinationById(id: number) {
-  return destinations.find((destination) => destination.id == id);
-}
-
-
-export const aboutUsData = [
-  {
-    image: "/images/lion.jpg",
-    title: "Halal Safari Operator",
-    description:
-      "We are a team of professionals with a passion for travel and adventure. We are committed to providing you with the best experience possible. Our goal is to make your trip as memorable as possible, so you can focus on enjoying the journey.",
-  },
-  {
-    image: "/images/woman.jpg",
-    title: "Our Mission",
-    description:
-      "Our mission is to provide you with the best experience possible. We are committed to making your trip as memorable as possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
-  },
-  {
-    image: "/images/elephant.jpg",
-    title: "Our Vision",
-    description:
-      "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
-  },
-];
-export const destinations: DestinationInterface[] = [
-  {
-    id: 1,
-    title: "Mount Kilimanjaro, Tanzania",
-    image: "/images/packages/Amboseli-Safari.jpeg",
-    subTitle:"Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
-    description: "Mount Kilimanjaro is the highest peak in Africa and one of the most iconic mountains in the world. Located in Tanzania, this majestic mountain offers breathtaking views and thrilling adventures for climbers of all levels. Whether you're an experienced mountaineer or a first-time trekker, Kilimanjaro has something for everyone. Join us on an unforgettable journey to the Roof of Africa and discover the magic of this natural wonder.",
-    activities: [
-      "Climbing",
-      "Safari",
-      "Cultural Tours"
-    ]
-  },
-  {
-    id: 2,
-    title: "Masai Mara, Kenya",
-    image: "/images/packages/Masai-Mara-Safari.jpg",
-    subTitle:"Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
-    description: "The Masai Mara is one of Africa's most iconic safari destinations, known for its incredible wildlife migration and diverse ecosystems. Located in Kenya, this vast savannah is home to a wide variety of animals, including the Big Five (lion, elephant, buffalo, leopard, and rhinoceros), as well as cheetahs, zebras, giraffes, and more. Join us on an unforgettable safari adventure and witness the magic of the Masai Mara for yourself.",
-    activities: [
-      "Game Drives",
-      "Balloon Safaris",
-      "Cultural Visits"
-    ]
-  },
-  {
-     id: 3,
-    title: "Victoria Falls, Zimbabwe",
-    image: "/images/packages/Ngorongoro-Safari.jpg",
-    subTitle: "Discover the majestic beauty of one of the world's largest waterfalls.",
-    description: "Victoria Falls is one of the world's largest waterfalls, located on the border of Zimbabwe and Zambia. Known as the 'Smoke that Thunders,' this majestic natural wonder is a sight to behold, with its powerful cascades and misty spray visible from miles away. Join us on an unforgettable journey to Victoria Falls and experience the beauty and power of this iconic waterfall up close.",
-    activities: [
-      "Helicopter Rides",
-      "River Cruises",
-      "Bungee Jumping"
-    ]
   },
 ];
