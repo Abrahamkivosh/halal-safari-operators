@@ -125,6 +125,13 @@ export async function getSubCategoriesByCategoryId( category_id: string){
   return subCategories.filter((subCategory) => subCategory.category_id === category_id);
 }
 
+export async function getSubCategoryById(id: number) {
+  return subCategories.find((subCategory) => subCategory.id == id);
+}
+export async function getSubCategoryPackages(sub_category_id: number| string) {
+  return safariPackages.filter((pkg) => pkg.sub_category_id === sub_category_id);
+}
+
 
 export const aboutUsData = [
   {

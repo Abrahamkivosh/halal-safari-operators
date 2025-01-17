@@ -32,6 +32,8 @@ const PagesHeroSection = ({ path, imgUrl, title, h }: Props) => {
             fontWeight="700"
             color="brand.white"
             textShadow={{ base: "1px 1px 2px #000", md: "2px 2px 4px #000" }}
+            textWrap={{ base: "wrap", md: "nowrap" }}
+            lineHeight={{ base: "1.2", md: "1.1" }}
           >
             {title || path}
           </Heading>

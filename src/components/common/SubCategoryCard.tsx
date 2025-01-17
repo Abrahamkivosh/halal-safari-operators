@@ -8,19 +8,21 @@ interface SubCategoryCardInterface {
   id: string | number;
   image: string;
   title: string;
+  category_id: string | number;
 }
 
 const SubCategoryCard: React.FC<SubCategoryCardInterface> = ({
   id,
   image,
   title,
+  category_id,
 }) => {
   const textColor = useColorModeValue("gray.100", "white");
   const shadowColor = useColorModeValue("lg", "dark-lg");
 
   return (
     <Link
-      href={`/kenya-safaris/${id}`}
+      href={`/${category_id}/${id}`}
       position="relative"
       borderRadius="20px"
       overflow="hidden"

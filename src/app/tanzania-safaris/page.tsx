@@ -1,10 +1,24 @@
-// src/app/kenya-safaris/page.tsx
-import { Box, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-import { safariPackages } from "@/utilities/constants";
+// src/app/tanzania-safaris/page.tsx  : To show category
+import React from "react";
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  getCategoryById,
+  getSubCategoriesByCategoryId,
+} from "@/utilities/constants";
 import PagesHeroSection from "@/components/common/PagesHeroSection";
-import PackageCard from "@/components/common/PackageCard";
+import { notFound } from "next/navigation";
+import SubCategoryCard from "@/components/common/SubCategoryCard";
 
-export default function KenyaSafaris() {
+const KenyaSafaris: React.FC = async () => {
+  const slug = "kenya-safaris";
+  const category = await getCategoryById(slug);
+  if (!category) {
+    notFound();
+  }
+
+  // fetch subcategories
+  const subCategories = await getSubCategoriesByCategoryId(category.id);
+
   return (
     <>
       <PagesHeroSection
@@ -23,15 +37,13 @@ export default function KenyaSafaris() {
             mb={8}
             color="primary.500"
           >
-            SAFARIS BY ROAD
+            {category.title}
           </Heading>
-          <Text fontSize="lg" color="gray.600">
-            Enabled by our 4 x 4 Jeeps and vans to take you through the rough
-            terrains for your safari or vacation; Get up close to nature and
-            experience the stunning savannahs and spectacular sunsets filled
-            with lions, elephants, giraffes, leopards, wildebeests, and much
-            more wildlife.
-          </Text>
+          <Text
+            fontSize="lg"
+            color="gray.600"
+            dangerouslySetInnerHTML={{ __html: category.description }}
+          />
         </Box>
       </Box>
 
@@ -54,12 +66,21 @@ export default function KenyaSafaris() {
             maxW="container.xl"
             mx="auto"
           >
-            {safariPackages.map((packageData) => (
-              <PackageCard key={packageData.id} {...packageData} />
-            ))}
+            {
+              // fetch subcategories
+              subCategories ? (
+                subCategories.map((subCategory) => (
+                  <SubCategoryCard key={subCategory.id} {...subCategory} />
+                ))
+              ) : (
+                <Text>No subcategories found</Text>
+              )
+            }
           </SimpleGrid>
         </Box>
       </Box>
     </>
   );
-}
+};
+
+export default KenyaSafaris;
