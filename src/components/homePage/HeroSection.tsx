@@ -6,6 +6,8 @@ import { Button } from "../ui/button";
 import { RiArrowRightLine } from "react-icons/ri";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
+import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
+import LoadingComponent from "../common/Loading";
 
 const Hero = () => {
   // Dynamic background overlay colors for light and dark modes
@@ -16,6 +18,16 @@ const Hero = () => {
   const textColor = useColorModeValue("white", "gray.200");
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
   const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
+
+  const { sectionData, error, loading } = useDefaultSectionData("homeHero");
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <Box
@@ -70,12 +82,13 @@ const Hero = () => {
               animationDuration: "120ms",
             }}
           >
-            Explore The World With Us 🌍
+            {sectionData?.title}
           </Heading>
-          <Text fontSize={{ base: "lg", md: "xl" }} color={textColor}>
-            We provide the best travel experience for you and your family. Our
-            team of experts will help you plan your next trip.
-          </Text>
+          <Text
+            fontSize={{ base: "lg", md: "xl" }}
+            color={textColor}
+            dangerouslySetInnerHTML={{ __html: sectionData?.description || "" }}
+          />
           <Link href="/contact-us" passHref>
             <Button
               size="lg"

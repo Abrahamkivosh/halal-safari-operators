@@ -133,3 +133,34 @@ interface ImageGalleryInterface {
   image: string;
   description: string;
 }
+
+interface Photo {
+  path: string;
+  title: string;
+  mime: string;
+  type: string;
+  description: string;
+  tags: string[];
+  size: number;
+  colors: string[];
+  width: number;
+  height: number;
+  _hash: string;
+  _created: number;
+  _modified: number;
+  _cby: string;
+  altText: string;
+  thumbhash: string;
+  folder: string;
+  _id: string;
+  _mby: string;
+}
+
+interface DefaultSectionInterface {
+  _id: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  link?: string;
+  image?: Photo;
+}
