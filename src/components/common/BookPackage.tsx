@@ -18,9 +18,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { handleBookPackageNotificationAction } from "@/actions/contactUs";
-import { Input, SimpleGrid, Stack, Textarea } from "@chakra-ui/react";
+import {
+  Input,
+  SimpleGrid,
+  Stack,
+  Textarea,
+  Text,
+  Box,
+} from "@chakra-ui/react";
 import { Field } from "../ui/field";
-import { toaster } from "@/components/ui/toaster";
+import { Alert } from "../ui/alert";
 
 const schema = z.object({
   name: z.string().nonempty().min(3).max(255),
@@ -46,26 +53,22 @@ const BookPackage: React.FC<SafariPackageInterface> = (safari) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<BooksSafariFormInterface>({
     resolver: zodResolver(schema),
   });
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState<{
+    status: number;
+    message: string;
+  }>();
   const onSubmit = async (data: BooksSafariFormInterface) => {
     setLoading(true);
     const res = await handleBookPackageNotificationAction(data);
-
+    setResponse(res);
     if (res.status === 200) {
-      toaster.success({
-        title: "Success",
-        description: res.message,
-      });
-    } else {
-      toaster.error({
-        title: "Error",
-        description: res.message,
-      });
+      reset();
     }
-
     setLoading(false);
   };
 
@@ -142,6 +145,7 @@ const BookPackage: React.FC<SafariPackageInterface> = (safari) => {
                 type="date"
                 {...register("date_of_travel")}
                 className="custom-input"
+                min={new Date().toISOString().split("T")[0]}
               />
             </Field>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
@@ -178,6 +182,21 @@ const BookPackage: React.FC<SafariPackageInterface> = (safari) => {
             >
               Submit
             </Button>
+
+            {response && (
+              <Box
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                className="toast-notification"
+                width={"full"}
+              >
+                <Alert
+                  status={response.status === 200 ? "success" : "error"}
+                  title={response.message}
+                />
+              </Box>
+            )}
           </Stack>
         </DrawerBody>
 
