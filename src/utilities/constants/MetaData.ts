@@ -42,7 +42,7 @@ export const layoutMetadata: Metadata = {
     title: "Halal Safari operators",
     description:
       "Halal Safari operators, the best safari tours in Africa and the Middle East",
-    emails: ["info@halalsafarioperators.com"],
+    emails: ["info@halalsafarioperator.com"],
     phoneNumbers: ["+254 712 345 678"],
     siteName: "Halal Safari operators",
     locale: "en_US",
@@ -54,7 +54,7 @@ export const layoutMetadata: Metadata = {
       },
     ],
  
-    url: "https://halalsafarioperators.com",
+    url: "https://halalsafarioperator.com",
     countryName: "Kenya",
     ttl: 60,
   },

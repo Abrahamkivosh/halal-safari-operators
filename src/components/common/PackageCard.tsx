@@ -9,16 +9,23 @@ import {
   HStack,
   Button,
   Badge,
+  Flex,
 } from "@chakra-ui/react";
 import { useColorModeValue } from "../ui/color-mode";
 import { useRouter } from "next/navigation";
+import { FaCableCar } from "react-icons/fa6";
+import { FaCalendar, FaStar, FaUser } from "react-icons/fa";
+import { formatPrice } from "@/utilities/constants";
+import Link from "next/link";
 
 interface SafariPackageInterface {
   id: string;
   image: string;
   title: string;
-  price: string;
+  price: number;
   duration: string;
+  people: number;
+  rating: number;
 }
 
 const PackageCard: React.FC<SafariPackageInterface> = ({
@@ -27,6 +34,8 @@ const PackageCard: React.FC<SafariPackageInterface> = ({
   title,
   price,
   duration,
+  people,
+  rating,
 }) => {
   const bgColor = useColorModeValue("whiteAlpha.900", "gray.800");
   const textColor = useColorModeValue("gray.900", "white");
@@ -37,67 +46,67 @@ const PackageCard: React.FC<SafariPackageInterface> = ({
   const router = useRouter();
 
   return (
-    <Box
-      borderRadius="xl"
-      overflow="hidden"
-      boxShadow={shadowColor}
-      bg={bgColor}
-      transition="transform 0.3s ease, box-shadow 0.3s ease"
-      _hover={{ transform: "translateY(-5px)", boxShadow: "2xl" }}
-      position="relative"
-    >
-      {/* Duration Badge */}
-      <Badge
-        position="absolute"
-        top="3"
-        left="3"
-        bg="brand.primary"
-        color="white"
-        px={3}
-        py={1}
-        borderRadius="full"
-        fontSize="1rem"
-        fontWeight="bold"
-      >
-        {duration}
-      </Badge>
-
-      {/* Image */}
-      <Image
-        src={image}
-        alt={title}
-        width="100%"
-        height="250px"
-        objectFit="cover"
-      />
-
-      {/* Content */}
-      <VStack align="start" gap={4} p={5}>
-        <Text fontSize="xl" fontWeight="bold" color={textColor}>
-          {title}
-        </Text>
-
-        <HStack justify="space-between" w="full">
-          <Text fontSize="lg" fontWeight="semibold" color={textLightColor}>
-            {price}
-          </Text>
-        </HStack>
-
-        {/* Call-to-Action Button */}
-        <Button
-          w="full"
-          bg={buttonBg}
-          color="white"
-          _hover={{ bg: buttonHoverBg }}
-          borderRadius="full"
-          fontSize="md"
-          py={6}
-          onClick={() => router.push(`/safaris/${id}`)}
+    <>
+      <Link href={`/safaris/${id}`} passHref>
+        <Box
+          borderRadius="xl"
+          overflow="hidden"
+          boxShadow={shadowColor}
+          bg={bgColor}
+          transition="transform 0.3s ease, box-shadow 0.3s ease"
+          _hover={{ transform: "translateY(-5px)", boxShadow: "2xl" }}
+          position="relative"
         >
-          Explore Package
-        </Button>
-      </VStack>
-    </Box>
+          {/* Image */}
+          <Image
+            src={image}
+            alt={title}
+            width="100%"
+            height="250px"
+            objectFit="cover"
+          />
+
+          {/* Content */}
+          <VStack align="start" gap={4} p={5}>
+            <Flex
+              justifyContent={"space-between"}
+              width="100%"
+              align="start"
+              gap={6}
+            >
+              <HStack fontSize="md" color={textLightColor}>
+                <FaCalendar /> {duration}
+              </HStack>
+              <Box>
+                <HStack fontSize="md" color={textLightColor}>
+                  <FaUser /> {people} People
+                </HStack>
+              </Box>
+            </Flex>
+            <Text
+              fontSize="xl"
+              fontWeight="bold"
+              color={textColor}
+              textAlign={"center"}
+              width={"100%"}
+            >
+              {title}
+            </Text>
+
+            <HStack justify="space-between" w="full">
+              <Box>
+                <Badge colorPalette="green" size="md" fontSize="md">
+                  <FaStar /> {rating}
+                </Badge>
+              </Box>
+              <Text fontSize="lg" fontWeight="semibold" color={textColor}>
+                {formatPrice(price)}
+              </Text>
+            </HStack>
+          </VStack>
+        </Box>
+      </Link>
+    </>
   );
 };
 

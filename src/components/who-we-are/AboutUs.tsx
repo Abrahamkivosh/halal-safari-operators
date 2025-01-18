@@ -5,6 +5,9 @@ import { aboutUsData, marginX } from "@/utilities/constants";
 import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { useColorModeValue } from "../ui/color-mode";
+import OurTeam from "./our-team/Team";
+import Partiners from "./partiners/Partiners";
+import FaqSection from "../homePage/FaqSection";
 
 const AboutUs = () => {
   const bgColor = useColorModeValue("brand.50", "brand.900");
@@ -19,6 +22,9 @@ const AboutUs = () => {
           reverse={index % 2 === 0}
         />
       ))}
+      <OurTeam />
+      <Partiners />
+      <FaqSection />
     </Box>
   );
 };
@@ -73,11 +79,8 @@ const ImageWithTextSection = ({
         <Heading
           as="h2"
           fontSize={{ base: "4xl", sm: "6xl" }}
-          display="flex"
-          flexDir="row"
-          alignItems="center"
-          justifyContent="center"
           color={headingColor}
+          lineHeight={1.1}
         >
           {title}
         </Heading>

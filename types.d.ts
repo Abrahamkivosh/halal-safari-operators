@@ -7,32 +7,9 @@ interface NavType {
   }[];
 }
 
-interface TourInterface {
-  id: number;
-  title: string;
-  image: string;
-  price: string;
-  duration: string;
-  location: string;
-  rating: number;
-  reviews: number;
-  link: string;
-  description: string;
-  programs: { day: number; title: string; description: string }[];
-  includes: string[];
-  excludes: string[];
-}
 
-interface TourCardProps {
-  id: number;
-  image: string;
-  title: string;
-  price: string;
-  duration: string;
-  location: string;
-  link: string;
-  rating: number;
-}
+
+
 
 interface Team{
   name: string;
@@ -112,8 +89,10 @@ interface SafariPackageInterface {
   image: string;
   title: string;
   description: string;
-  price: string;
+  price: number;
   duration: string;
+  people: number;
+  rating: number;
 
   includes: {
     title: string;

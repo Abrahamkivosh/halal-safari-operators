@@ -1,15 +1,15 @@
 // src/components/who-we-are/partiners/Partiners.tsx
 "use client";
 
-import { partnersData } from "@/utilities/constants";
+import { marginX, partnersData } from "@/utilities/constants";
 import { Box, Heading, Stack, Text, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 
 const Partiners = () => {
   return (
-    <Stack marginX="5%" my="3rem" gap={6} textAlign="center">
+    <Stack marginX={marginX} my="2rem">
       {/* Section Heading */}
-      <Box>
+      <Box textAlign="center" py={{ base: "1rem", sm: "3rem" }}>
         <Heading
           fontSize={{ base: "2xl", md: "3xl" }}
           fontWeight="bold"
@@ -18,7 +18,7 @@ const Partiners = () => {
         >
           Our Trusted Partners
         </Heading>
-        <Text color="gray.500" fontSize={{ base: "sm", md: "md" }}>
+        <Text color="gray.500" fontSize={{ base: "md", md: "lg" }}>
           We collaborate with amazing organizations to bring great value.
         </Text>
       </Box>

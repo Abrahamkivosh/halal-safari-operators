@@ -28,7 +28,6 @@ const TeamCard = ({ member }: { member: Member }) => {
       }}
       transition="all 0.4s ease-in-out"
       width="100%"
-      maxW="300px"
       textAlign="center"
     >
       {/* Profile Picture */}

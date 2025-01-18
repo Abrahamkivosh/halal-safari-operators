@@ -70,13 +70,13 @@ const Hero = () => {
               animationDuration: "120ms",
             }}
           >
-            Explore the World with Us 🌍
+            Explore The World With Us 🌍
           </Heading>
           <Text fontSize={{ base: "lg", md: "xl" }} color={textColor}>
             We provide the best travel experience for you and your family. Our
             team of experts will help you plan your next trip.
           </Text>
-          <Link href="/get-a-quote" passHref>
+          <Link href="/contact-us" passHref>
             <Button
               size="lg"
               borderRadius="md"
@@ -90,7 +90,7 @@ const Hero = () => {
               color="white"
               _hover={{ bg: buttonHoverBg }} // Dynamic hover background color for light/dark modes
             >
-              Get A Qoute
+              Contact Us
               <RiArrowRightLine />
             </Button>
           </Link>

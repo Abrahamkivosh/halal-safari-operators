@@ -46,7 +46,6 @@ const FaqSection = () => {
 
   return (
     <Box
-      bg={useColorModeValue("gray.50", "gray.800")}
       py={{ base: "1rem", md: "1rem" }}
       px={{ base: "1rem", md: "4rem" }}
       bgSize="cover"

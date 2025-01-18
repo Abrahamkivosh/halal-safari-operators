@@ -8,14 +8,27 @@ import {
   Image,
   VStack,
   HStack,
-  Button,
   Icon,
+  Stack,
+  For,
+  AccordionRoot,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionItemContent,
 } from "@chakra-ui/react";
-import { FaClock, FaTag } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaChevronUp,
+  FaClock,
+  FaStar,
+  FaTag,
+  FaUser,
+} from "react-icons/fa";
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { getSubCategoryPackages } from "@/utilities/constants";
 import PackageCard from "../common/PackageCard";
 import BookPackage from "../common/BookPackage";
+import { formatPrice } from "@/utilities/constants";
+import { FaMoneyCheckDollar } from "react-icons/fa6";
 
 //
 const SafariDetails = ({
@@ -53,21 +66,39 @@ const SafariDetails = ({
           />
 
           {/* Right Section - Info */}
-          <VStack align="start" gap={4}>
-            <Heading as="h2" size="xl">
+          <VStack align="start" gap={6}>
+            <Heading as="h2" fontSize={"2xl"} color={headingColor}>
               {safari.title}
             </Heading>
+            <SimpleGrid columns={2} gap={6}>
+              <HStack>
+                <Icon as={FaClock} color="blue.500" fontSize={"1.5rem"} />
+                <Text fontSize="lg">{safari.duration}</Text>
+              </HStack>
+              <HStack>
+                <Icon
+                  as={FaMoneyCheckDollar}
+                  color="green.500"
+                  fontSize={"1.5rem"}
+                />
+                <Text fontSize="lg" fontWeight="bold">
+                  {formatPrice(safari.price)}
+                </Text>
+              </HStack>
 
-            <HStack>
-              <Icon as={FaClock} color="blue.500" />
-              <Text fontSize="lg">{safari.duration}</Text>
-            </HStack>
-            <HStack>
-              <Icon as={FaTag} color="green.500" />
-              <Text fontSize="lg" fontWeight="bold">
-                $ {safari.price}
-              </Text>
-            </HStack>
+              <HStack>
+                <Icon as={FaUser} color="purple.500" fontSize={"1.5rem"} />
+                <Text fontSize="lg" fontWeight="bold">
+                  {safari.people} People
+                </Text>
+              </HStack>
+              <HStack>
+                <Icon as={FaStar} color="red.500" fontSize={"1.5rem"} />
+                <Text fontSize="lg" fontWeight="bold">
+                  {safari.rating} Rating
+                </Text>
+              </HStack>
+            </SimpleGrid>
 
             <BookPackage {...safari} />
           </VStack>
@@ -75,7 +106,9 @@ const SafariDetails = ({
 
         {/* Description */}
         <Box mt={10}>
-          <Heading size="lg">Overview</Heading>
+          <Heading size="2xl" fontWeight={"semibold"}>
+            Overview
+          </Heading>
           <Text mt={2} fontSize="md" color="gray.600">
             {safari.description}
           </Text>
@@ -83,7 +116,9 @@ const SafariDetails = ({
         {/* inclusions and exclusions */}
         <SimpleGrid columns={{ base: 1, md: 2 }} gap={10} mt={10}>
           <Box>
-            <Heading size="lg">Inclusions</Heading>
+            <Heading size="2xl" fontWeight={"semibold"}>
+              Inclusions
+            </Heading>
             <VStack align="start" mt={4} gap={2}>
               {inclusions.map((item: { title: string }) => (
                 <HStack key={item.title}>
@@ -94,7 +129,9 @@ const SafariDetails = ({
             </VStack>
           </Box>
           <Box>
-            <Heading size="lg">Exclusions</Heading>
+            <Heading size="2xl" fontWeight={"semibold"}>
+              Exclusions
+            </Heading>
             <VStack align="start" mt={4} gap={2}>
               {exclusions.map((item: { title: string }) => (
                 <HStack key={item.title}>
@@ -109,21 +146,52 @@ const SafariDetails = ({
         {/* Itinerary */}
         {safari.itinerary && (
           <Box mt={10}>
-            <Heading size="lg">Itinerary</Heading>
-            {safari.itinerary.map((day: any, index: number) => (
-              <Box key={index} mt={4} p={4} borderWidth="1px" borderRadius="md">
-                <Heading size="md">
-                  Day {index + 1}: {day.title}
-                </Heading>
-                <Text mt={2}>{day.description}</Text>
-              </Box>
-            ))}
+            <Heading size="2xl" fontWeight={"semibold"}>
+              Itinerary
+            </Heading>
+            <Stack gap="8">
+              <Stack gap="2">
+                <AccordionRoot size={"lg"} collapsible variant={"subtle"}>
+                  {safari.itinerary.map((itinerary, index) => (
+                    <AccordionItem key={index} value={itinerary.title}>
+                      <AccordionItemTrigger bg={bgColor} p={4} mt={2}>
+                        <Box
+                          w="full"
+                          display="flex"
+                          justifyContent="space-between"
+                        >
+                          <Box fontSize="xl" fontWeight="semibold">
+                            {itinerary.title}
+                          </Box>
+                          <Icon fontSize="lg" color="fg.subtle">
+                            <FaChevronDown />
+                          </Icon>
+                        </Box>
+                      </AccordionItemTrigger>
+                      <AccordionItemContent>
+                        <Text
+                          p={{
+                            base: 4,
+                            md: 8,
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html: itinerary.description,
+                          }}
+                        />
+                      </AccordionItemContent>
+                    </AccordionItem>
+                  ))}
+                </AccordionRoot>
+              </Stack>
+            </Stack>
           </Box>
         )}
 
         {/* Related Packages */}
         <Box mt={10}>
-          <Heading size="lg">Related Packages</Heading>
+          <Heading size="2xl" fontWeight={"semibold"}>
+            Related Packages
+          </Heading>
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mt={4}>
             {packages.map((pkg) => (
               <PackageCard key={pkg.id} {...pkg} />

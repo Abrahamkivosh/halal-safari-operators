@@ -1,13 +1,13 @@
 export const BASE_URL =   process.env.BASE_URL || "http://localhost:3000";
 
-export const CONTACT_EMAIL = "hello@halalsafarioperators.com";
+export const CONTACT_EMAIL = "hello@halalsafarioperator.com";
 
 export const CONTACT_PHONE = "0712345678";
 
 
 
-export const CMS_URL = "https://cms.halalsafarioperators.com";
-export const CMS_ASSETS_URL = "https://cms.halalsafarioperators.com/assets";
+export const CMS_URL = "https://cms.halalsafarioperator.com";
+export const CMS_ASSETS_URL = "https://cms.halalsafarioperator.com/assets";
 
 
 export const SITE_NAME = "Halal safari Operator";

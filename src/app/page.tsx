@@ -1,6 +1,5 @@
 import BlogSection from "@/components/homePage/BlogSection";
 import DestinationsSection from "@/components/homePage/destinationsSection";
-import FaqSection from "@/components/homePage/FaqSection";
 import HeroSection from "@/components/homePage/HeroSection";
 import IntroductionSection from "@/components/homePage/introductionSection";
 import MainSafaris from "@/components/homePage/MainSafaris";
@@ -22,7 +21,6 @@ const HomePage = () => {
       <TestimonialSection />
       <PartnersSection />
       <BlogSection />
-      <FaqSection />
     </>
   );
 };

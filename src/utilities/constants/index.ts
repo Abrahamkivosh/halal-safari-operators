@@ -13,7 +13,7 @@ export const marginX = { base: "3%", sm: "5%", md: "6%", lg: "8%" };
 export const socials = [
   {
     icon: FaFacebook,
-    link: "https://www.facebook.com/halalsafarioperators/",
+    link: "https://www.facebook.com/people/Halal-Safari-Operators/",
     name: "Facebook",
   },
   {
@@ -23,7 +23,7 @@ export const socials = [
   },
   {
     icon: FaInstagram,
-    link: "https://www.instagram.com/halalsafarioperators/",
+    link: "https://www.instagram.com/halalsafarioperator",
     name: "Instagram",
   },
   {
@@ -31,11 +31,7 @@ export const socials = [
     link: "https://www.linkedin.com/company/clean-start-kenya/",
     name: "Linkedin",
   },
-  {
-    icon: FaYoutube,
-    link: "https://www.youtube.com/channel/UCn9V4J3CdjrVemjVj4ZINpw",
-    name: "Youtube",
-  },
+
 ];
 
 export const contactsData = [
@@ -74,24 +70,12 @@ export const navData: NavType[] = [
     label: "Destinations",
     link: "/destinations",
   },
-
-  {
+   {
     label: "About Us",
-    subItems: [
-      {
-        label: "Introduction and Background",
-        link: "/who-we-are",
-      },
-      {
-        label: "Our Team",
-        link: "/who-we-are/our-team",
-      },
-      {
-        label: "Partners",
-        link: "/who-we-are/partners",
-      },
-    ],
+    link: "/who-we-are",
   },
+
+
   {
     label: "Get A Quote",
     link: "/get-a-quote",
@@ -131,7 +115,12 @@ export async function getSubCategoryById(id: number) {
 export async function getSubCategoryPackages(sub_category_id: number| string) {
   return safariPackages.filter((pkg) => pkg.sub_category_id === sub_category_id);
 }
-
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+}
 
 export const aboutUsData = [
   {
@@ -256,226 +245,6 @@ export const blogs = [
   },
 ];
 
-export const tours: TourInterface[] = [
-  {
-    id: 1,
-    title: "Serengeti Safari",
-    image: "/images/packages/Lion-giraffe-Serengeti-National-Park-Tanzania.jpg",
-    price: "$1,500",
-    duration: "5 Days",
-    location: "tanzania-safaris",
-    rating: 4.9,
-    reviews: 32,
-    link: "/tours/serengeti-safari",
-    description:
-      "Embark on an unforgettable journey through the Serengeti National Park, home to diverse wildlife and stunning landscapes.",
-    programs: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Upon arrival at Kilimanjaro International Airport, you will be greeted by our team and transferred to your hotel in Arusha.",
-      },
-      {
-        day: 2,
-        title: "Arusha to Serengeti",
-        description:
-          "After breakfast, you will be driven to the Serengeti National Park, where you will embark on your first game drive.",
-      },
-      {
-        day: 3,
-        title: "Serengeti National Park",
-        description:
-          "Explore the vast plains of the Serengeti, home to the Big Five and the Great Migration of wildebeest and zebras.",
-      },
-      {
-        day: 4,
-        title: "Serengeti to Ngorongoro",
-        description:
-          "Drive to the Ngorongoro Conservation Area, where you will descend into the crater for a full day of game viewing.",
-      },
-      {
-        day: 5,
-        title: "Departure",
-        description:
-          "After breakfast, you will be transferred back to Arusha for your onward journey.",
-      },
-    ],
-    includes: [
-      "Accommodation",
-      "Meals",
-      "Transportation",
-      "Game drives",
-      "Park fees",
-    ],
-    excludes: [
-      "Flights",
-      "Visa fees",
-      "Travel insurance",
-      "Tips",
-      "Personal expenses",
-    ],
-  },
-  {
-    id: 2,
-    title: "Masai Mara Safari",
-    image: "/images/packages/Masai-Mara-Safari.jpg",
-    price: "$1,200",
-    duration: "4 Days",
-    location: "kenya-safaris",
-    rating: 4.8,
-    reviews: 28,
-    link: "/tours/masai-mara-safari",
-    description:
-      "Experience the magic of the Masai Mara, known for its abundant wildlife and the Great Migration of wildebeest and zebras.",
-    programs: [
-      {
-        day: 1,
-        title: "Arrival in Nairobi",
-        description:
-          "Upon arrival at Jomo Kenyatta International Airport, you will be greeted by our team and transferred to your hotel in Nairobi.",
-      },
-      {
-        day: 2,
-        title: "Nairobi to Masai Mara",
-        description:
-          "After breakfast, you will be driven to the Masai Mara National Reserve, where you will embark on your first game drive.",
-      },
-      {
-        day: 3,
-        title: "Masai Mara National Reserve",
-        description:
-          "Explore the vast plains of the Masai Mara, home to the Big Five and the Great Migration of wildebeest and zebras.",
-      },
-      {
-        day: 4,
-        title: "Departure",
-        description:
-          "After breakfast, you will be transferred back to Nairobi for your onward journey.",
-      },
-    ],
-    includes: [
-      "Accommodation",
-      "Meals",
-      "Transportation",
-      "Game drives",
-      "Park fees",
-    ],
-    excludes: [
-      "Flights",
-      "Visa fees",
-      "Travel insurance",
-      "Tips",
-      "Personal expenses",
-    ],
-  },
-  {
-    id: 3,
-    title: "Amboseli Safari",
-    image: "/images/packages/Amboseli-Safari.jpeg",
-    price: "$1,000",
-    duration: "3 Days",
-    location: "kenya-safaris",
-    rating: 4.7,
-    reviews: 24,
-    link: "/tours/amboseli-safari",
-    description:
-      "Discover the beauty of Amboseli National Park, known for its large herds of elephants and stunning views of Mount Kilimanjaro.",
-    programs: [
-      {
-        day: 1,
-        title: "Arrival in Nairobi",
-        description:
-          "Upon arrival at Jomo Kenyatta International Airport, you will be greeted by our team and transferred to your hotel in Nairobi.",
-      },
-      {
-        day: 2,
-        title: "Nairobi to Amboseli",
-        description:
-          "After breakfast, you will be driven to Amboseli National Park, where you will embark on your first game drive.",
-      },
-      {
-        day: 3,
-        title: "Amboseli National Park",
-        description:
-          "Explore the vast plains of Amboseli, home to large herds of elephants and stunning views of Mount Kilimanjaro.",
-      },
-      {
-        day: 4,
-        title: "Departure",
-        description:
-          "After breakfast, you will be transferred back to Nairobi for your onward journey.",
-      },
-    ],
-    includes: [
-      "Accommodation",
-      "Meals",
-      "Transportation",
-      "Game drives",
-      "Park fees",
-    ],
-    excludes: [
-      "Flights",
-      "Visa fees",
-      "Travel insurance",
-      "Tips",
-      "Personal expenses",
-    ],
-  },
-  {
-    id: 4,
-    title: "Ngorongoro Safari",
-    image: "/images/packages/Ngorongoro-Safari.jpg",
-    price: "$1,300",
-    duration: "4 Days",
-    location: "tanzania-safaris",
-    rating: 4.9,
-    reviews: 32,
-    link: "/tours/ngorongoro-safari",
-    description:
-      "Explore the wonders of the Ngorongoro Conservation Area, home to diverse wildlife and the iconic Ngorongoro Crater.",
-    programs: [
-      {
-        day: 1,
-        title: "Arrival in Arusha",
-        description:
-          "Upon arrival at Kilimanjaro International Airport, you will be greeted by our team and transferred to your hotel in Arusha.",
-      },
-      {
-        day: 2,
-        title: "Arusha to Ngorongoro",
-        description:
-          "After breakfast, you will be driven to the Ngorongoro Conservation Area, where you will descend into the crater for a full day of game viewing.",
-      },
-      {
-        day: 3,
-        title: "Ngorongoro Conservation Area",
-        description:
-          "Explore the diverse landscapes of the Ngorongoro Conservation Area, home to the Big Five and the Maasai people.",
-      },
-      {
-        day: 4,
-        title: "Departure",
-        description:
-          "After breakfast, you will be transferred back to Arusha for your onward journey.",
-      },
-    ],
-    includes: [
-      "Accommodation",
-      "Meals",
-      "Transportation",
-      "Game drives",
-      "Park fees",
-    ],
-    excludes: [
-      "Flights",
-      "Visa fees",
-      "Travel insurance",
-      "Tips",
-      "Personal expenses",
-    ],
-  },
-];
 
 export const teams: Team[] = [
   {
@@ -483,7 +252,7 @@ export const teams: Team[] = [
     profile_pic: "/images/team/noimage.png",
     position: "CEO & Founder",
     is_board_member: true,
-    email: "john@halalsafarioperators.com",
+    email: "john@halalsafarioperator.com",
     facebook_link: "https://www.facebook.com/johndoe",
     linkedin_link: "https://www.linkedin.com/in/johndoe",
   },
@@ -492,7 +261,7 @@ export const teams: Team[] = [
     profile_pic: "/images/team/noimage.png",
     position: "COO",
     is_board_member: true,
-    email: "jane@halalsafarioperators.com",
+    email: "jane@halalsafarioperator.com",
     facebook_link: "https://www.facebook.com/janesmith",
     linkedin_link: "https://www.linkedin.com/in/janesmith",
   },
@@ -501,7 +270,7 @@ export const teams: Team[] = [
     profile_pic: "/images/team/noimage.png",
     position: "CTO",
     is_board_member: true,
-    email: "micheal@halalsafarioperators.com",
+    email: "micheal@halalsafarioperator.com",
     facebook_link: "https://www.facebook.com/michaeljohnson",
     linkedin_link: "https://www.linkedin.com/in/michaeljohnson",
   },
@@ -510,7 +279,7 @@ export const teams: Team[] = [
     profile_pic: "/images/team/noimage.png",
     position: "Marketing Director",
     is_board_member: false,
-    email: "emily@halalsafarioperators.com",
+    email: "emily@halalsafarioperator.com",
     facebook_link: "https://www.facebook.com/emilybrown",
     linkedin_link: "https://www.linkedin.com/in/emilybrown",
   },
@@ -594,8 +363,10 @@ export const safariPackages: SafariPackageInterface[]  = [
     image: "/images/packages/Masai-Mara-Safari.jpg",
     title: "7 Days Masai Mara & Amboseli Safari",
     description:  `Gear up for a whirlwind adventure in the heart of Kenya! This 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari itinerary whisks you away from Nairobi on a thrilling quest to witness the legendary Big Five. Witness the majestic elephants of Amboseli framed by the breathtaking backdrop of Mount Kilimanjaro. Then, lose yourself in the endless plains of the Masai Mara, where lions roar and wildebeest thunder across the savannah. Prepare for action-packed game drives, unforgettable wildlife encounters, and evenings spent under a canopy of stars. This perfectly paced 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari promises an unforgettable encounter with the raw beauty and untamed spirit of Kenya.`,
-    price: "From $3,100 per person",
+    price: 1500,
     duration: "7 Days / 6 Nights",
+    people: 10,
+    rating: 4,
 
    
     includes: [
@@ -666,8 +437,10 @@ export const safariPackages: SafariPackageInterface[]  = [
     title: "10 Days Ultimate Kenya Safari",
     description:
      `Embark on the ultimate Kenyan adventure with our 10 Days Ultimate Kenya Safari. This comprehensive journey takes you through Kenya's most iconic wildlife destinations, offering an unparalleled opportunity to witness the country's diverse ecosystems and abundant wildlife. From the sprawling savannas of the Masai Mara to the elephant-rich plains of Amboseli, and the rugged wilderness of Tsavo, this safari promises a truly immersive experience in the heart of East Africa.`,
-    price: "From $4,000 per person",
+    price: 4000,
     duration: "10 Days / 9 Nights",
+      people: 8,
+    rating: 3,
    
   
      includes: [
@@ -738,8 +511,10 @@ export const safariPackages: SafariPackageInterface[]  = [
     title: "5 Days Express Safari",
     description:
       `Experience the essence of Kenya's wildlife in just five action-packed days with our Express Safari. This carefully crafted itinerary takes you straight to the heart of the Masai Mara, offering an authentic safari experience without compromising on wildlife viewing opportunities. Ideal for time-conscious travelers or those looking to combine a safari with other adventures, this express package delivers the thrill of the African bush in a compact timeframe.`,
-    price: "From $2,500 per person",
+    price: 2500,
     duration: "5 Days / 4 Nights",
+      people: 6,
+    rating: 5,
   
    
    includes: [
