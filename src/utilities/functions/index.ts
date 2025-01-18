@@ -1,4 +1,4 @@
-import { CMS_ASSETS_URL, CMS_TOKEN } from "@/config";
+import { CMS_ASSETS_URL, CMS_TOKEN } from "@/configs";
 import axiosInstance from "./axios";
 
 export function getHeaders() {
@@ -13,24 +13,7 @@ export function getImageUrl(imageId: string) {
   return `${CMS_ASSETS_URL}/${imageId}`;
 }
 
-export const getAos = (index: number) => {
-  // Return AOS animation based on the index
-  return index % 2 === 0 ? "fade-right" : "fade-left";
-};
 
-export const getFlipAos = (index: number) => {
-  // Return flip AOS animation based on the index
-  switch (index % 3) {
-    case 0:
-      return "flip-left";
-    case 1:
-      return "flip-right";
-    case 2:
-      return "flip-down";
-    default:
-      return "flip-left";
-  }
-};
 
 export const getReverse = (index: number) => {
   // Determine if the layout should be reversed
@@ -39,9 +22,9 @@ export const getReverse = (index: number) => {
 
 // format currency
 export function formatCurrency(amount: number) {
-  return new Intl.NumberFormat("en-KE", {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "KES",
+    currency: "USD",
   }).format(amount);
 }
 
