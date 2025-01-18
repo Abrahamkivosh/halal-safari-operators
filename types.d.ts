@@ -120,3 +120,16 @@ interface BooksSafariFormInterface{
   message: string;
  
 }
+
+interface VideosGalleryInterface {
+  id: number;
+  title: string;
+  video: string;
+}
+
+interface ImageGalleryInterface {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}

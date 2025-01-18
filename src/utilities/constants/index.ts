@@ -579,3 +579,42 @@ export const safariPackages: SafariPackageInterface[]  = [
     ],
   },
 ];
+
+export const videos: VideosGalleryInterface[] = [
+
+  {
+    id: 2,
+    title: "Amboseli Safari",
+    video: "https://youtu.be/8BIVIJGDPeg",
+  },
+  {
+    id: 3,
+    title: "Serengeti Safari",
+    video: "https://youtu.be/v7p6VZiRInQ",
+  },
+  {
+    id: 4,
+    title: "Ngorongoro Safari",
+    video: "https://www.youtube.com/shorts/kRiU0Z52pRc",
+  },
+  
+  
+]
+
+export const getVideoId = (url: string) => {
+if (url.includes("https://youtu.be")) {
+    let i = url.split("https://youtu.be/")[1];
+    // remove other query params if any
+    return i.split("?")[0];
+  } else if (url.includes("https://www.youtube.com/watch?v=")) {
+    let i = url.split("https://www.youtube.com/watch?v=")[1];
+    // remove other query params if any
+    return i.split("&")[0];
+  }else if (url.includes("https://www.youtube.com/shorts/")) {
+    let i = url.split("https://www.youtube.com/shorts/")[1];
+    // remove other query params if any
+    return i.split("?")[0];
+
+  }
+}
+  
