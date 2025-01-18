@@ -10,7 +10,7 @@ import {
   Section,
   Text,
 } from "jsx-email";
-import { defaulted, object, string, type Infer } from "superstruct";
+import { defaulted, number, object, string, type Infer } from "superstruct";
 import * as React from "react";
 
 export const TemplateName = "ContactUs";
@@ -19,6 +19,9 @@ export const TemplateStruct = object({
   name: defaulted(string(), ""),
   email: defaulted(string(), ""),
   phone: defaulted(string(), ""),
+  date_of_travel: defaulted(string(), ""),
+  number_of_aldults: defaulted(number(), ""),
+  number_of_children: defaulted(number(), ""),
   message: defaulted(string(), ""),
 });
 
@@ -105,7 +108,7 @@ const footerLink = {
   margin: "0 8px",
 };
 
-export const EmailTemplate = ({
+export const BookPackageEmailTemplate = ({
   name,
   email,
   phone,

@@ -1,6 +1,6 @@
 export const BASE_URL =   process.env.BASE_URL || "http://localhost:3000";
 
-export const CONTACT_EMAIL = "support@halalsafarioperators.com";
+export const CONTACT_EMAIL = "hello@halalsafarioperators.com";
 
 export const CONTACT_PHONE = "0712345678";
 

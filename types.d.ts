@@ -129,3 +129,15 @@ interface SafariPackageInterface {
     description: string;
   }[];
 }
+
+
+interface BooksSafariFormInterface{
+  name: string;
+  email?: string;
+  phone: string;
+  date_of_travel: string;
+  number_of_aldults: number;
+  number_of_children: number;
+  message: string;
+ 
+}

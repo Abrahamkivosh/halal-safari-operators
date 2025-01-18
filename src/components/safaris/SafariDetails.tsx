@@ -15,6 +15,7 @@ import { FaClock, FaTag } from "react-icons/fa";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { getSubCategoryPackages } from "@/utilities/constants";
 import PackageCard from "../common/PackageCard";
+import BookPackage from "../common/BookPackage";
 
 //
 const SafariDetails = ({
@@ -68,17 +69,7 @@ const SafariDetails = ({
               </Text>
             </HStack>
 
-            <Button
-              w="full"
-              bg={buttonBg}
-              color="white"
-              _hover={{ bg: buttonHoverBg }}
-              borderRadius="full"
-              fontSize="md"
-              py={6}
-            >
-              Book Now
-            </Button>
+            <BookPackage {...safari} />
           </VStack>
         </SimpleGrid>
 
