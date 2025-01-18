@@ -108,37 +108,21 @@ interface ContactUsActionResponseInterface {
 
 interface SafariPackageInterface {
   id: string;
-  sub_category_id: string|number;
+  sub_category_id: number;
   image: string;
   title: string;
   description: string;
   price: string;
   duration: string;
-  highlights: string[];
-  schedule: string[];
-  inclusions: string[];
-  exclusions: string[];
+
+  includes: {
+    title: string;
+    status: boolean;
+  }[],
+
   images: string[];
-  tourDetails: string;
-  prices: {
-    highSeason: {
-      forTwo: string;
-      perPerson: string;
-    };
-    midSeason: {
-      forTwo: string;
-      perPerson: string;
-    };
-    lowSeason: {
-      forTwo: string;
-      perPerson: string;
-    };
-  };
-  seasons: {
-    high: string;
-    mid: string;
-    low: string;
-  };
+
+
   itinerary: {
     day: number;
     title: string;

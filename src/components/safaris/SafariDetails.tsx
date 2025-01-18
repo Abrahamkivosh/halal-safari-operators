@@ -1,198 +1,146 @@
 "use client";
-import { Box, Grid, Heading, List, Table, Tabs, Text } from "@chakra-ui/react";
-import Image from "next/image";
 import React from "react";
-import { RxCross2 } from "react-icons/rx";
-import { IoMdCheckmark } from "react-icons/io";
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  Text,
+  Image,
+  VStack,
+  HStack,
+  Button,
+  Icon,
+} from "@chakra-ui/react";
+import { FaClock, FaTag } from "react-icons/fa";
+import { useColorModeValue } from "@/components/ui/color-mode";
+import { getSubCategoryPackages } from "@/utilities/constants";
+import PackageCard from "../common/PackageCard";
 
 //
-const SafariDetails = (safariPackage: SafariPackageInterface) => {
+const SafariDetails = ({
+  safari,
+  packages,
+}: {
+  safari: SafariPackageInterface;
+  packages: SafariPackageInterface[];
+}) => {
+  const inclusions = safari.includes.filter(
+    (item: { title: string; status: boolean }) => item.status
+  );
+  const exclusions = safari.includes.filter(
+    (item: { title: string; status: boolean }) => !item.status
+  );
+
+  const bgColor = useColorModeValue("brand.50", "gray.500");
+  const headingColor = useColorModeValue("teal.600", "brand.100");
+  const textColor = useColorModeValue("brand.600", "gray.200");
+  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
   return (
-    <Box maxW="6xl" mx="auto">
-      <Heading
-        as="h1"
-        fontSize={"3xl"}
-        mb="8"
-        fontWeight={"bold"}
-        textAlign={"center"}
-      >
-        {safariPackage.title}
-      </Heading>
-
-      <Grid templateColumns={{ base: "1fr", md: "2fr 1fr" }} gap="8" mb="12">
-        <Box>
+    <>
+      <Box maxW="6xl" mx="auto" py={10} px={6}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={10}>
+          {/* Left Section - Images */}
           <Image
-            src={safariPackage.images[0]}
-            alt={safariPackage.title}
-            width={800}
-            height={450}
-            style={{ borderRadius: "8px" }}
+            src={safari.image}
+            alt={safari.title}
+            borderRadius="lg"
+            boxShadow="lg"
+            objectFit="cover"
+            w="100%"
+            h="350px"
           />
-        </Box>
-        <Box border="1px solid" borderColor="gray.200" borderRadius="md" p="4">
-          <Heading as="h3" size="md" mb="4">
-            Quick Info
-          </Heading>
-          <Text fontSize="2xl" fontWeight="bold" mb="2">
-            {safariPackage.price}
+
+          {/* Right Section - Info */}
+          <VStack align="start" gap={4}>
+            <Heading as="h2" size="xl">
+              {safari.title}
+            </Heading>
+
+            <HStack>
+              <Icon as={FaClock} color="blue.500" />
+              <Text fontSize="lg">{safari.duration}</Text>
+            </HStack>
+            <HStack>
+              <Icon as={FaTag} color="green.500" />
+              <Text fontSize="lg" fontWeight="bold">
+                $ {safari.price}
+              </Text>
+            </HStack>
+
+            <Button
+              w="full"
+              bg={buttonBg}
+              color="white"
+              _hover={{ bg: buttonHoverBg }}
+              borderRadius="full"
+              fontSize="md"
+              py={6}
+            >
+              Book Now
+            </Button>
+          </VStack>
+        </SimpleGrid>
+
+        {/* Description */}
+        <Box mt={10}>
+          <Heading size="lg">Overview</Heading>
+          <Text mt={2} fontSize="md" color="gray.600">
+            {safari.description}
           </Text>
-          <Text color="gray.600" mb="4">
-            {safariPackage.duration}
-          </Text>
-          <List.Root gap="2">
-            {safariPackage.highlights.slice(0, 3).map((highlight, index) => (
-              <List.Item key={index} display="flex" alignItems="center">
-                <IoMdCheckmark color="green.500" />
-
-                {highlight}
-              </List.Item>
-            ))}
-          </List.Root>
         </Box>
-      </Grid>
+        {/* inclusions and exclusions */}
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={10} mt={10}>
+          <Box>
+            <Heading size="lg">Inclusions</Heading>
+            <VStack align="start" mt={4} gap={2}>
+              {inclusions.map((item: { title: string }) => (
+                <HStack key={item.title}>
+                  <Icon as={FaTag} color="green.500" />
+                  <Text fontSize="md">{item.title}</Text>
+                </HStack>
+              ))}
+            </VStack>
+          </Box>
+          <Box>
+            <Heading size="lg">Exclusions</Heading>
+            <VStack align="start" mt={4} gap={2}>
+              {exclusions.map((item: { title: string }) => (
+                <HStack key={item.title}>
+                  <Icon as={FaTag} color="red.500" />
+                  <Text fontSize="md">{item.title}</Text>
+                </HStack>
+              ))}
+            </VStack>
+          </Box>
+        </SimpleGrid>
 
-      <Box mb="12">
-        <Text color="gray.600">{safariPackage.tourDetails}</Text>
-      </Box>
-
-      <Tabs.Root variant="plain" mb="12" defaultValue="Highlights">
-        <Tabs.List
-          mb="4"
-          defaultValue="Highlights"
-          bg="bg.muted"
-          rounded="lg"
-          p="1"
-          gap={2}
-        >
-          <Tabs.Trigger value="Highlights" fontWeight={600} p={2}>
-            Highlights
-          </Tabs.Trigger>
-          <Tabs.Trigger value="Itinerary" fontWeight={600} p={2}>
-            Itinerary
-          </Tabs.Trigger>
-          <Tabs.Trigger value="Inclusions" fontWeight={600} p={2}>
-            Inclusions
-          </Tabs.Trigger>
-          <Tabs.Trigger value="Exclusions" fontWeight={600} p={2}>
-            Exclusions
-          </Tabs.Trigger>
-          <Tabs.Indicator rounded={"l2"} />
-        </Tabs.List>
-        <Tabs.Content value="Highlights">
-          <List.Root gap="2">
-            {safariPackage.highlights.map((highlight, index) => (
-              <List.Item key={index} display="flex" alignItems="center" gap={2}>
-                <IoMdCheckmark color="green.500" />
-                {highlight}
-              </List.Item>
+        {/* Itinerary */}
+        {safari.itinerary && (
+          <Box mt={10}>
+            <Heading size="lg">Itinerary</Heading>
+            {safari.itinerary.map((day: any, index: number) => (
+              <Box key={index} mt={4} p={4} borderWidth="1px" borderRadius="md">
+                <Heading size="md">
+                  Day {index + 1}: {day.title}
+                </Heading>
+                <Text mt={2}>{day.description}</Text>
+              </Box>
             ))}
-          </List.Root>
-        </Tabs.Content>
-        <Tabs.Content value="Itinerary">
-          {safariPackage.itinerary.map((day, index) => (
-            <Box key={index} mb="4">
-              <Heading as="h3" size="md">
-                Day {day.day}: {day.title}
-              </Heading>
-              <Text color="gray.600">{day.description}</Text>
-            </Box>
-          ))}
-        </Tabs.Content>
-        <Tabs.Content value="Inclusions">
-          <List.Root gap="2">
-            {safariPackage.inclusions.map((item, index) => (
-              <List.Item key={index} display="flex" alignItems="center" gap={2}>
-                <IoMdCheckmark color="green.500" />
-                {item}
-              </List.Item>
+          </Box>
+        )}
+
+        {/* Related Packages */}
+        <Box mt={10}>
+          <Heading size="lg">Related Packages</Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mt={4}>
+            {packages.map((pkg) => (
+              <PackageCard key={pkg.id} {...pkg} />
             ))}
-          </List.Root>
-        </Tabs.Content>
-        <Tabs.Content value="Exclusions">
-          <List.Root gap="2">
-            {safariPackage.exclusions.map((item, index) => (
-              <List.Item key={index} display="flex" alignItems="center">
-                <RxCross2 color="red.500" />
-                {item}
-              </List.Item>
-            ))}
-          </List.Root>
-        </Tabs.Content>
-      </Tabs.Root>
-
-      <Box mb="12">
-        <Heading as="h2" size="lg" mb="4">
-          Prices
-        </Heading>
-        <Table.Root
-          variant="outline"
-          borderWidth="1px"
-          borderRadius="md"
-          overflow="hidden"
-        >
-          <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeader>Season</Table.ColumnHeader>
-              <Table.ColumnHeader>Price for 2 People</Table.ColumnHeader>
-              <Table.ColumnHeader>Price Per Person</Table.ColumnHeader>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>High Season</Table.Cell>
-              <Table.Cell>{safariPackage.prices.highSeason.forTwo}</Table.Cell>
-              <Table.Cell>
-                {safariPackage.prices.highSeason.perPerson}
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Mid Season</Table.Cell>
-              <Table.Cell>{safariPackage.prices.midSeason.forTwo}</Table.Cell>
-              <Table.Cell>
-                {safariPackage.prices.midSeason.perPerson}
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Low Season</Table.Cell>
-              <Table.Cell>{safariPackage.prices.lowSeason.forTwo}</Table.Cell>
-              <Table.Cell>
-                {safariPackage.prices.lowSeason.perPerson}
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table.Root>
+          </SimpleGrid>
+        </Box>
       </Box>
-
-      <Box>
-        <Heading as="h2" size="lg" mb="4">
-          Seasons
-        </Heading>
-        <List.Root gap="2">
-          <List.Item>
-            <Text as="strong">High Season:</Text> {safariPackage.seasons.high}
-          </List.Item>
-          <List.Item>
-            <Text as="strong">Mid Season:</Text> {safariPackage.seasons.mid}
-          </List.Item>
-          <List.Item>
-            <Text as="strong">Low Season:</Text> {safariPackage.seasons.low}
-          </List.Item>
-        </List.Root>
-      </Box>
-
-      <Grid templateColumns="repeat(2, 1fr)" gap="4" mt="8">
-        {safariPackage.images.map((image, index) => (
-          <Image
-            key={index}
-            src={image}
-            alt={safariPackage.title}
-            width={500}
-            height={300}
-            style={{ borderRadius: "8px" }}
-          />
-        ))}
-      </Grid>
-    </Box>
+    </>
   );
 };
 

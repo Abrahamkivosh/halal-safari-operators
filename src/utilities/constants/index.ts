@@ -593,59 +593,57 @@ export const safariPackages: SafariPackageInterface[]  = [
     sub_category_id:1,
     image: "/images/packages/Masai-Mara-Safari.jpg",
     title: "7 Days Masai Mara & Amboseli Safari",
-    description: "Experience the magic of Kenya's most iconic national parks with our comprehensive 7-day safari package.",
+    description:  `Gear up for a whirlwind adventure in the heart of Kenya! This 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari itinerary whisks you away from Nairobi on a thrilling quest to witness the legendary Big Five. Witness the majestic elephants of Amboseli framed by the breathtaking backdrop of Mount Kilimanjaro. Then, lose yourself in the endless plains of the Masai Mara, where lions roar and wildebeest thunder across the savannah. Prepare for action-packed game drives, unforgettable wildlife encounters, and evenings spent under a canopy of stars. This perfectly paced 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari promises an unforgettable encounter with the raw beauty and untamed spirit of Kenya.`,
     price: "From $3,100 per person",
     duration: "7 Days / 6 Nights",
-    highlights: [
-      "Daily game drives in 4x4 vehicles",
-      "Witness the Great Migration (seasonal)",
-      "View of Mt. Kilimanjaro from Amboseli",
-      "Luxury lodge accommodation",
-      "Professional English/Spanish speaking guide",
+
+   
+    includes: [
+      {
+        title:  "International flights",
+        status: true
+      },
+       {
+        title:   "Full board accommodation",
+        status: true
+      },
+       {
+        title:   "Airport transfers",
+        status: true
+      },
+       {
+        title:  "Professional driver-guide",
+        status: true
+      },
+       {
+        title:  "Bottled water during game drives",
+        status: true
+      },
+       {
+        title:   "International flights" ,
+        status: false
+      },
+       {
+        title:  "Visa fees"  ,
+        status: false
+      },
+       {
+        title:  "Travel insurance"  ,
+        status: false
+      },
+       {
+        title:  "Tips and gratuities" ,
+        status: false
+      },
+        {
+        title:   "Personal expenses" ,
+        status: false
+      },
     ],
-    schedule: [
-      "5:30 AM - Wake up call",
-      "6:00 AM - Morning game drive",
-      "12:00 PM - Lunch at camp/lodge",
-      "3:30 PM - Afternoon game drive",
-      "7:00 PM - Dinner and evening relaxation",
-    ],
-    inclusions: [
-      "All park entrance fees",
-      "Full board accommodation",
-      "Airport transfers",
-      "Professional driver-guide",
-      "Bottled water during game drives",
-    ],
-    exclusions: [
-      "International flights",
-      "Visa fees",
-      "Travel insurance",
-      "Personal expenses",
-      "Tips and gratuities",
-    ],
+
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
 
-    tourDetails: `Gear up for a whirlwind adventure in the heart of Kenya! This 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari itinerary whisks you away from Nairobi on a thrilling quest to witness the legendary Big Five. Witness the majestic elephants of Amboseli framed by the breathtaking backdrop of Mount Kilimanjaro. Then, lose yourself in the endless plains of the Masai Mara, where lions roar and wildebeest thunder across the savannah. Prepare for action-packed game drives, unforgettable wildlife encounters, and evenings spent under a canopy of stars. This perfectly paced 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari promises an unforgettable encounter with the raw beauty and untamed spirit of Kenya.`,
-    prices: {
-      highSeason: {
-        forTwo: "US$ 8,000",
-        perPerson: "US$ 4,000",
-      },
-      midSeason: {
-        forTwo: "US$ 7,180",
-        perPerson: "US$ 3,590",
-      },
-      lowSeason: {
-        forTwo: "US$ 6,200",
-        perPerson: "US$ 3,100",
-      },
-    },
-    seasons: {
-      high: "1st June – 31st Oct 2024, 20th Dec 2024 – 1st Jan 2025",
-      mid: "2nd Jan 2024 – 31st March 2024, 1st Oct – 19th Dec 2024",
-      low: "1st Apr – 30th May 2024",
-    },
+
     itinerary: [
       {
         day: 1,
@@ -667,59 +665,57 @@ export const safariPackages: SafariPackageInterface[]  = [
     image: "/images/dodoma.jpg",
     title: "10 Days Ultimate Kenya Safari",
     description:
-      "A comprehensive journey through Kenya's finest wildlife destinations including Masai Mara, Amboseli, and Tsavo.",
+     `Embark on the ultimate Kenyan adventure with our 10 Days Ultimate Kenya Safari. This comprehensive journey takes you through Kenya's most iconic wildlife destinations, offering an unparalleled opportunity to witness the country's diverse ecosystems and abundant wildlife. From the sprawling savannas of the Masai Mara to the elephant-rich plains of Amboseli, and the rugged wilderness of Tsavo, this safari promises a truly immersive experience in the heart of East Africa.`,
     price: "From $4,000 per person",
     duration: "10 Days / 9 Nights",
-    highlights: [
-      "Big Five viewing opportunities",
-      "Visit to Nairobi National Park",
-      "David Sheldrick Elephant Orphanage visit",
-      "Luxury tented camps experience",
-      "Cultural visit to Maasai village",
+   
+  
+     includes: [
+      {
+        title:  "International flights",
+        status: true
+      },
+       {
+        title:   "Full board accommodation",
+        status: true
+      },
+       {
+        title:   "Airport transfers",
+        status: true
+      },
+       {
+        title:  "Professional driver-guide",
+        status: true
+      },
+       {
+        title:  "Bottled water during game drives",
+        status: false
+      },
+       {
+        title:   "International flights" ,
+        status: false
+      },
+       {
+        title:  "Visa fees"  ,
+        status: false
+      },
+       {
+        title:  "Travel insurance"  ,
+        status: false
+      },
+       {
+        title:  "Tips and gratuities" ,
+        status: false
+      },
+        {
+        title:   "Personal expenses" ,
+        status: false
+      },
     ],
-    schedule: [
-      "5:00 AM - Early morning game drive",
-      "11:00 AM - Brunch at camp",
-      "1:00 PM - Relaxation/Optional activities",
-      "3:30 PM - Evening game drive",
-      "7:30 PM - Dinner under the stars",
-    ],
-    inclusions: [
-      "Nairobi National Park entrance fee",
-      "David Sheldrick Elephant Orphanage visit",
-      "All park and reserve entrance fees",
-      "Full board accommodation",
-      "English or Spanish speaking driver-guide",
-    ],
-    exclusions: [
-      "Lunch on day 1 and last day",
-      "Optional activities",
-      "Alcoholic beverages",
-      "Laundry services",
-      "International/domestic flights",
-    ],
+
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
 
-    tourDetails: `Embark on the ultimate Kenyan adventure with our 10 Days Ultimate Kenya Safari. This comprehensive journey takes you through Kenya's most iconic wildlife destinations, offering an unparalleled opportunity to witness the country's diverse ecosystems and abundant wildlife. From the sprawling savannas of the Masai Mara to the elephant-rich plains of Amboseli, and the rugged wilderness of Tsavo, this safari promises a truly immersive experience in the heart of East Africa.`,
-    prices: {
-      highSeason: {
-        forTwo: "US$ 10,000",
-        perPerson: "US$ 5,000",
-      },
-      midSeason: {
-        forTwo: "US$ 9,000",
-        perPerson: "US$ 4,500",
-      },
-      lowSeason: {
-        forTwo: "US$ 8,000",
-        perPerson: "US$ 4,000",
-      },
-    },
-    seasons: {
-      high: "1st July – 31st Oct 2024, 20th Dec 2024 – 5th Jan 2025",
-      mid: "2nd Jan 2024 – 31st March 2024, 1st Nov – 19th Dec 2024",
-      low: "1st Apr – 30th June 2024",
-    },
+
     itinerary: [
       {
         day: 1,
@@ -741,59 +737,57 @@ export const safariPackages: SafariPackageInterface[]  = [
     image: "/images/lion.jpg",
     title: "5 Days Express Safari",
     description:
-      "Perfect for those short on time but seeking an authentic Kenyan safari experience.",
+      `Experience the essence of Kenya's wildlife in just five action-packed days with our Express Safari. This carefully crafted itinerary takes you straight to the heart of the Masai Mara, offering an authentic safari experience without compromising on wildlife viewing opportunities. Ideal for time-conscious travelers or those looking to combine a safari with other adventures, this express package delivers the thrill of the African bush in a compact timeframe.`,
     price: "From $2,500 per person",
     duration: "5 Days / 4 Nights",
-    highlights: [
-      "Visit to Masai Mara National Reserve",
-      "Chance to see the Big Five",
-      "Comfortable lodge accommodation",
-      "Expert guides and trackers",
-      "Scenic flight options available",
+  
+   
+   includes: [
+      {
+        title:  "International flights",
+        status: true
+      },
+       {
+        title:   "Full board accommodation",
+        status: true
+      },
+       {
+        title:   "Airport transfers",
+        status: true
+      },
+       {
+        title:  "Professional driver-guide",
+        status: true
+      },
+       {
+        title:  "Bottled water during game drives",
+        status: true
+      },
+       {
+        title:   "International flights" ,
+        status: false
+      },
+       {
+        title:  "Visa fees"  ,
+        status: false
+      },
+       {
+        title:  "Travel insurance"  ,
+        status: false
+      },
+       {
+        title:  "Tips and gratuities" ,
+        status: false
+      },
+        {
+        title:   "Personal expenses" ,
+        status: false
+      },
     ],
-    schedule: [
-      "6:00 AM - Sunrise game drive",
-      "11:00 AM - Brunch at lodge",
-      "2:00 PM - Afternoon wildlife viewing",
-      "6:00 PM - Sundowner experience",
-      "8:00 PM - Dinner and stargazing",
-    ],
-    inclusions: [
-      "All game drives in 4x4 vehicle",
-      "Park entrance fees",
-      "Full board accommodation",
-      "Airport/hotel pickup and drop-off",
-      "Flying doctors emergency evacuation cover",
-    ],
-    exclusions: [
-      "Visa fees (if applicable)",
-      "Travel insurance",
-      "Balloon safari (optional extra)",
-      "Souvenirs and curios",
-      "Tips for driver-guide and camp staff",
-    ],
+
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
 
-    tourDetails: `Experience the essence of Kenya's wildlife in just five action-packed days with our Express Safari. This carefully crafted itinerary takes you straight to the heart of the Masai Mara, offering an authentic safari experience without compromising on wildlife viewing opportunities. Ideal for time-conscious travelers or those looking to combine a safari with other adventures, this express package delivers the thrill of the African bush in a compact timeframe.`,
-    prices: {
-      highSeason: {
-        forTwo: "US$ 5,500",
-        perPerson: "US$ 2,750",
-      },
-      midSeason: {
-        forTwo: "US$ 5,000",
-        perPerson: "US$ 2,500",
-      },
-      lowSeason: {
-        forTwo: "US$ 4,500",
-        perPerson: "US$ 2,250",
-      },
-    },
-    seasons: {
-      high: "1st July – 31st Oct 2024, 20th Dec 2024 – 5th Jan 2025",
-      mid: "2nd Jan 2024 – 31st March 2024, 1st Nov – 19th Dec 2024",
-      low: "1st Apr – 30th June 2024",
-    },
+    
     itinerary: [
       {
         day: 1,

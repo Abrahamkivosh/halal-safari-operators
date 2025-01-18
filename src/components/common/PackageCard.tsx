@@ -92,7 +92,7 @@ const PackageCard: React.FC<SafariPackageInterface> = ({
           borderRadius="full"
           fontSize="md"
           py={6}
-          onClick={() => router.push(`/package/${id}`)}
+          onClick={() => router.push(`/safaris/${id}`)}
         >
           Explore Package
         </Button>
