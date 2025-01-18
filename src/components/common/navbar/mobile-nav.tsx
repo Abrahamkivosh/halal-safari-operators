@@ -18,10 +18,10 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import Link from "next/link";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useColorModeValue } from "@/components/ui/color-mode";
+import { useRouter } from "next/navigation";
 interface NavType {
   label: string;
   link?: string;
@@ -32,13 +32,26 @@ interface NavType {
 }
 
 const MobileNav = ({ navData }: { navData: NavType[] }) => {
-  const [open, setOpen] = useState(false);
+  const [openDraw, setOpen] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const linkColor = useColorModeValue("gray.500", "gray.800");
+  const { open, onToggle } = useDisclosure();
+  const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
+  const router = useRouter();
+
+  const navigate = (link?: string) => {
+    if (!link) {
+      onToggle();
+      return;
+    }
+    router.push(link);
+    setOpen(false);
+  };
+
   return (
     <Box>
-      <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
+      <DrawerRoot open={openDraw} onOpenChange={(e) => setOpen(e.open)}>
         <DrawerBackdrop />
         <DrawerTrigger asChild>
           <Button
@@ -65,8 +78,48 @@ const MobileNav = ({ navData }: { navData: NavType[] }) => {
               separator={<StackSeparator bg="blue" h="1px" />}
               width={"100%"}
             >
-              {navData.map((nav) => (
-                <MobileNavItem key={nav.label} {...nav} />
+              {navData.map((nav, index) => (
+                <Box w="100%" key={index}>
+                  <Stack
+                    direction="row"
+                    align="center"
+                    justify="space-between"
+                    w="100%"
+                    color={linkColor}
+                    _hover={{
+                      bg: "brand.100",
+                      color: linkHoverColor,
+                    }}
+                    onClick={() => navigate(nav.link)}
+                  >
+                    {nav.label}
+                    {nav.subItems && <FaChevronDown />}
+                  </Stack>
+
+                  {nav.subItems && (
+                    <Stack
+                      display={open ? "block" : "none"}
+                      w="100%"
+                      separator={<StackSeparator bg="green" h="1px" />}
+                    >
+                      {nav.subItems.map((child) => (
+                        <Text
+                          key={child.label}
+                          p={0}
+                          pl={4}
+                          color={linkColor}
+                          _hover={{
+                            bg: "blue.900",
+                            color: linkHoverColor,
+                          }}
+                          onClick={() => navigate(child.link)}
+                        >
+                          {child.label}
+                        </Text>
+                      ))}
+                    </Stack>
+                  )}
+                </Box>
               ))}
             </Stack>
           </DrawerBody>
@@ -83,55 +136,3 @@ const MobileNav = ({ navData }: { navData: NavType[] }) => {
 };
 
 export default MobileNav;
-const MobileNavItem = ({ label, subItems, link }: NavType) => {
-  const { open, onToggle } = useDisclosure();
-  const linkColor = useColorModeValue("gray.500", "gray.800");
-  const linkHoverColor = useColorModeValue("blue.800", "brand.primary");
-  return (
-    <Box w="100%">
-      <Link href={link ?? "#"} passHref>
-        <Stack
-          direction="row"
-          align="center"
-          justify="space-between"
-          w="100%"
-          onClick={onToggle}
-        >
-          <Text
-            color={linkColor}
-            _hover={{
-              bg: "brand.100",
-              color: linkHoverColor,
-            }}
-          >
-            {label}
-          </Text>
-          {subItems && <FaChevronDown />}
-        </Stack>
-      </Link>
-      {subItems && (
-        <Stack
-          display={open ? "block" : "none"}
-          w="100%"
-          separator={<StackSeparator bg="green" h="1px" />}
-        >
-          {subItems.map((child) => (
-            <Link key={child.label} href={child.link} passHref>
-              <Text
-                p={0}
-                pl={4}
-                color={linkColor}
-                _hover={{
-                  bg: "blue.900",
-                  color: linkHoverColor,
-                }}
-              >
-                {child.label}
-              </Text>
-            </Link>
-          ))}
-        </Stack>
-      )}
-    </Box>
-  );
-};
