@@ -1,19 +1,14 @@
 "use client";
 // src/components/homePage/partnersSection.tsx
 import { partnersData } from "@/utilities/constants";
-import { Box, Stack, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { useColorModeValue } from "../ui/color-mode";
 
 const PartnersSection = () => {
   return (
-    <Box
-      data-aos="fade-up"
-      py={{ base: "1rem", md: "1rem" }}
-      position={"relative"}
-    >
+    <Box py={{ base: "1rem", md: "1rem" }} position={"relative"}>
       {/* Section Title */}
       <Text
         fontSize={{ base: "2xl", md: "4xl" }}
@@ -28,7 +23,7 @@ const PartnersSection = () => {
         textAlign="center"
         mb="3rem"
         fontSize={{ base: "md", md: "lg" }}
-        color={useColorModeValue("gray.50", "gray.500")}
+        color={useColorModeValue("gray.500", "gray.50")}
       >
         We are proud to be associated with the following partners who have made
         our work easier.
@@ -37,9 +32,8 @@ const PartnersSection = () => {
       {/* Partner Logos Marquee */}
       <Marquee autoFill pauseOnHover speed={80} gradient gradientWidth={100}>
         {partnersData.map((partner, i) => (
-          <Link key={i} passHref href={partner.link}>
+          <Link key={i} passHref href={partner.link} target="_blank">
             <Stack
-              maxH={300}
               h={200}
               w={200}
               align="center"
@@ -50,7 +44,6 @@ const PartnersSection = () => {
               transition="all 0.3s ease"
               mr="2rem"
               _hover={{
-                transform: "rotate(5deg)",
                 boxShadow: "2xl",
                 borderColor: "brand.primary",
                 borderWidth: "2px",
@@ -62,8 +55,6 @@ const PartnersSection = () => {
               <Image
                 src={partner.logo}
                 alt={partner.name}
-                width={100}
-                height={100}
                 style={{
                   objectFit: "cover",
                 }}
