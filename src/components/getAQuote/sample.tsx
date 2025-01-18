@@ -46,7 +46,7 @@ export const DemoSample = () => {
   const invalid = !!errors.notificationPreference;
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form>
       <Fieldset.Root invalid={invalid}>
         <Fieldset.Legend>Select your framework</Fieldset.Legend>
         <CheckboxGroup

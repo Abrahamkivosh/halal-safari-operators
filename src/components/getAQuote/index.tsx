@@ -46,7 +46,6 @@ const GetAQuoteComponent = () => {
     setLoading(true);
     try {
       const response = await getQuotationAction(data);
-      console.log(response);
       setLoading(false);
     } catch (error) {
       console.error(error);

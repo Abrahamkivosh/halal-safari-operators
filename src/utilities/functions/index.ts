@@ -55,7 +55,6 @@ export const defaultGetImage = async (
     const { data } = await axiosInstance.get<string>(
       `/assets/image/${id}?w=${width}&h=${height}&mime=${mime}`
     );
-    console.log("Image URL", data);
     return data;
   } catch (axiosError: unknown) {
     const message =

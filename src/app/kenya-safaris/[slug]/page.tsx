@@ -19,7 +19,6 @@ interface Props extends PageProps {
 const SubcategoryPage: React.FC<Props> = async (props) => {
   const { params } = props;
   const { slug } = await params;
-  console.log(slug);
   const subCategory = await getSubCategoryById(slug);
   if (!subCategory) {
     notFound();
