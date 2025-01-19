@@ -7,15 +7,13 @@ import {
   Image,
   VStack,
   HStack,
-  Button,
   Badge,
   Flex,
+  FormatNumber,
 } from "@chakra-ui/react";
 import { useColorModeValue } from "../ui/color-mode";
 import { useRouter } from "next/navigation";
-import { FaCableCar } from "react-icons/fa6";
 import { FaCalendar, FaStar, FaUser } from "react-icons/fa";
-import { formatPrice } from "@/utilities/constants";
 import Link from "next/link";
 
 interface SafariPackageInterface {
@@ -40,10 +38,8 @@ const PackageCard: React.FC<SafariPackageInterface> = ({
   const bgColor = useColorModeValue("whiteAlpha.900", "gray.800");
   const textColor = useColorModeValue("gray.900", "white");
   const shadowColor = useColorModeValue("lg", "dark-lg");
-  const buttonBg = useColorModeValue("brand.primary", "brand.900");
-  const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
+
   const textLightColor = useColorModeValue("gray.500", "gray.400");
-  const router = useRouter();
 
   return (
     <>
@@ -100,7 +96,7 @@ const PackageCard: React.FC<SafariPackageInterface> = ({
                 </Badge>
               </Box>
               <Text fontSize="lg" fontWeight="semibold" color={textColor}>
-                {formatPrice(price)}
+                <FormatNumber value={price} style="currency" currency="USD" />
               </Text>
             </HStack>
           </VStack>

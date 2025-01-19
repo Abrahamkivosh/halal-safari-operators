@@ -1,6 +1,6 @@
 // src/components/common/Loading.tsx
 import { Box, Skeleton, Stack } from "@chakra-ui/react";
-import React from "react";
+import React, { memo } from "react";
 
 const LoadingComponent: React.FC = () => {
   return (
@@ -15,4 +15,4 @@ const LoadingComponent: React.FC = () => {
   );
 };
 
-export default LoadingComponent;
+export default memo(LoadingComponent);

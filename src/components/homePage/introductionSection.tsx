@@ -4,6 +4,11 @@ import { marginX } from "@/utilities/constants";
 import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { useColorModeValue } from "../ui/color-mode";
+import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
+import LoadingComponent from "../common/Loading";
+import ErrorComponent from "../common/ErrorComponent";
+import { getImageURL } from "@/utilities/functions";
+import Link from "next/link";
 
 const IntroductionSection = () => {
   // Dynamic color values for dark mode support
@@ -12,6 +17,17 @@ const IntroductionSection = () => {
   const headingColor = useColorModeValue("brand.primary", "brand.secondary");
   const textColor = useColorModeValue("gray.700", "brand.secondary");
   const boxShadow = useColorModeValue("xl", "dark-lg");
+
+  const { sectionData, error, loading } =
+    useDefaultSectionData("welcomeMessage");
+
+  if (loading || !sectionData) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   return (
     <Box py={{ base: "1.5rem", sm: "2rem" }} bg={bgColor}>
@@ -31,8 +47,12 @@ const IntroductionSection = () => {
           data-aos="fade-left"
         >
           <Image
-            src="/images/maasai.jpg"
-            alt="A Maasai tribe member representing African culture"
+            src={
+              sectionData.image
+                ? getImageURL(sectionData.image.path)
+                : "/halal-safari-operator-logo-light.svg"
+            }
+            alt={`${sectionData.title} logo`}
             width={500}
             height={500}
             style={{
@@ -45,24 +65,27 @@ const IntroductionSection = () => {
 
         {/* Text Section */}
         <Stack gap={{ base: 2, sm: 4 }}>
-          <Heading
-            as="h2"
-            fontSize={{ base: "4xl", sm: "6xl" }}
-            color={headingColor}
-            textAlign={{ base: "center", sm: "left" }}
-            lineHeight={{ base: "1.2", sm: "1.1" }}
-            data-aos="fade-down"
-            dangerouslySetInnerHTML={{
-              __html: "Welcome To Halal Safari Operator",
-            }}
-          />
+          <Link href={sectionData.link || "#"} passHref>
+            <Heading
+              as="h2"
+              fontSize={{ base: "4xl", sm: "6xl" }}
+              color={headingColor}
+              textAlign={{ base: "center", sm: "left" }}
+              lineHeight={{ base: "1.2", sm: "1.1" }}
+              data-aos="fade-down"
+              dangerouslySetInnerHTML={{
+                __html: sectionData?.title || "Best Safari Operator",
+              }}
+            />
+          </Link>
 
           <Stack fontSize={{ base: "md", sm: "lg" }} color={textColor}>
             <Text
               data-aos="fade-up"
               dangerouslySetInnerHTML={{
                 __html:
-                  "We will provide a genuine African experience, regardless of whether this is your first safari or you are a seasoned traveler. Explore safaris, delve into cultural city tours, conquer Kilimanjaro, or unwind in a tranquil resort — our expertise ensures you get the most out of your journey. Discover vital planning details, book a complete journey through us, or contact us for personalised trip. Based in Kenya, operating across 16 African countries.",
+                  sectionData?.description ||
+                  "Best Safari Operator in the world",
               }}
             />
           </Stack>

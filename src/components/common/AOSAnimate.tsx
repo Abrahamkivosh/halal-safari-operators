@@ -5,13 +5,7 @@ import { memo, useEffect } from "react";
 
 const AOSAnimate = () => {
   useEffect(() => {
-    AOS.init({
-      once: false,
-      offset: 100,
-      disable: "phone",
-      duration: 1000,
-      easing: "ease",
-    });
+    AOS.init();
   }, []);
 
   return null;

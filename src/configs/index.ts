@@ -8,7 +8,9 @@ export const CONTACT_PHONE =  "0712345678";
 
 export const CMS_URL =   "https://cms.halalsafarioperator.com" ;
 export const CMS_ASSETS_URL = "https://cms.halalsafarioperator.com/assets";
+export const CMS_IMAGE_URL =  "https://cms.halalsafarioperator.com/storage/uploads";
 export const CMS_TOKEN =  "USR-e2f34094637cf0a319ce1bc90143fafb7c20ec23";
+
 
 
 export const SITE_NAME = process.env.SITE_NAME || "Halal safari Operator";

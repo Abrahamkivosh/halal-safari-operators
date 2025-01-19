@@ -1,7 +1,7 @@
 // src/components/home/Hero.tsx
 "use client";
 import React from "react";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { Button } from "../ui/button";
 import { RiArrowRightLine } from "react-icons/ri";
 import Link from "next/link";
@@ -30,7 +30,7 @@ const Hero = () => {
   }
 
   return (
-    <Box
+    <Stack
       position="relative"
       height="80vh"
       bgImage="url('images/lion.jpg')"
@@ -57,7 +57,7 @@ const Hero = () => {
           direction="column"
           align="center"
           gap={6}
-          maxWidth="800px"
+          // maxWidth="800px"
           px={4}
           py={6}
           bg="rgba(255, 255, 255, 0.1)"
@@ -73,14 +73,6 @@ const Hero = () => {
             color={textColor}
             lineHeight="1.2"
             data-state="open"
-            _open={{
-              animationName: "fade-in, scale-in",
-              animationDuration: "300ms",
-            }}
-            _closed={{
-              animationName: "fade-out, scale-out",
-              animationDuration: "120ms",
-            }}
           >
             {sectionData?.title}
           </Heading>
@@ -109,7 +101,7 @@ const Hero = () => {
           </Link>
         </Flex>
       </Flex>
-    </Box>
+    </Stack>
   );
 };
 
