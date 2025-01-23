@@ -11,7 +11,7 @@ interface Props {
 }
 
 const PagesHeroSection = ({ path, imgUrl, title, h }: Props) => {
-  const imagwUrl = imgUrl !== "" ? imgUrl : "/images/elephant.jpg";
+  const imagwUrl = imgUrl ? imgUrl : "/images/lion.jpg";
   return (
     <Box position="relative">
       <Flex
@@ -37,17 +37,6 @@ const PagesHeroSection = ({ path, imgUrl, title, h }: Props) => {
           >
             {title || path}
           </Heading>
-          <Flex>
-            <Heading
-              fontSize="xl"
-              fontWeight="600"
-              color="brand.white"
-              pt={2}
-              textShadow={{ base: "1px 1px 2px #000", md: "2px 2px 4px #000" }}
-            >
-              <Link href="/">Home</Link> / {path}
-            </Heading>
-          </Flex>
         </Stack>
       </Flex>
 

@@ -5,10 +5,10 @@ import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { useColorModeValue } from "../ui/color-mode";
 import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
-import LoadingComponent from "../common/Loading";
 import ErrorComponent from "../common/ErrorComponent";
 import { getImageURL } from "@/utilities/functions";
 import Link from "next/link";
+import LoadingComponent from "../common/LoadingComponent";
 
 const IntroductionSection = () => {
   // Dynamic color values for dark mode support

@@ -1,27 +1,21 @@
 // src/components/homePage/MainSafaris.tsx
 "use client";
 
-import { Box, SimpleGrid, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, SimpleGrid, Heading, Text, Image, For } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import ErrorComponent from "../common/ErrorComponent";
+import LoadingComponent from "../common/LoadingComponent";
+import { getImageURL } from "@/utilities/functions";
 
 const MainSafaris = () => {
-  const destinations = [
-    {
-      id: 1,
-      image: "/images/nairobi.jpg",
-      title: "Explore Safaris In Kenya",
-      subTitle: "Discover the best of Kenya's wildlife",
-      link: "/safaris/kenya",
-    },
-    {
-      id: 2,
-      image: "/images/tanzania.jpg",
-      title: "Explore Safaris In Tanzania",
-      subTitle: "Experience the beauty of Tanzania",
-      link: "/safaris/tanzania",
-    },
-  ];
+  const { sectionArray: categories, error } =
+    useDefaultSectionArray("safariCategory");
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   // Dynamic styles for light/dark mode
   const bgColor = useColorModeValue("brand.secondary", "brand.900");
@@ -32,16 +26,6 @@ const MainSafaris = () => {
   );
   const overlayTextColor = useColorModeValue("white", "black");
   const boxShadow = useColorModeValue("lg", "dark-lg");
-  const dataAOSDisplay = [
-    "fade-up",
-    "fade-up-right",
-    "fade-up-left",
-    "fade-right",
-    "fade-left",
-    "fade-down",
-    "fade-down-right",
-    "fade-down-left",
-  ];
 
   return (
     <Box
@@ -59,76 +43,79 @@ const MainSafaris = () => {
         lineHeight="1.2"
         data-aos="fade-right"
       >
-        Our Safaris
+        Explore Our Safari Destinations
       </Heading>
 
       {/* Destinations Grid */}
       <SimpleGrid columns={{ base: 1, md: 2 }} gap="2rem">
-        {destinations.map((destination) => (
-          <Link key={destination.id} href={destination.link} passHref>
-            <Box
-              position="relative"
-              overflow="hidden"
-              borderRadius="lg"
-              boxShadow={boxShadow}
-              transition="transform 0.3s ease, box-shadow 0.3s ease"
-              _hover={{
-                transform: "scale(1.05)",
-                boxShadow: "xl",
-              }}
-              aria-label={`Learn more about ${destination.title}`}
-              data-aos={
-                dataAOSDisplay[
-                  Math.floor(Math.random() * dataAOSDisplay.length)
-                ]
-              }
-            >
-              {/* Background Image */}
-              <Image
-                src={destination.image}
-                alt={destination.title}
-                objectFit="cover"
-                width="100%"
-                height="100%"
-                borderRadius="lg"
-                style={{ aspectRatio: "4/3" }}
-              />
-
-              {/* Overlay */}
+        <For each={categories} fallback={<LoadingComponent />}>
+          {(category, index) => (
+            <Link key={index} href={"/categories/" + category._id} passHref>
               <Box
-                position="absolute"
-                top="50%"
-                left="0%"
-                width="100%"
-                // height="100%"
-                bg={overlayBg}
-                opacity={{ base: "1", md: "1" }} // Always visible on mobile
-                _hover={{ opacity: "1" }} // Hover effect for larger screens
-                transition="opacity 0.3s ease-in-out"
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                color={overlayTextColor}
-                textAlign="center"
-                p="1rem"
-                borderRadius={{ base: "lg", md: "lg" }}
-                alignContent={{ base: "center", md: "center" }}
+                position="relative"
+                overflow="hidden"
+                borderRadius="lg"
+                boxShadow={boxShadow}
+                transition="transform 0.3s ease, box-shadow 0.3s ease"
+                _hover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "xl",
+                }}
+                aria-label={`Learn more about ${category.title}`}
+                maxH={{ base: "20rem", sm: "30rem" }}
               >
-                <Heading
-                  fontWeight="bold"
-                  mb="0.5rem"
-                  fontSize={{ base: "xl", sm: "3xl" }}
+                {/* Background Image */}
+                <Image
+                  src={
+                    category.image
+                      ? getImageURL(category.image.path)
+                      : "/halal-safari-operator-logo-light.svg"
+                  }
+                  alt={category.title}
+                  objectFit="cover"
+                  objectPosition={{ base: "center", md: "top" }}
+                  width="100%"
+                  height="100%"
+                  borderRadius="lg"
+                  style={{ aspectRatio: "4/3" }}
+                />
+
+                {/* Overlay */}
+                <Box
+                  position="absolute"
+                  top="50%"
+                  left="0%"
+                  width="100%"
+                  // height="100%"
+                  bg={overlayBg}
+                  opacity={{ base: "1", md: "1" }} // Always visible on mobile
+                  _hover={{ opacity: "1" }} // Hover effect for larger screens
+                  transition="opacity 0.3s ease-in-out"
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  color={overlayTextColor}
+                  textAlign="center"
+                  p="1rem"
+                  borderRadius={{ base: "lg", md: "lg" }}
+                  alignContent={{ base: "center", md: "center" }}
                 >
-                  {destination.title}
-                </Heading>
-                <Text fontSize={{ base: "md", sm: "lg" }}>
-                  {destination.subTitle}
-                </Text>
+                  <Heading
+                    fontWeight="bold"
+                    mb="0.5rem"
+                    fontSize={{ base: "xl", sm: "3xl" }}
+                  >
+                    {category.title}
+                  </Heading>
+                  <Text fontSize={{ base: "md", sm: "lg" }}>
+                    {category.subTitle}
+                  </Text>
+                </Box>
               </Box>
-            </Box>
-          </Link>
-        ))}
+            </Link>
+          )}
+        </For>
       </SimpleGrid>
     </Box>
   );

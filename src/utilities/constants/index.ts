@@ -31,7 +31,6 @@ export const socials = [
     link: "https://www.linkedin.com/company/clean-start-kenya/",
     name: "Linkedin",
   },
-
 ];
 
 export const contactsData = [
@@ -59,22 +58,18 @@ export const navData: NavType[] = [
     link: "/",
   },
   {
-    label: "Kenya safaris",
-    link: "/kenya-safaris",
+    label: "categories",
+    link: "/categories",
   },
-  {
-    label: "Tanazania safaris",
-    link: "/tanzania-safaris",
-  },
+
   {
     label: "Destinations",
     link: "/destinations",
   },
-   {
+  {
     label: "About Us",
     link: "/who-we-are",
   },
-
 
   {
     label: "Get A Quote",
@@ -102,25 +97,17 @@ export async function getDestinationById(id: number) {
   return destinations.find((destination) => destination.id == id);
 }
 
-export async function getCategoryById(id: string) {
-  return categories.find((category) => category.id === id);
-}
-export async function getSubCategoriesByCategoryId( category_id: string){
-  return subCategories.filter((subCategory) => subCategory.category_id === category_id);
-}
-
-export async function getSubCategoryById(id: number) {
-  return subCategories.find((subCategory) => subCategory.id == id);
-}
-export async function getSubCategoryPackages(sub_category_id: number| string) {
-  return safariPackages.filter((pkg) => pkg.sub_category_id === sub_category_id);
+export async function getSubCategoryPackages(sub_category_id: number | string) {
+  return safariPackages.filter(
+    (pkg) => pkg.sub_category_id === sub_category_id
+  );
 }
 export const formatPrice = (price: number) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   }).format(price);
-}
+};
 
 export const aboutUsData = [
   {
@@ -147,37 +134,31 @@ export const destinations: DestinationInterface[] = [
     id: 1,
     title: "Mount Kilimanjaro, Tanzania",
     image: "/images/packages/Amboseli-Safari.jpeg",
-    subTitle:"Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
-    description: "Mount Kilimanjaro is the highest peak in Africa and one of the most iconic mountains in the world. Located in Tanzania, this majestic mountain offers breathtaking views and thrilling adventures for climbers of all levels. Whether you're an experienced mountaineer or a first-time trekker, Kilimanjaro has something for everyone. Join us on an unforgettable journey to the Roof of Africa and discover the magic of this natural wonder.",
-    activities: [
-      "Climbing",
-      "Safari",
-      "Cultural Tours"
-    ]
+    subTitle:
+      "Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
+    description:
+      "Mount Kilimanjaro is the highest peak in Africa and one of the most iconic mountains in the world. Located in Tanzania, this majestic mountain offers breathtaking views and thrilling adventures for climbers of all levels. Whether you're an experienced mountaineer or a first-time trekker, Kilimanjaro has something for everyone. Join us on an unforgettable journey to the Roof of Africa and discover the magic of this natural wonder.",
+    activities: ["Climbing", "Safari", "Cultural Tours"],
   },
   {
     id: 2,
     title: "Masai Mara, Kenya",
     image: "/images/packages/Masai-Mara-Safari.jpg",
-    subTitle:"Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
-    description: "The Masai Mara is one of Africa's most iconic safari destinations, known for its incredible wildlife migration and diverse ecosystems. Located in Kenya, this vast savannah is home to a wide variety of animals, including the Big Five (lion, elephant, buffalo, leopard, and rhinoceros), as well as cheetahs, zebras, giraffes, and more. Join us on an unforgettable safari adventure and witness the magic of the Masai Mara for yourself.",
-    activities: [
-      "Game Drives",
-      "Balloon Safaris",
-      "Cultural Visits"
-    ]
+    subTitle:
+      "Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
+    description:
+      "The Masai Mara is one of Africa's most iconic safari destinations, known for its incredible wildlife migration and diverse ecosystems. Located in Kenya, this vast savannah is home to a wide variety of animals, including the Big Five (lion, elephant, buffalo, leopard, and rhinoceros), as well as cheetahs, zebras, giraffes, and more. Join us on an unforgettable safari adventure and witness the magic of the Masai Mara for yourself.",
+    activities: ["Game Drives", "Balloon Safaris", "Cultural Visits"],
   },
   {
-     id: 3,
+    id: 3,
     title: "Victoria Falls, Zimbabwe",
     image: "/images/packages/Ngorongoro-Safari.jpg",
-    subTitle: "Discover the majestic beauty of one of the world's largest waterfalls.",
-    description: "Victoria Falls is one of the world's largest waterfalls, located on the border of Zimbabwe and Zambia. Known as the 'Smoke that Thunders,' this majestic natural wonder is a sight to behold, with its powerful cascades and misty spray visible from miles away. Join us on an unforgettable journey to Victoria Falls and experience the beauty and power of this iconic waterfall up close.",
-    activities: [
-      "Helicopter Rides",
-      "River Cruises",
-      "Bungee Jumping"
-    ]
+    subTitle:
+      "Discover the majestic beauty of one of the world's largest waterfalls.",
+    description:
+      "Victoria Falls is one of the world's largest waterfalls, located on the border of Zimbabwe and Zambia. Known as the 'Smoke that Thunders,' this majestic natural wonder is a sight to behold, with its powerful cascades and misty spray visible from miles away. Join us on an unforgettable journey to Victoria Falls and experience the beauty and power of this iconic waterfall up close.",
+    activities: ["Helicopter Rides", "River Cruises", "Bungee Jumping"],
   },
 ];
 
@@ -245,7 +226,6 @@ export const blogs = [
   },
 ];
 
-
 export const teams: Team[] = [
   {
     name: "John Doe",
@@ -285,135 +265,62 @@ export const teams: Team[] = [
   },
 ];
 
-
-
-export const categories: CategoryInterface[] = [
-  {
-    id: 'kenya-safaris',
-    image: "/images/packages/Amboseli-Safari.jpeg",
-    title: "Kenya Safaris",
-    description: "Discover the magic of Kenya with our range of safari packages to the country's most iconic destinations.",
-    
-  },
-  {
-    id: 'tanzania-safaris',
-    title: "Tanzania Safaris",
-    image: "/images/packages/Lion-giraffe-Serengeti-National-Park-Tanzania.jpg",
-    description: "Embark on an unforgettable journey through Tanzania's most renowned national parks and conservation areas.",
-  }
-]
-
-export const subCategories: SubCategoryInterface[] = [
-  {
-    id:1,
-    category_id: "kenya-safaris",
-    title: "7 Days Safaris",
-    image: "/images/packages/Masai-Mara-Safari.jpg",
-    description: "Experience the best of Kenya with our 7-day safari packages to the country's most iconic destinations.",
-  },
-  {
-    id:2,
-    category_id: "kenya-safaris",
-    title: "10 Days Safaris",
-    image: "/images/packages/Ngorongoro-Safari.jpg",
-    description: "Embark on an unforgettable 10-day safari adventure through Kenya's most renowned national parks and reserves.",
-  },
-  {
-    id: 3,
-    category_id:  "kenya-safaris",
-    title: "5 Days Safaris",
-    image: "images/buffalo.jpg",
-    description: "Discover the beauty of Kenya with our 5-day safari packages to the country's most iconic destinations.",
-  },
-  {
-    id: 5,
-    category_id: "kenya-safaris",
-    image: "images/elephant.jpg",
-    title: "3 Days Safaris",
-    description: "Experience the magic of Kenya with our 3-day safari packages to the country's most renowned national parks.",
-  },
-  {
-    id: 6,
-    category_id: "tanzania-safaris",
-    image: "images/dodoma.jpg",
-    title: "7 Days Safaris",
-    description: "Embark on an unforgettable 7-day safari adventure through Tanzania's most iconic national parks and reserves.",
-  },
-  {
-    id: 7,
-    category_id: "tanzania-safaris",
-    title: "10 Days Safaris",
-     image: "images/elephant.jpg",
-    description: "Discover the beauty of Tanzania with our 10-day safari packages to the country's most renowned destinations.",
-  },
-  {
-    id: 8,
-    category_id: "tanzania-safaris",
-    title: "5 Days Safaris",
-     image: "images/elephant.jpg",
-    description: "Experience the best of Tanzania with our 5-day safari packages to the country's most iconic destinations.",
-  },
- 
-]
-
-export const safariPackages: SafariPackageInterface[]  = [
+export const safariPackages: SafariPackageInterface[] = [
   {
     id: "7-days-masai-mara-amboseli-safari",
-    sub_category_id:1,
+    sub_category_id: 1,
     image: "/images/packages/Masai-Mara-Safari.jpg",
     title: "7 Days Masai Mara & Amboseli Safari",
-    description:  `Gear up for a whirlwind adventure in the heart of Kenya! This 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari itinerary whisks you away from Nairobi on a thrilling quest to witness the legendary Big Five. Witness the majestic elephants of Amboseli framed by the breathtaking backdrop of Mount Kilimanjaro. Then, lose yourself in the endless plains of the Masai Mara, where lions roar and wildebeest thunder across the savannah. Prepare for action-packed game drives, unforgettable wildlife encounters, and evenings spent under a canopy of stars. This perfectly paced 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari promises an unforgettable encounter with the raw beauty and untamed spirit of Kenya.`,
+    description: `Gear up for a whirlwind adventure in the heart of Kenya! This 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari itinerary whisks you away from Nairobi on a thrilling quest to witness the legendary Big Five. Witness the majestic elephants of Amboseli framed by the breathtaking backdrop of Mount Kilimanjaro. Then, lose yourself in the endless plains of the Masai Mara, where lions roar and wildebeest thunder across the savannah. Prepare for action-packed game drives, unforgettable wildlife encounters, and evenings spent under a canopy of stars. This perfectly paced 7 Days 6 Nights Nairobi | Amboseli | Masai Mara | Nairobi big five Safari promises an unforgettable encounter with the raw beauty and untamed spirit of Kenya.`,
     price: 1500,
     duration: "7 Days / 6 Nights",
     people: 10,
     rating: 4,
 
-   
     includes: [
       {
-        title:  "International flights",
-        status: true
+        title: "International flights",
+        status: true,
       },
-       {
-        title:   "Full board accommodation",
-        status: true
+      {
+        title: "Full board accommodation",
+        status: true,
       },
-       {
-        title:   "Airport transfers",
-        status: true
+      {
+        title: "Airport transfers",
+        status: true,
       },
-       {
-        title:  "Professional driver-guide",
-        status: true
+      {
+        title: "Professional driver-guide",
+        status: true,
       },
-       {
-        title:  "Bottled water during game drives",
-        status: true
+      {
+        title: "Bottled water during game drives",
+        status: true,
       },
-       {
-        title:   "International flights" ,
-        status: false
+      {
+        title: "International flights",
+        status: false,
       },
-       {
-        title:  "Visa fees"  ,
-        status: false
+      {
+        title: "Visa fees",
+        status: false,
       },
-       {
-        title:  "Travel insurance"  ,
-        status: false
+      {
+        title: "Travel insurance",
+        status: false,
       },
-       {
-        title:  "Tips and gratuities" ,
-        status: false
+      {
+        title: "Tips and gratuities",
+        status: false,
       },
-        {
-        title:   "Personal expenses" ,
-        status: false
+      {
+        title: "Personal expenses",
+        status: false,
       },
     ],
 
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
-
 
     itinerary: [
       {
@@ -432,62 +339,59 @@ export const safariPackages: SafariPackageInterface[]  = [
   },
   {
     id: "10-days-ultimate-kenya-safari",
-     sub_category_id:1,
+    sub_category_id: 1,
     image: "/images/dodoma.jpg",
     title: "10 Days Ultimate Kenya Safari",
-    description:
-     `Embark on the ultimate Kenyan adventure with our 10 Days Ultimate Kenya Safari. This comprehensive journey takes you through Kenya's most iconic wildlife destinations, offering an unparalleled opportunity to witness the country's diverse ecosystems and abundant wildlife. From the sprawling savannas of the Masai Mara to the elephant-rich plains of Amboseli, and the rugged wilderness of Tsavo, this safari promises a truly immersive experience in the heart of East Africa.`,
+    description: `Embark on the ultimate Kenyan adventure with our 10 Days Ultimate Kenya Safari. This comprehensive journey takes you through Kenya's most iconic wildlife destinations, offering an unparalleled opportunity to witness the country's diverse ecosystems and abundant wildlife. From the sprawling savannas of the Masai Mara to the elephant-rich plains of Amboseli, and the rugged wilderness of Tsavo, this safari promises a truly immersive experience in the heart of East Africa.`,
     price: 4000,
     duration: "10 Days / 9 Nights",
-      people: 8,
+    people: 8,
     rating: 3,
-   
-  
-     includes: [
+
+    includes: [
       {
-        title:  "International flights",
-        status: true
+        title: "International flights",
+        status: true,
       },
-       {
-        title:   "Full board accommodation",
-        status: true
+      {
+        title: "Full board accommodation",
+        status: true,
       },
-       {
-        title:   "Airport transfers",
-        status: true
+      {
+        title: "Airport transfers",
+        status: true,
       },
-       {
-        title:  "Professional driver-guide",
-        status: true
+      {
+        title: "Professional driver-guide",
+        status: true,
       },
-       {
-        title:  "Bottled water during game drives",
-        status: false
+      {
+        title: "Bottled water during game drives",
+        status: false,
       },
-       {
-        title:   "International flights" ,
-        status: false
+      {
+        title: "International flights",
+        status: false,
       },
-       {
-        title:  "Visa fees"  ,
-        status: false
+      {
+        title: "Visa fees",
+        status: false,
       },
-       {
-        title:  "Travel insurance"  ,
-        status: false
+      {
+        title: "Travel insurance",
+        status: false,
       },
-       {
-        title:  "Tips and gratuities" ,
-        status: false
+      {
+        title: "Tips and gratuities",
+        status: false,
       },
-        {
-        title:   "Personal expenses" ,
-        status: false
+      {
+        title: "Personal expenses",
+        status: false,
       },
     ],
 
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
-
 
     itinerary: [
       {
@@ -506,63 +410,60 @@ export const safariPackages: SafariPackageInterface[]  = [
   },
   {
     id: "5-days-express-safari",
-     sub_category_id:1,
+    sub_category_id: 1,
     image: "/images/lion.jpg",
     title: "5 Days Express Safari",
-    description:
-      `Experience the essence of Kenya's wildlife in just five action-packed days with our Express Safari. This carefully crafted itinerary takes you straight to the heart of the Masai Mara, offering an authentic safari experience without compromising on wildlife viewing opportunities. Ideal for time-conscious travelers or those looking to combine a safari with other adventures, this express package delivers the thrill of the African bush in a compact timeframe.`,
+    description: `Experience the essence of Kenya's wildlife in just five action-packed days with our Express Safari. This carefully crafted itinerary takes you straight to the heart of the Masai Mara, offering an authentic safari experience without compromising on wildlife viewing opportunities. Ideal for time-conscious travelers or those looking to combine a safari with other adventures, this express package delivers the thrill of the African bush in a compact timeframe.`,
     price: 2500,
     duration: "5 Days / 4 Nights",
-      people: 6,
+    people: 6,
     rating: 5,
-  
-   
-   includes: [
+
+    includes: [
       {
-        title:  "International flights",
-        status: true
+        title: "International flights",
+        status: true,
       },
-       {
-        title:   "Full board accommodation",
-        status: true
+      {
+        title: "Full board accommodation",
+        status: true,
       },
-       {
-        title:   "Airport transfers",
-        status: true
+      {
+        title: "Airport transfers",
+        status: true,
       },
-       {
-        title:  "Professional driver-guide",
-        status: true
+      {
+        title: "Professional driver-guide",
+        status: true,
       },
-       {
-        title:  "Bottled water during game drives",
-        status: true
+      {
+        title: "Bottled water during game drives",
+        status: true,
       },
-       {
-        title:   "International flights" ,
-        status: false
+      {
+        title: "International flights",
+        status: false,
       },
-       {
-        title:  "Visa fees"  ,
-        status: false
+      {
+        title: "Visa fees",
+        status: false,
       },
-       {
-        title:  "Travel insurance"  ,
-        status: false
+      {
+        title: "Travel insurance",
+        status: false,
       },
-       {
-        title:  "Tips and gratuities" ,
-        status: false
+      {
+        title: "Tips and gratuities",
+        status: false,
       },
-        {
-        title:   "Personal expenses" ,
-        status: false
+      {
+        title: "Personal expenses",
+        status: false,
       },
     ],
 
     images: ["/images/lion.jpg", "/images/buffalo.jpg", "/images/tanzania.jpg"],
 
-    
     itinerary: [
       {
         day: 1,
@@ -581,7 +482,6 @@ export const safariPackages: SafariPackageInterface[]  = [
 ];
 
 export const videos: VideosGalleryInterface[] = [
-
   {
     id: 2,
     title: "Amboseli Safari",
@@ -597,12 +497,10 @@ export const videos: VideosGalleryInterface[] = [
     title: "Ngorongoro Safari",
     video: "https://www.youtube.com/shorts/kRiU0Z52pRc",
   },
-  
-  
-]
+];
 
 export const getVideoId = (url: string) => {
-if (url.includes("https://youtu.be")) {
+  if (url.includes("https://youtu.be")) {
     let i = url.split("https://youtu.be/")[1];
     // remove other query params if any
     return i.split("?")[0];
@@ -610,11 +508,9 @@ if (url.includes("https://youtu.be")) {
     let i = url.split("https://www.youtube.com/watch?v=")[1];
     // remove other query params if any
     return i.split("&")[0];
-  }else if (url.includes("https://www.youtube.com/shorts/")) {
+  } else if (url.includes("https://www.youtube.com/shorts/")) {
     let i = url.split("https://www.youtube.com/shorts/")[1];
     // remove other query params if any
     return i.split("?")[0];
-
   }
-}
-  
+};

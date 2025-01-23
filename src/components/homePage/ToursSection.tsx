@@ -2,29 +2,39 @@
 "use client";
 
 import React from "react";
-import { Box, Heading, SimpleGrid, Button } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Button, For } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
 import { safariPackages } from "@/utilities/constants";
 import PackageCard from "../common/PackageCard";
+import LoadingComponent from "../common/LoadingComponent";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import ErrorComponent from "../common/ErrorComponent";
 
 const ToursSection = () => {
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
   const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
-  const textColor = useColorModeValue("brand.600", "gray.200");
+  const textColor = useColorModeValue("brand.900", "brand.50");
+  const bgColor = useColorModeValue("brand.50", "brand.900");
+  const { sectionArray: categories, error } =
+    useDefaultSectionArray("safariCategory");
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   return (
     <Box
       py={{ base: "1rem", md: "1rem" }}
       px={{ base: "1rem", md: "4rem" }}
-      bg={useColorModeValue("brand.50", "brand.800")}
+      bg={bgColor}
     >
       {/* Section Title */}
       <Heading
         as="h2"
         textAlign="center"
         fontSize={{ base: "2xl", md: "4xl" }}
-        color={useColorModeValue("brand.800", "white")}
+        color={textColor}
         mb="2rem"
         data-aos="fade-up"
       >
@@ -38,14 +48,14 @@ const ToursSection = () => {
         maxW="container.xl"
         mx="auto"
       >
-        {safariPackages.map((packageData) => (
-          <PackageCard key={packageData.id} {...packageData} />
-        ))}
+        <For each={safariPackages} fallback={<LoadingComponent />}>
+          {(packageData, index) => <PackageCard key={index} {...packageData} />}
+        </For>
       </SimpleGrid>
 
       {/* View More Button */}
       <Box textAlign="center" mt="2rem">
-        <Link href="/tour" passHref>
+        <Link href="/safaris" passHref>
           <Button
             size="lg"
             bg={buttonBg}

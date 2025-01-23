@@ -7,11 +7,7 @@ interface NavType {
   }[];
 }
 
-
-
-
-
-interface Team{
+interface Team {
   name: string;
   profile_pic: string;
   position: string;
@@ -38,15 +34,13 @@ interface SafariQuoteForm {
   notificationPreference: string[]; // Preferred notification methods
 }
 
-
-
 interface DestinationInterface {
-  id: number,
-  title: string,
-  image: string,
-  subTitle: string,
-  description: string,
-  activities: string[]
+  id: number;
+  title: string;
+  image: string;
+  subTitle: string;
+  description: string;
+  activities: string[];
 }
 interface ContactUSInterface {
   name: string;
@@ -59,28 +53,6 @@ interface ContactUsActionResponseInterface {
   body: {
     message: string;
   };
-}
-
-
-
-
-
- interface CategoryInterface {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
-
-  // subCategories: SubCategoryInterface[];
-}
-
- interface SubCategoryInterface {
-    id: string|number;
-    category_id: string;
-  title: string;
-   image: string;
-  description: string;
-  // packages: SafariPackageInterface[];
 }
 
 interface SafariPackageInterface {
@@ -97,10 +69,9 @@ interface SafariPackageInterface {
   includes: {
     title: string;
     status: boolean;
-  }[],
+  }[];
 
   images: string[];
-
 
   itinerary: {
     day: number;
@@ -109,8 +80,7 @@ interface SafariPackageInterface {
   }[];
 }
 
-
-interface BooksSafariFormInterface{
+interface BooksSafariFormInterface {
   name: string;
   email?: string;
   phone: string;
@@ -118,7 +88,6 @@ interface BooksSafariFormInterface{
   number_of_aldults: number;
   number_of_children: number;
   message: string;
- 
 }
 
 interface VideosGalleryInterface {
@@ -159,8 +128,54 @@ interface Photo {
 interface DefaultSectionInterface {
   _id: string;
   title: string;
-  subtitle?: string;
+  subTitle?: string;
   description?: string;
   link?: string;
   image?: Photo;
+}
+
+interface SubCategoryInterface {
+  _id: string | number;
+  title: string;
+  image: string;
+  description: string;
+  packages?: {
+    _model: string;
+    _id: string;
+  }[];
+}
+
+interface CategoryInterface {
+  _id: string;
+  title: string;
+  subTitle?: string;
+  image?: Photo;
+  description: string;
+  subcategories?: {
+    _model: string;
+    _id: string;
+  }[];
+}
+
+interface Inclusion {
+  title: string;
+  status: boolean;
+}
+
+interface ItineraryItem {
+  title: string;
+  description: string;
+}
+
+interface TourPackageInterface {
+  image: Photo;
+  title: string;
+  description: string;
+  price: number;
+  duration: string;
+  people: number;
+  rating: number;
+  includes: Inclusion[];
+  itinerary: ItineraryItem[];
+  images?: Photo[];
 }

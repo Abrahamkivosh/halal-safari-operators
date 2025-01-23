@@ -7,7 +7,8 @@ import { RiArrowRightLine } from "react-icons/ri";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
 import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
-import LoadingComponent from "../common/Loading";
+import LoadingComponent from "../common/LoadingComponent";
+import ErrorComponent from "../common/ErrorComponent";
 
 const Hero = () => {
   // Dynamic background overlay colors for light and dark modes
@@ -26,7 +27,7 @@ const Hero = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <ErrorComponent error={error} />;
   }
 
   return (
