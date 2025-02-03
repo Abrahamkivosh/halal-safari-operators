@@ -10,6 +10,7 @@ import PackageCard from "../common/PackageCard";
 import LoadingComponent from "../common/LoadingComponent";
 import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
 import ErrorComponent from "../common/ErrorComponent";
+import PackageCardSubCategory from "../categories/PackageCardSubCategory";
 
 const ToursSection = () => {
   const buttonBg = useColorModeValue("brand.primary", "brand.900");
@@ -48,9 +49,20 @@ const ToursSection = () => {
         maxW="container.xl"
         mx="auto"
       >
-        <For each={safariPackages} fallback={<LoadingComponent />}>
+        {/* <For each={safariPackages} fallback={<LoadingComponent />}>
           {(packageData, index) => <PackageCard key={index} {...packageData} />}
         </For>
+
+        <For each={subCategory.packages} fallback={<LoadingComponent />}>
+          {(packageItem, index) => (
+            <PackageCardSubCategory
+              key={index}
+              _id={packageItem._id}
+              category_id={category_id}
+              sub_category_id={sub_category_id}
+            />
+          )}
+        </For> */}
       </SimpleGrid>
 
       {/* View More Button */}
