@@ -4,9 +4,7 @@ import axiosInstance from "../functions/axios";
 import { CMS_URL } from "@/configs";
 
 export const useDestinations = (endpoint: string) => {
-  const [sectionArray, setSectionArray] = useState<DefaultSectionInterface[]>(
-    []
-  );
+  const [sectionArray, setSectionArray] = useState<DestinationInterface[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true); // Track loading state
 
@@ -16,7 +14,7 @@ export const useDestinations = (endpoint: string) => {
 
     try {
       const url = CMS_URL + "/api/content/items/" + endpoint + "?locale=en";
-      const { data } = await axiosInstance.get<DefaultSectionInterface[]>(url);
+      const { data } = await axiosInstance.get<DestinationInterface[]>(url);
       setSectionArray(data); // Set fetched data
     } catch (axiosError: unknown) {
       // Handle errors

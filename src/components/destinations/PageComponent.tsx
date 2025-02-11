@@ -91,7 +91,7 @@ const PageComponent = () => {
                   {destination.title}
                 </Heading>
                 <Text fontSize="sm" color={mutedTextColor} mb="1rem">
-                  {destination.subTitle}
+                  {destination.subtitle}
                 </Text>
                 <Link href={`/destinations/${destination._id}`} passHref>
                   <Button
