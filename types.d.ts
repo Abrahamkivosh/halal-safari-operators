@@ -35,12 +35,17 @@ interface SafariQuoteForm {
 }
 
 interface DestinationInterface {
-  id: number;
+  image: Image;
   title: string;
-  image: string;
-  subTitle: string;
   description: string;
+  subtitle: string;
   activities: string[];
+  _modified: number;
+  _mby: string;
+  _created: number;
+  _state: number;
+  _cby: string;
+  _id: string;
 }
 interface ContactUSInterface {
   name: string;

@@ -1,21 +1,37 @@
 "use client";
 import React from "react";
-import { Box, Stack, Text, Heading, SimpleGrid, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  Text,
+  Heading,
+  SimpleGrid,
+  Flex,
+  Image,
+} from "@chakra-ui/react";
 import { FaTree } from "react-icons/fa"; // Example icons
 import Link from "next/link";
+import { getImageURL } from "@/utilities/functions";
 
 const DestinationDetails = (destination: DestinationInterface) => {
   return (
     <Box marginX={{ base: "3%", sm: "5%", md: "6%", lg: "8%" }} my={"3rem"}>
-      {/* Highlighted Image */}
       <Box
-        bgImage={`url(${destination.image})`}
-        bgSize="cover"
-        bgPos="center center"
-        borderRadius="xl"
-        height="65vh"
-        boxShadow="xl"
-      />
+        width="100%"
+        display="flex"
+        justifyContent="center"
+        alignContent={{ base: "center", md: "center" }}
+      >
+        <Image
+          src={getImageURL(destination.image.path)}
+          alt={destination.image.altText}
+          borderRadius="xl"
+          boxShadow="xl"
+          height="65vh"
+          width={{ base: "100%", md: "80%" }}
+          objectFit="cover"
+        />
+      </Box>
 
       {/* Destination Details */}
       <Stack mt="2rem" gap="2rem">
@@ -24,7 +40,7 @@ const DestinationDetails = (destination: DestinationInterface) => {
           {destination.title}
         </Heading>
         <Text fontSize="lg" textAlign="center" color="gray.600">
-          {destination.subTitle}
+          {destination.subtitle}
         </Text>
 
         {/* Description Section */}
@@ -33,9 +49,8 @@ const DestinationDetails = (destination: DestinationInterface) => {
           color="gray.700"
           fontSize="md"
           lineHeight="1.8"
-        >
-          {destination.description}
-        </Box>
+          dangerouslySetInnerHTML={{ __html: destination.description }}
+        />
 
         {/* Activities Section */}
         <Box mt="2rem">

@@ -93,9 +93,6 @@ export const partnersData = [
 export async function getPackageBySlug(slug: string) {
   return safariPackages.find((pkg) => pkg.id === slug);
 }
-export async function getDestinationById(id: number) {
-  return destinations.find((destination) => destination.id == id);
-}
 
 export async function getSubCategoryPackages(sub_category_id: number | string) {
   return safariPackages.filter(
@@ -127,38 +124,6 @@ export const aboutUsData = [
     title: "Our Vision",
     description:
       "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
-  },
-];
-export const destinations: DestinationInterface[] = [
-  {
-    id: 1,
-    title: "Mount Kilimanjaro, Tanzania",
-    image: "/images/packages/Amboseli-Safari.jpeg",
-    subTitle:
-      "Experience the highest peak in Africa with breathtaking views and thrilling adventures.",
-    description:
-      "Mount Kilimanjaro is the highest peak in Africa and one of the most iconic mountains in the world. Located in Tanzania, this majestic mountain offers breathtaking views and thrilling adventures for climbers of all levels. Whether you're an experienced mountaineer or a first-time trekker, Kilimanjaro has something for everyone. Join us on an unforgettable journey to the Roof of Africa and discover the magic of this natural wonder.",
-    activities: ["Climbing", "Safari", "Cultural Tours"],
-  },
-  {
-    id: 2,
-    title: "Masai Mara, Kenya",
-    image: "/images/packages/Masai-Mara-Safari.jpg",
-    subTitle:
-      "Witness the incredible wildlife migration in one of Africa's most iconic safari destinations.",
-    description:
-      "The Masai Mara is one of Africa's most iconic safari destinations, known for its incredible wildlife migration and diverse ecosystems. Located in Kenya, this vast savannah is home to a wide variety of animals, including the Big Five (lion, elephant, buffalo, leopard, and rhinoceros), as well as cheetahs, zebras, giraffes, and more. Join us on an unforgettable safari adventure and witness the magic of the Masai Mara for yourself.",
-    activities: ["Game Drives", "Balloon Safaris", "Cultural Visits"],
-  },
-  {
-    id: 3,
-    title: "Victoria Falls, Zimbabwe",
-    image: "/images/packages/Ngorongoro-Safari.jpg",
-    subTitle:
-      "Discover the majestic beauty of one of the world's largest waterfalls.",
-    description:
-      "Victoria Falls is one of the world's largest waterfalls, located on the border of Zimbabwe and Zambia. Known as the 'Smoke that Thunders,' this majestic natural wonder is a sight to behold, with its powerful cascades and misty spray visible from miles away. Join us on an unforgettable journey to Victoria Falls and experience the beauty and power of this iconic waterfall up close.",
-    activities: ["Helicopter Rides", "River Cruises", "Bungee Jumping"],
   },
 ];
 

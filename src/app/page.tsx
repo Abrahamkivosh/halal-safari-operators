@@ -5,7 +5,7 @@ import IntroductionSection from "@/components/homePage/introductionSection";
 import MainSafaris from "@/components/homePage/MainSafaris";
 import PartnersSection from "@/components/homePage/partnersSection";
 import TestimonialSection from "@/components/homePage/testimonialSection";
-import ToursSection from "@/components/homePage/ToursSection";
+// import ToursSection from "@/components/homePage/ToursSection";
 import VideoSection from "@/components/homePage/VideoSection";
 import WhyChooseUs from "@/components/homePage/whyChooseUs";
 import React from "react";
@@ -16,7 +16,7 @@ const HomePage = () => {
       <HeroSection />
       <IntroductionSection />
       <MainSafaris />
-      <ToursSection />
+      {/* <ToursSection /> */}
       <WhyChooseUs />
       <DestinationsSection />
       <TestimonialSection />
