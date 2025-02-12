@@ -5199,10 +5199,10 @@ json5@^2.2.3:
     object.assign "^4.1.4"
     object.values "^1.1.6"
 
-jsx-email@^2.1.5:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/jsx-email/-/jsx-email-2.6.1.tgz#0c8278cc9d453048b8418098511f7b4f6ed85d51"
-  integrity sha512-D8xnOOzZaK4l/DCr5LfO6merxMMqffmhOPyTPk2mNQ9NitT5RtCanNcTsnOP4VmqW3PmV1p2VgWCbY1ObwNIoA==
+jsx-email@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/jsx-email/-/jsx-email-2.7.0.tgz#a153bfff1ba3edcdcdc347e3df103ea3b2f4f2b1"
+  integrity sha512-3L1oEjbFkH3EwrC3tWe2bmNBMJwae8HKlknvc2NjkHBD20wpqk9ad+4vID5+M3K4UZZYMhJyoHbf8T1UQ4Gabw==
   dependencies:
     "@dot/log" "^0.1.5"
     "@jsx-email/doiuse-email" "^1.0.1"
@@ -5241,7 +5241,7 @@ jsx-email@^2.1.5:
     postcss "^8.4.32"
     postcss-var-replace "^1.0.0"
     pretty-bytes "^6.1.1"
-    react-dom "^18.2.0"
+    react-dom "^19"
     react-router-dom "7.0.1"
     rehype "^13.0.1"
     rehype-stringify "^10.0.0"
@@ -5353,7 +5353,7 @@ loglevelnext@^6.0.0:
   resolved "https://registry.yarnpkg.com/loglevelnext/-/loglevelnext-6.0.0.tgz#0f76aa2408a6d7a97d0879b3fb904b65b9756bd6"
   integrity sha512-FDl1AI2sJGjHHG3XKJd6sG3/6ncgiGCQ0YkW46nxe7SfqQq6hujd9CvFXIXtkGBUN83KPZ2KSOJK8q5P0bSSRQ==
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -6020,13 +6020,12 @@ react-dom@19.0.0-rc-66855b96-20241106:
   dependencies:
     scheduler "0.25.0-rc-66855b96-20241106"
 
-react-dom@^18.2.0:
-  version "18.3.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
-  integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
+react-dom@^19:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.0.0.tgz#43446f1f01c65a4cd7f7588083e686a6726cfb57"
+  integrity sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==
   dependencies:
-    loose-envify "^1.1.0"
-    scheduler "^0.23.2"
+    scheduler "^0.25.0"
 
 react-fast-compare@3.2.2:
   version "3.2.2"
@@ -6543,12 +6542,10 @@ scheduler@0.25.0-rc-66855b96-20241106:
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.25.0-rc-66855b96-20241106.tgz#8bbb728eca4de5a5deca1f18370fbce41aee91d1"
   integrity sha512-HQXp/Mnp/MMRSXMQF7urNFla+gmtXW/Gr1KliuR0iboTit4KvZRY8KYaq5ccCTAOJiUqQh2rE2F3wgUekmgdlA==
 
-scheduler@^0.23.2:
-  version "0.23.2"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.2.tgz#414ba64a3b282892e944cf2108ecc078d115cdc3"
-  integrity sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==
-  dependencies:
-    loose-envify "^1.1.0"
+scheduler@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.25.0.tgz#336cd9768e8cceebf52d3c80e3dcf5de23e7e015"
+  integrity sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==
 
 selderee@^0.11.0:
   version "0.11.0"

@@ -1,19 +1,10 @@
 import { Tooltip } from "@/components/ui/tooltip";
+import { getImageURL } from "@/utilities/functions";
 import { Box, Stack, Text, Image, Link, Flex, Icon } from "@chakra-ui/react";
 import React from "react";
 import { FaFacebook, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-interface Member {
-  name: string;
-  profile_pic: string;
-  position: string;
-  is_board_member: boolean;
-  email?: string;
-  facebook_link?: string;
-  linkedin_link?: string;
-}
-
-const TeamCard = ({ member }: { member: Member }) => {
+const TeamCard = ({ member }: { member: DefaultSectionInterface }) => {
   return (
     <Box
       borderRadius="20px"
@@ -43,8 +34,12 @@ const TeamCard = ({ member }: { member: Member }) => {
         height="100px"
       >
         <Image
-          src={member.profile_pic}
-          alt={`${member.name}'s profile`}
+          src={
+            member.image
+              ? getImageURL(member.image.path)
+              : "/fallback-image.svg"
+          }
+          alt={member.title}
           objectFit="cover"
           width="100%"
           height="100%"
@@ -54,7 +49,7 @@ const TeamCard = ({ member }: { member: Member }) => {
       {/* Card Content */}
       <Stack gap={4} marginTop="60px" alignItems="center">
         <Text fontSize="lg" fontWeight="bold" color="gray.700">
-          {member.name}
+          {member.title}
         </Text>
         <Text fontSize="sm" color="gray.500">
           {member.position}
@@ -71,18 +66,18 @@ const TeamCard = ({ member }: { member: Member }) => {
               </Link>
             </Tooltip>
           )}
-          {member.facebook_link && (
+          {member.faccebook && (
             <Tooltip content="Facebook" showArrow>
-              <Link href={member.facebook_link}>
+              <Link href={member.faccebook}>
                 <Icon color="blue.600" boxSize={6}>
                   <FaFacebook />
                 </Icon>
               </Link>
             </Tooltip>
           )}
-          {member.linkedin_link && (
+          {member.linkdin && (
             <Tooltip content="LinkedIn" showArrow>
-              <Link href={member.linkedin_link}>
+              <Link href={member.linkdin}>
                 <Icon color="blue.700" boxSize={6}>
                   <FaLinkedin />
                 </Icon>

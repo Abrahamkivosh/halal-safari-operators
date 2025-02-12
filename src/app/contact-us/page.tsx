@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/contact-bg.jpg",
+        url: "/kenya.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Us",
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     ],
     siteName: "Halal Safari Operator",
   },
-  twitter: {
-    site: "@dimetechgroup",
-    creator: "@dimetechgroup",
-    card: "summary_large_image",
-    title: "Contact Us - Get in Touch with Our Team",
-    description:
-      "Reach out to our team through our Contact Us page. Whether you need support or have questions, we’re here to help!",
-  },
+  // twitter: {
+  //   site: "@halalsafarioperator",
+  //   creator: "@halalsafarioperator",
+  //   card: "summary_large_image",
+  //   title: "Contact Us - Get in Touch with Our Team",
+  //   description:
+  //     "Reach out to our team through our Contact Us page. Whether you need support or have questions, we’re here to help!",
+  // },
   formatDetection: {
     telephone: true,
     email: true,

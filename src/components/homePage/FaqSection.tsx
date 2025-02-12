@@ -12,37 +12,25 @@ import {
 import { useColorModeValue } from "../ui/color-mode";
 import { useState } from "react";
 import { marginX } from "@/utilities/constants";
-
-const faqData = [
-  {
-    question: "What services do you offer?",
-    answer:
-      "We provide a range of services, including personalized tours, travel planning, and adventure packages tailored to your preferences.",
-  },
-  {
-    question: "How can I book a tour?",
-    answer:
-      "You can book a tour directly through our website or by contacting our customer support team. We’re here to assist you every step of the way.",
-  },
-  {
-    question: "Do you offer group discounts?",
-    answer:
-      "Yes, we offer discounts for group bookings. Please reach out to us for more details and specific pricing.",
-  },
-  {
-    question: "What is your cancellation policy?",
-    answer:
-      "Our cancellation policy allows for refunds or rescheduling based on the notice period provided. Check our terms for detailed information.",
-  },
-  {
-    question: "Are your tours safe?",
-    answer:
-      "Absolutely! Safety is our top priority. We ensure all tours are conducted with the highest safety standards in mind.",
-  },
-];
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import LoadingComponent from "../common/LoadingComponent";
+import ErrorComponent from "../common/ErrorComponent";
 
 const FaqSection = () => {
   const [value, setValue] = useState(["second-item"]);
+  const {
+    sectionArray: faqData,
+    error,
+    loading,
+  } = useDefaultSectionArray("faq");
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   return (
     <Box
@@ -73,7 +61,7 @@ const FaqSection = () => {
           {faqData.map((faq, index) => (
             <AccordionItem
               key={index}
-              value={faq.question}
+              value={faq.title}
               border="none"
               borderRadius="md"
               mb="0.5rem"
@@ -97,7 +85,7 @@ const FaqSection = () => {
                 color={useColorModeValue("gray.700", "white")}
                 bg={useColorModeValue("gray.200", "gray.600")}
               >
-                {faq.question}
+                {faq.title}
               </AccordionItemTrigger>
               <AccordionItemContent
                 py="1rem"
@@ -105,9 +93,8 @@ const FaqSection = () => {
                 color={useColorModeValue("gray.600", "gray.300")}
                 fontSize="md"
                 textAlign={"left"}
-              >
-                {faq.answer}
-              </AccordionItemContent>
+                dangerouslySetInnerHTML={{ __html: faq.description ?? "" }}
+              />
             </AccordionItem>
           ))}
         </AccordionRoot>

@@ -1,26 +1,38 @@
 // src/components/who-we-are/AboutUs.tsx
 "use client";
 
-import { aboutUsData, marginX } from "@/utilities/constants";
+import { marginX } from "@/utilities/constants";
 import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { useColorModeValue } from "../ui/color-mode";
 import OurTeam from "./our-team/Team";
 import Partiners from "./partiners/Partiners";
 import FaqSection from "../homePage/FaqSection";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import ErrorComponent from "../common/ErrorComponent";
+import LoadingComponent from "../common/LoadingComponent";
+import { getImageURL } from "@/utilities/functions";
 
 const AboutUs = () => {
   const bgColor = useColorModeValue("brand.50", "brand.900");
+  const {
+    sectionArray: aboutUsData,
+    error,
+    loading,
+  } = useDefaultSectionArray("aboutus");
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
+
   return (
     <Box py={{ base: "1.5rem", sm: "2rem" }} bg={bgColor}>
       {aboutUsData.map((data, index) => (
-        <ImageWithTextSection
-          key={index}
-          title={data.title}
-          description={data.description}
-          imageUrl={data.image}
-          reverse={index % 2 === 0}
-        />
+        <ImageWithTextSection data={data} reverse={index % 2 === 0} />
       ))}
       <OurTeam />
       <Partiners />
@@ -33,14 +45,10 @@ export default AboutUs;
 
 // Reusable Component for Sections with Image and Text
 const ImageWithTextSection = ({
-  title,
-  description,
-  imageUrl,
+  data,
   reverse = false,
 }: {
-  title: string;
-  description: string;
-  imageUrl: string;
+  data: DefaultSectionInterface;
   reverse?: boolean;
 }) => {
   const headingColor = useColorModeValue("brand.primary", "brand.secondary");
@@ -63,8 +71,10 @@ const ImageWithTextSection = ({
           data-aos="fade-left"
         >
           <Image
-            src={imageUrl}
-            alt={title}
+            src={
+              data.image ? getImageURL(data.image.path) : "/fallback-image.svg"
+            }
+            alt={data.title}
             width={500}
             height={500}
             style={{
@@ -82,13 +92,13 @@ const ImageWithTextSection = ({
           color={headingColor}
           lineHeight={1.1}
         >
-          {title}
+          {data.title}
         </Heading>
         <Text
           fontSize={{ base: "md", sm: "lg" }}
           data-aos="fade-up-right"
           color={textColor}
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: data.description ?? "" }}
         ></Text>
       </Stack>
       {reverse && (
@@ -100,8 +110,10 @@ const ImageWithTextSection = ({
           data-aos="fade-left"
         >
           <Image
-            src={imageUrl}
-            alt={title}
+            src={
+              data.image ? getImageURL(data.image.path) : "/fallback-image.svg"
+            }
+            alt={data.title}
             width={500}
             height={500}
             style={{

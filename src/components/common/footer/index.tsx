@@ -55,11 +55,10 @@ const FooterIndex: React.FC = () => {
   const textColor = useColorModeValue("brand.100", "brand.secondary");
 
   const quickLinks = [
-    { href: "/about-us", label: "About Us" },
+    { href: "/who-we-are", label: "About Us" },
     { href: "/blogs", label: "Our Blogs" },
-    { href: "/join-our-group-tour", label: "Group Tours" },
+    { href: "/get-a-qote", label: "Group Tours" },
     { href: "/contact-us", label: "B2B Work With Us" },
-    { href: "/contact-us", label: "Contact Us" },
   ];
   const { colorMode } = useColorMode();
 
@@ -128,17 +127,36 @@ const FooterIndex: React.FC = () => {
             <Box>
               Email:{" "}
               <Link href={`mailto:${CONTACT_EMAIL}`} passHref>
-                <Text fontSize={"lg"}>{CONTACT_EMAIL}</Text>
+                <Text
+                  fontSize={"lg"}
+                  cursor="pointer"
+                  _hover={{ color: "blue.500" }}
+                >
+                  {CONTACT_EMAIL}
+                </Text>
               </Link>
             </Box>
             <Box>
               Phone:{" "}
               <Link href={`tail:${CONTACT_PHONE}`} passHref>
-                <Text fontSize={"lg"}>{CONTACT_PHONE}</Text>
+                <Text
+                  fontSize={"lg"}
+                  cursor="pointer"
+                  _hover={{ color: "blue.500" }}
+                >
+                  {CONTACT_PHONE}
+                </Text>
               </Link>
             </Box>
             <Box>
-              Address: <Text fontSize={"lg"}>{CONTACT_ADDRESS}</Text>
+              Address:{" "}
+              <Text
+                fontSize={"lg"}
+                cursor="pointer"
+                _hover={{ color: "blue.500" }}
+              >
+                {CONTACT_ADDRESS}
+              </Text>
             </Box>
           </Stack>
         </Section>
@@ -164,10 +182,10 @@ const FooterIndex: React.FC = () => {
         <Text fontSize="sm">
           © {new Date().getFullYear()} halalsafarioperator. All rights reserved.
         </Text>
-        <HStack gap="4">
+        {/* <HStack gap="4">
           <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="/terms-of-service">Terms of Service</Link>
-        </HStack>
+        </HStack> */}
       </Flex>
     </Box>
   );

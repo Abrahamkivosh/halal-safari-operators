@@ -139,6 +139,9 @@ interface DefaultSectionInterface {
   image?: Photo;
   images?: Photo[];
   position?: string;
+  email?: string;
+  faccebook?: string;
+  linkdin?: string;
 }
 
 interface SubCategoryInterface {

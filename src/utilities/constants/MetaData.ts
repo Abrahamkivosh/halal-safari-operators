@@ -53,23 +53,23 @@ export const layoutMetadata: Metadata = {
         alt: "Halal Safari operators",
       },
     ],
- 
+
     url: "https://halalsafarioperator.com",
     countryName: "Kenya",
     ttl: 60,
   },
-  twitter: {
-    card: "summary",
-    site: "@safarioperators",
-    creator: "@safarioperators",
-  },
-  facebook: {
-    appId: "123456789",
-  },
-  verification: {
-    google: "123456789",
-    yandex: "123456789",
-  },
+  // twitter: {
+  //   card: "summary",
+  //   site: "@halalsafarioperators",
+  //   creator: "@halalsafarioperators",
+  // },
+  // facebook: {
+  //   appId: "123456789",
+  // },
+  // verification: {
+  //   google: "123456789",
+  //   yandex: "123456789",
+  // },
   appleWebApp: {
     title: "Halal Safari operators",
     statusBarStyle: "black",
