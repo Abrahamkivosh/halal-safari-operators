@@ -3,7 +3,14 @@ import { useColorMode, useColorModeValue } from "@/components/ui/color-mode";
 import { CONTACT_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE } from "@/configs";
 import { Box, Flex, Text, Stack, HStack, Icon, Image } from "@chakra-ui/react";
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
 
 // Reusable Section Component
 const Section = ({
@@ -52,7 +59,7 @@ const FooterIndex: React.FC = () => {
   ];
 
   const bgColor = useColorModeValue("brand.primary", "brand.900");
-  const textColor = useColorModeValue("brand.100", "brand.secondary");
+  const textColor = useColorModeValue("brand.50", "brand.50");
 
   const quickLinks = [
     { href: "/who-we-are", label: "About Us" },
@@ -61,6 +68,8 @@ const FooterIndex: React.FC = () => {
     { href: "/contact-us", label: "B2B Work With Us" },
   ];
   const { colorMode } = useColorMode();
+
+  const toggleColorMode = useColorMode().toggleColorMode;
 
   return (
     <Box
@@ -80,17 +89,13 @@ const FooterIndex: React.FC = () => {
         {/* Branding Section */}
         <Section>
           <Image
-            src={
-              colorMode === "light"
-                ? "/halal-safari-operator-logo-light.svg"
-                : "/halal-safari-operator-logo-dark.svg"
-            }
+            src={"/halal-safari-operator-logo-light.svg"}
             alt="Halal Safari Operators"
             mb="4"
             w="auto"
             h="150px"
           />
-          <Text fontSize="sm" lineHeight="tall" color={textColor}>
+          <Text fontSize="sm" color={textColor}>
             Giving you the best safari experience in Africa and the Middle East.
           </Text>
           <HStack gap="4" mt="4">

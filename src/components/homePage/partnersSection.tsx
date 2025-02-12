@@ -11,6 +11,7 @@ import ErrorComponent from "../common/ErrorComponent";
 import { getImageURL } from "@/utilities/functions";
 
 const PartnersSection: React.FC = () => {
+  const textColor = useColorModeValue("brand.800", "brand.50");
   const { sectionArray, error, loading } = useDefaultSectionArray("partners");
 
   // check if loading
@@ -28,7 +29,7 @@ const PartnersSection: React.FC = () => {
       <Text
         fontSize={{ base: "2xl", md: "4xl" }}
         fontWeight="bold"
-        color="brand.primary"
+        color={textColor}
         textAlign="center"
         letterSpacing="wide"
       >
@@ -38,7 +39,7 @@ const PartnersSection: React.FC = () => {
         textAlign="center"
         mb="3rem"
         fontSize={{ base: "md", md: "lg" }}
-        color={useColorModeValue("gray.500", "gray.50")}
+        color={textColor}
       >
         We are proud to be associated with the following partners who have made
         our work easier.

@@ -1,4 +1,4 @@
-import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react"
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 const config = defineConfig({
   theme: {
     tokens: {
@@ -8,8 +8,8 @@ const config = defineConfig({
           secondary: { value: "#F3F4F5" },
           white: { value: "#ffffff" },
           black: { value: "#000000" },
-          
-          50: { value: "#ded7d2" },
+
+          50: { value: "#ffffff" },
           100: { value: "#c4b9ad" },
           200: { value: "#ab9c88" },
           300: { value: "#917f63" },
@@ -19,10 +19,7 @@ const config = defineConfig({
           700: { value: "#381805" },
           800: { value: "#251101" },
           900: { value: "#130b00" },
-          
-          
         },
-
       },
     },
     semanticTokens: {
@@ -38,8 +35,7 @@ const config = defineConfig({
         },
       },
     },
-    
   },
-})
+});
 
-export const systemTheme = createSystem(defaultConfig, config)
+export const systemTheme = createSystem(defaultConfig, config);

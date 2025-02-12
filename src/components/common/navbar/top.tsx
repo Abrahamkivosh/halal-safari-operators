@@ -15,8 +15,8 @@ const fadeIn = keyframes`
 const TopNav = () => {
   // Dynamic colors for light and dark mode
   const bgColor = useColorModeValue("brand.primary", "brand.900");
-  const textColor = useColorModeValue("brand.100", "brand.100");
-  const iconColor = useColorModeValue("brand.100", "brand.900");
+  const textColor = useColorModeValue("brand.50", "brand.50");
+  const iconColor = useColorModeValue("brand.50", "brand.50");
   const iconHoverBg = useColorModeValue("brand.100", "brand.500");
   const iconHoverColor = useColorModeValue("brand.primary", "brand.secondary");
 

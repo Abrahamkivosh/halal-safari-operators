@@ -164,6 +164,7 @@ const GetAQuoteComponent = () => {
             <Field
               required
               label="Your Name"
+              color={textColor}
               invalid={errors.name === undefined ? false : true}
               errorText={errors.name?.message?.toString()}
             >
@@ -178,6 +179,7 @@ const GetAQuoteComponent = () => {
             </Field>
 
             <Field
+              color={textColor}
               required
               label="Email Address"
               invalid={errors.email === undefined ? false : true}
@@ -193,6 +195,7 @@ const GetAQuoteComponent = () => {
             </Field>
 
             <Field
+              color={textColor}
               required
               label="Phone Number"
               invalid={errors.phone === undefined ? false : true}
@@ -206,6 +209,7 @@ const GetAQuoteComponent = () => {
               />
             </Field>
             <Field
+              color={textColor}
               required
               label="Country"
               invalid={errors.country === undefined ? false : true}
@@ -218,6 +222,7 @@ const GetAQuoteComponent = () => {
               />
             </Field>
             <Field
+              color={textColor}
               required
               label="Duration of Travel"
               invalid={errors.duration === undefined ? false : true}
@@ -226,6 +231,7 @@ const GetAQuoteComponent = () => {
               <Input bg="gray.100" {...register("duration")} />
             </Field>
             <Field
+              color={textColor}
               required
               label="Safari Start Date"
               invalid={errors.safariStartDate === undefined ? false : true}
@@ -246,6 +252,7 @@ const GetAQuoteComponent = () => {
               <Input type="date" bg="gray.100" {...register("safariEndDate")} />
             </Field>
             <Field
+              color={textColor}
               required
               label="Number of Adults"
               invalid={errors.adults === undefined ? false : true}
@@ -258,6 +265,7 @@ const GetAQuoteComponent = () => {
               />
             </Field>
             <Field
+              color={textColor}
               required
               label="Number of Children"
               invalid={errors.children === undefined ? false : true}
@@ -274,11 +282,14 @@ const GetAQuoteComponent = () => {
             <Fieldset.Root invalid={ageOfChildrenInvalid}>
               <CheckboxGroup
                 colorPalette="teal"
+                color={textColor}
                 invalid={ageOfChildrenInvalid}
                 onValueChange={ageOfChildrenControl.field.onChange}
                 name={ageOfChildrenControl.field.name}
               >
-                <Fieldset.Legend mb={2}>Age Of Children</Fieldset.Legend>
+                <Fieldset.Legend mb={2} color={textColor}>
+                  Age Of Children
+                </Fieldset.Legend>
 
                 <Fieldset.Content
                   display="flex"
@@ -294,6 +305,7 @@ const GetAQuoteComponent = () => {
                       mx={1}
                       p={2}
                       colorPalette={"green"}
+                      color={textColor}
                       size={"lg"}
                       _focus={{ bg: "white", borderColor: "blue.400" }}
                       _hover={{
@@ -315,6 +327,7 @@ const GetAQuoteComponent = () => {
             </Fieldset.Root>
 
             <Field
+              color={textColor}
               required
               label="Estimated Budget"
               invalid={errors.budget === undefined ? false : true}
@@ -330,12 +343,15 @@ const GetAQuoteComponent = () => {
           <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} gap={6}>
             <Fieldset.Root invalid={typeOfSafariInvalid}>
               <CheckboxGroup
+                color={textColor}
                 colorPalette="teal"
                 invalid={typeOfSafariInvalid}
                 onValueChange={typeOfSafariControl.field.onChange}
                 name={typeOfSafariControl.field.name}
               >
-                <Fieldset.Legend mb={2}>Type Of Safari</Fieldset.Legend>
+                <Fieldset.Legend mb={2} color={textColor}>
+                  Type Of Safari
+                </Fieldset.Legend>
 
                 <Fieldset.Content
                   display="flex"
@@ -343,6 +359,7 @@ const GetAQuoteComponent = () => {
                 >
                   {typeOfSafaris.map((safari) => (
                     <Checkbox
+                      color={textColor}
                       key={safari.value}
                       value={safari.value}
                       variant={"outline"}
@@ -370,12 +387,13 @@ const GetAQuoteComponent = () => {
             </Fieldset.Root>
             <Fieldset.Root invalid={notifyInvalid}>
               <CheckboxGroup
+                color={textColor}
                 colorPalette="teal"
                 invalid={notifyInvalid}
                 onValueChange={notifyControl.field.onChange}
                 name={notifyControl.field.name}
               >
-                <Fieldset.Legend mb={2}>
+                <Fieldset.Legend mb={2} color={textColor}>
                   Notification Preference
                 </Fieldset.Legend>
 
@@ -415,6 +433,7 @@ const GetAQuoteComponent = () => {
           </SimpleGrid>
 
           <Field
+            color={textColor}
             required
             label="Message"
             helperText="Tell us more about your trip requirements"

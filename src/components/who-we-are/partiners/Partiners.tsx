@@ -3,6 +3,7 @@
 
 import ErrorComponent from "@/components/common/ErrorComponent";
 import LoadingComponent from "@/components/common/LoadingComponent";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import { marginX } from "@/utilities/constants";
 import { getImageURL } from "@/utilities/functions";
 import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
@@ -28,12 +29,15 @@ const Partiners: React.FC = () => {
         <Heading
           fontSize={{ base: "2xl", md: "3xl" }}
           fontWeight="bold"
-          color="gray.700"
+          color={useColorModeValue("gray.800", "gray.50")}
           mb={2}
         >
           Our Trusted Partners
         </Heading>
-        <Text color="gray.500" fontSize={{ base: "md", md: "lg" }}>
+        <Text
+          color={useColorModeValue("gray.500", "gray.50")}
+          fontSize={{ base: "md", md: "lg" }}
+        >
           We collaborate with amazing organizations to bring great value.
         </Text>
       </Box>
