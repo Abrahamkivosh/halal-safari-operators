@@ -77,19 +77,6 @@ export const navData: NavType[] = [
   },
 ];
 
-export const partnersData = [
-  {
-    name: "Musaafirvacations",
-    logo: "/images/partiners/musaafirvactions.png",
-    link: "https://musaafirvacations.com/",
-  },
-  {
-    name: "Lagaster",
-    logo: "/images/partiners/lagaster.jpg",
-    link: "https://lagaster.org",
-  },
-];
-
 export async function getPackageBySlug(slug: string) {
   return safariPackages.find((pkg) => pkg.id === slug);
 }
@@ -124,70 +111,6 @@ export const aboutUsData = [
     title: "Our Vision",
     description:
       "Our vision is to be the leading travel and adventure company in the world. We are committed to providing you with the best experience possible, so you can focus on enjoying the journey. We are dedicated to providing you with the best service and support, so you can relax and enjoy your vacation without any worries.",
-  },
-];
-
-export const testimonials = [
-  {
-    id: 1,
-    content:
-      "This was an unforgettable experience! The team went above and beyond to make sure we had the perfect safari adventure. Highly recommended!",
-    name: "Jane Doe",
-    position: "Travel Enthusiast",
-  },
-  {
-    id: 2,
-    content:
-      "The level of professionalism and attention to detail was outstanding. The guides were knowledgeable and the destinations were breathtaking.",
-    name: "John Smith",
-    position: "Photographer",
-  },
-  {
-    id: 3,
-    content:
-      "I’ve traveled to many places, but this was truly exceptional. From planning to execution, everything was seamless and exceeded my expectations.",
-    name: "Emily Rose",
-    position: "Adventure Seeker",
-  },
-  {
-    id: 4,
-    content:
-      "An extraordinary journey! I felt safe, cared for, and inspired every step of the way. Can’t wait to book my next trip with them.",
-    name: "Michael Carter",
-    position: "Nature Lover",
-  },
-];
-
-export const blogs = [
-  {
-    id: 1,
-    image: "/images/woman.jpg",
-    title: "The Future of Web Development",
-    subtitle: "Trends for 2024",
-    description:
-      "Explore the latest trends shaping the future of web development, from AI-powered tools to the rise of serverless architecture.",
-    link: "/blog/the-future-of-web-development",
-    date: "Dec 10, 2024",
-  },
-  {
-    id: 2,
-    image: "/images/tanzania.jpg",
-    title: "Why Dark Mode is Here to Stay",
-    subtitle: "Aesthetic and Accessibility Benefits",
-    description:
-      "Learn why dark mode has become a UI staple and how it benefits both aesthetics and accessibility in modern design.",
-    link: "/blog/why-dark-mode-is-here-to-stay",
-    date: "Dec 8, 2024",
-  },
-  {
-    id: 3,
-    image: "/images/maasai.jpg",
-    title: "Building Responsive Layouts",
-    subtitle: "CSS Grid vs. Flexbox",
-    description:
-      "Master the art of creating responsive layouts using CSS Grid, and see how it compares to Flexbox.",
-    link: "/blog/building-responsive-layouts",
-    date: "Dec 5, 2024",
   },
 ];
 
@@ -443,24 +366,6 @@ export const safariPackages: SafariPackageInterface[] = [
           "Enjoy a full day of game drives in the Masai Mara, with the option of an early morning balloon safari (additional cost). The Mara is home to an incredible concentration of wildlife, including the Big Five. Your expert guide will help you spot and learn about the various species. In the evening, enjoy a sundowner before dinner at your lodge.",
       },
     ],
-  },
-];
-
-export const videos: VideosGalleryInterface[] = [
-  {
-    id: 2,
-    title: "Amboseli Safari",
-    video: "https://youtu.be/8BIVIJGDPeg",
-  },
-  {
-    id: 3,
-    title: "Serengeti Safari",
-    video: "https://youtu.be/v7p6VZiRInQ",
-  },
-  {
-    id: 4,
-    title: "Ngorongoro Safari",
-    video: "https://www.youtube.com/shorts/kRiU0Z52pRc",
   },
 ];
 

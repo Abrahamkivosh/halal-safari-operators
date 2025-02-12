@@ -1,6 +1,7 @@
 "use client";
 import { marginX } from "@/utilities/constants";
-import { Box, Icon, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import { Box, For, Icon, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import Marquee from "react-fast-marquee";
 import {
@@ -11,58 +12,31 @@ import {
   FaClock,
   FaMapSigns,
 } from "react-icons/fa";
+import ErrorComponent from "../common/ErrorComponent";
+import LoadingComponent from "../common/LoadingComponent";
 
 const WhyChooseUs = () => {
   // Updated whyUsData array with corresponding icons
-  const whyUsData = [
-    {
-      title: "Top Notch Authentic African Experience Tour",
-      description:
-        "With the greatest travel agency, you may easily see the world and turn your ideal trip into a smooth, life-changing experience.",
-      icon: FaGlobeAfrica, // Icon for African experience
-    },
-    {
-      title: "Trust & Safety",
-      description:
-        "We guarantee that every trip is safe, dependable, and planned with your piece of mind in mind since we are dedicated to trust and safety.",
-      icon: FaShieldAlt, // Icon for safety and trust
-    },
-    {
-      title: "Best Price Guarantee",
-      description:
-        "We provide the best prices on the market, and we are confident that we will match any price for a similar trip.",
-      icon: FaDollarSign, // Icon for pricing and value
-    },
-    {
-      title: "24/7 Customer Support",
-      description:
-        "We are available 24 hours a day, 7 days a week to provide you with the best possible service.",
-      icon: FaHeadset, // Icon for customer support
-    },
-    {
-      title: "Fast Booking & Quick Response",
-      description:
-        "We provide quick responses to all of your inquiries and booking requests. We are dedicated to providing you with the best possible service.",
-      icon: FaClock, // Icon for speed and efficiency
-    },
-    {
-      title: "Customized Tours & Itineraries",
-      description:
-        "We offer personalized tour plans tailored to your unique preferences and interests, ensuring a memorable journey.",
-      icon: FaMapSigns, // Icon for custom itineraries
-    },
+  const whyUsDataIcons = [
+    FaGlobeAfrica, // Icon for African experience
+    FaShieldAlt, // Icon for safety and trust
+    FaDollarSign, // Icon for pricing and value
+    FaHeadset, // Icon for customer support
+    FaClock, // Icon for speed and efficiency
+    FaMapSigns, // Icon for custom itineraries
   ];
 
-  const dataAOSDisplay = [
-    "fade-up",
-    "fade-up-right",
-    "fade-up-left",
-    "fade-right",
-    "fade-left",
-    "fade-down",
-    "fade-down-right",
-    "fade-down-left",
-  ];
+  const { sectionArray, error, loading } =
+    useDefaultSectionArray("whychooseus");
+
+  // check if loading
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   return (
     <Box
@@ -95,7 +69,7 @@ const WhyChooseUs = () => {
       </Stack>
 
       <Marquee autoFill pauseOnHover speed={80} gradient gradientWidth={100}>
-        {whyUsData.map((item, index) => (
+        {sectionArray.map((item, index) => (
           <Stack
             key={index}
             align="center"
@@ -108,8 +82,6 @@ const WhyChooseUs = () => {
             }}
             transition="all 0.3s ease"
             bg="gray.50" // Card background
-            data-aos-delay={index * 100}
-            data-aos={dataAOSDisplay[index]}
             w={{ base: "90%", sm: "90%", md: "90%", lg: "90%" }}
             mx="auto"
           >
@@ -129,15 +101,16 @@ const WhyChooseUs = () => {
               width={20}
               height={20}
               p={0}
-            >
-              {<item.icon />}
-            </Icon>
+              as={whyUsDataIcons[index]}
+            ></Icon>
             <Text fontSize="xl" fontWeight="bold" color="brand.primary" p="0px">
               {item.title}
             </Text>
-            <Text fontSize="sm" color="gray.600">
-              {item.description}
-            </Text>
+            <Text
+              fontSize="sm"
+              color="gray.600"
+              dangerouslySetInnerHTML={{ __html: item.description ?? "" }}
+            />
           </Stack>
         ))}
       </Marquee>

@@ -1,17 +1,25 @@
 "use client";
 import { BASE_URL } from "@/configs";
-import { getVideoId, marginX, videos } from "@/utilities/constants";
-import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { getVideoId, marginX } from "@/utilities/constants";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import { Box, For, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
-
-interface VideosGalleryInterface {
-  id: number;
-  title: string;
-  video: string;
-}
+import ErrorComponent from "../common/ErrorComponent";
+import LoadingComponent from "../common/LoadingComponent";
 
 const VideoSection: React.FC = () => {
+  const { sectionArray, error, loading } = useDefaultSectionArray("videos");
+
+  // check if loading
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
+
   return (
     <Stack marginX={marginX} my="2rem" align="center">
       <Heading
@@ -29,9 +37,9 @@ const VideoSection: React.FC = () => {
         px={{ base: "10px", sm: "20px" }}
         width={"100%"}
       >
-        {videos.map((video) => (
-          <VideoCard key={video.id} video={video} />
-        ))}
+        <For each={sectionArray} fallback={<LoadingComponent />}>
+          {(video, index) => <VideoCard key={index} video={video} />}
+        </For>
       </SimpleGrid>
     </Stack>
   );
@@ -39,7 +47,7 @@ const VideoSection: React.FC = () => {
 
 export default VideoSection;
 
-const VideoCard = ({ video }: { video: VideosGalleryInterface }) => {
+const VideoCard = ({ video }: { video: DefaultSectionInterface }) => {
   const opts: YouTubeProps["opts"] = {
     width: "100%",
     playerVars: {
@@ -63,7 +71,7 @@ const VideoCard = ({ video }: { video: VideosGalleryInterface }) => {
       {/* Responsive YouTube Video */}
       <Box aspectRatio={16 / 9}>
         <YouTube
-          videoId={getVideoId(video.video)}
+          videoId={video.link ? getVideoId(video.link) : ""}
           opts={opts}
           onReady={onPlayerReady}
         />

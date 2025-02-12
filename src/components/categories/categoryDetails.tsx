@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Box, For, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
 import LoadingComponent from "@/components/common/LoadingComponent";
 import ErrorComponent from "@/components/common/ErrorComponent";
 import { getImageURL } from "@/utilities/functions";

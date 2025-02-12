@@ -1,12 +1,27 @@
 "use client";
 // src/components/homePage/partnersSection.tsx
-import { partnersData } from "@/utilities/constants";
 import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { useColorModeValue } from "../ui/color-mode";
+import React from "react";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import LoadingComponent from "../common/LoadingComponent";
+import ErrorComponent from "../common/ErrorComponent";
+import { getImageURL } from "@/utilities/functions";
 
-const PartnersSection = () => {
+const PartnersSection: React.FC = () => {
+  const { sectionArray, error, loading } = useDefaultSectionArray("partners");
+
+  // check if loading
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
+
   return (
     <Box py={{ base: "1rem", md: "1rem" }} position={"relative"}>
       {/* Section Title */}
@@ -31,8 +46,8 @@ const PartnersSection = () => {
 
       {/* Partner Logos Marquee */}
       <Marquee autoFill pauseOnHover speed={80} gradient gradientWidth={100}>
-        {partnersData.map((partner, i) => (
-          <Link key={i} passHref href={partner.link} target="_blank">
+        {sectionArray.map((partner, i) => (
+          <Link key={i} passHref href={partner.link ?? "#"} target="_blank">
             <Stack
               h={200}
               w={200}
@@ -48,13 +63,17 @@ const PartnersSection = () => {
                 borderColor: "brand.primary",
                 borderWidth: "2px",
               }}
-              title={partner.name}
+              title={partner.title}
               zIndex={1}
               position={"relative"}
             >
               <Image
-                src={partner.logo}
-                alt={partner.name}
+                src={
+                  partner.image
+                    ? getImageURL(partner.image.path)
+                    : "/halal-safari-operator-logo-light.svg"
+                }
+                alt={partner.title}
                 style={{
                   objectFit: "cover",
                 }}

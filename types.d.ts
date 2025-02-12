@@ -137,6 +137,8 @@ interface DefaultSectionInterface {
   description?: string;
   link?: string;
   image?: Photo;
+  images?: Photo[];
+  position?: string;
 }
 
 interface SubCategoryInterface {

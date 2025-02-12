@@ -1,11 +1,26 @@
 // src/components/who-we-are/partiners/Partiners.tsx
 "use client";
 
-import { marginX, partnersData } from "@/utilities/constants";
+import ErrorComponent from "@/components/common/ErrorComponent";
+import LoadingComponent from "@/components/common/LoadingComponent";
+import { marginX } from "@/utilities/constants";
+import { getImageURL } from "@/utilities/functions";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
 import { Box, Heading, Stack, Text, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 
-const Partiners = () => {
+const Partiners: React.FC = () => {
+  const { sectionArray, error, loading } = useDefaultSectionArray("partners");
+
+  // check if loading
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
+
   return (
     <Stack marginX={marginX} my="2rem">
       {/* Section Heading */}
@@ -30,7 +45,7 @@ const Partiners = () => {
         alignItems="center"
         justifyContent="center"
       >
-        {partnersData.map((partner, index) => (
+        {sectionArray.map((partner, index) => (
           <Box
             key={index}
             display="flex"
@@ -48,8 +63,12 @@ const Partiners = () => {
             transition="all 0.3s ease-in-out"
           >
             <Image
-              src={partner.logo}
-              alt={partner.name}
+              src={
+                partner.image
+                  ? getImageURL(partner.image.path)
+                  : "/halal-safari-operator-logo-light.svg"
+              }
+              alt={partner.title}
               objectFit="contain"
               width="100%"
               height="auto"

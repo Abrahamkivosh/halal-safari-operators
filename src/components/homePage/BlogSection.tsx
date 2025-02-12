@@ -13,9 +13,25 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
-import { blogs } from "@/utilities/constants";
+import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
+import LoadingComponent from "../common/LoadingComponent";
+import ErrorComponent from "../common/ErrorComponent";
+import { getImageURL } from "@/utilities/functions";
+import { FaChevronRight } from "react-icons/fa";
+import BlogGrid from "../blogs/BlogGrid";
 
-const BlogSection = () => {
+const BlogSection: React.FC = () => {
+  const { sectionArray, error, loading } = useDefaultSectionArray("blogs");
+
+  // check if loading
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
+
   const dataAOSDisplay = [
     "fade-up",
     "fade-up-right",
@@ -46,86 +62,11 @@ const BlogSection = () => {
       </Heading>
 
       {/* Blog Cards */}
-      <SimpleGrid
-        columns={{ base: 1, md: 3 }}
-        gap="2rem"
-        maxW="container.xl"
-        mx="auto"
-      >
-        {blogs.map((blog) => (
-          <Box
-            key={blog.id}
-            bg={useColorModeValue("white", "brand.700")}
-            borderRadius="lg"
-            boxShadow="lg"
-            overflow="hidden"
-            transition="all 0.3s ease"
-            _hover={{
-              transform: "translateY(-10px)",
-              boxShadow: "2xl",
-            }}
-            position={"relative"}
-            data-aos={
-              dataAOSDisplay[Math.floor(Math.random() * dataAOSDisplay.length)]
-            }
-          >
-            {/* Blog Image */}
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              width="100%"
-              height="auto"
-              objectFit="cover"
-            />
-            <Box
-              position="absolute"
-              top="1rem"
-              right="1rem"
-              bg={useColorModeValue("white", "brand.700")}
-              color={useColorModeValue("gray.800", "white")}
-              px="1rem"
-              py="0.5rem"
-              borderRadius="lg"
-              boxShadow="md"
-              textAlign="center"
-            >
-              <Text fontSize="sm">{blog.date}</Text>
-            </Box>
-
-            {/* Blog Content */}
-            <Stack p="2rem" gap="1rem">
-              <Heading
-                as="h3"
-                fontSize="lg"
-                color={useColorModeValue("brand.800", "white")}
-              >
-                {blog.title}
-              </Heading>
-              <Text
-                fontSize="md"
-                fontWeight="semibold"
-                color={useColorModeValue("gray.600", "gray.300")}
-              >
-                {blog.subtitle}
-              </Text>
-
-              <Link href={blog.link} passHref>
-                <Text
-                  color={useColorModeValue("blue.600", "blue.300")}
-                  fontWeight="bold"
-                  _hover={{ textDecoration: "underline" }}
-                >
-                  Read More →
-                </Text>
-              </Link>
-            </Stack>
-          </Box>
-        ))}
-      </SimpleGrid>
+      <BlogGrid blogs={sectionArray} />
 
       {/* View More Button */}
       <Box textAlign="center" mt="2rem">
-        <Link href="/blog" passHref>
+        <Link href="/blogs" passHref>
           <Button
             size="lg"
             bg={useColorModeValue("brand.600", "brand.300")}

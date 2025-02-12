@@ -13,7 +13,7 @@ export const useDefaultSectionData = (endpoint: string) => {
     setLoading(true);
     setError(null);
     try {
-      const url = CMS_URL +"/api/content/item/" + endpoint + "?locale=en";
+      const url = CMS_URL + "/api/content/item/" + endpoint + "?locale=en";
       const { data } = await axiosInstance.get<DefaultSectionInterface>(url);
       setSectionData(data); // Set fetched data
     } catch (axiosError: unknown) {
