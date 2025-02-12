@@ -95,7 +95,7 @@ const DestinationsSection = () => {
                     {destination.title}
                   </Heading>
                   <Text fontSize={{ base: "sm", sm: "md" }}>
-                    {destination.subTitle}
+                    {destination.subtitle}
                   </Text>
                 </Box>
               </Box>
