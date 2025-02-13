@@ -14,6 +14,7 @@ import LoadingComponent from "../common/LoadingComponent";
 import ErrorComponent from "../common/ErrorComponent";
 import { useSubCategoryData } from "@/utilities/hooks/useSubCategoryData";
 import PackageCardSubCategory from "./PackageCardSubCategory";
+import { getImageURL } from "@/utilities/functions";
 
 const SubCategoryDetails: React.FC<SubCategoryDetailsProps> = ({
   category_id,
@@ -38,7 +39,7 @@ const SubCategoryDetails: React.FC<SubCategoryDetailsProps> = ({
       <PagesHeroSection
         title={subCategory.title}
         path={`categories/${category_id}/subcategories/${subCategory._id}`}
-        imgUrl="/kenya.jpg"
+        imgUrl={getImageURL(subCategory.image.path)}
       />
 
       {/* Description Section */}

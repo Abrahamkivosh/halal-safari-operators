@@ -9,6 +9,7 @@ import { useColorModeValue } from "../ui/color-mode";
 import { useDefaultSectionData } from "@/utilities/hooks/useDefaultSectionData";
 import LoadingComponent from "../common/LoadingComponent";
 import ErrorComponent from "../common/ErrorComponent";
+import { getImageURL } from "@/utilities/functions";
 
 const Hero = () => {
   // Dynamic background overlay colors for light and dark modes
@@ -34,7 +35,7 @@ const Hero = () => {
     <Stack
       position="relative"
       height="80vh"
-      bgImage="url('images/lion.jpg')"
+      bgImage={`url(${getImageURL(sectionData?.image?.path ?? "")})`}
       bgRepeat="no-repeat"
       bgSize="cover"
     >

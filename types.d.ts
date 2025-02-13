@@ -35,6 +35,7 @@ interface SafariQuoteForm {
 }
 
 interface DestinationInterface {
+  backgroundImage: Image;
   image: Image;
   title: string;
   description: string;
@@ -147,7 +148,7 @@ interface DefaultSectionInterface {
 interface SubCategoryInterface {
   _id: string | number;
   title: string;
-  image: string;
+  image: Photo;
   description: string;
   packages?: {
     _model: string;

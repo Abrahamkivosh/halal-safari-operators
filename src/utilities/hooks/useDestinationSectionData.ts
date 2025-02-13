@@ -15,7 +15,7 @@ export const useDestinationSectionData = (endpoint: string) => {
     setError(null);
     try {
       const url =
-        "https://cms.halalsafarioperator.com/api/content/item/destinations/9d0a7faf633634a94700018a";
+        "https://cms.halalsafarioperator.com/api/content/item/" + endpoint;
 
       const { data } = await axiosInstance.get<DestinationInterface>(url);
       setSectionData(data); // Set fetched data

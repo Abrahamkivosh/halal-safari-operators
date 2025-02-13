@@ -6,6 +6,7 @@ import { useDestinationSectionData } from "@/utilities/hooks/useDestinationSecti
 import ErrorComponent from "../common/ErrorComponent";
 import { notFound } from "next/navigation";
 import LoadingComponent from "../common/LoadingComponent";
+import { getImageURL } from "@/utilities/functions";
 
 interface DestinationSingleProps {
   id: string;
@@ -33,8 +34,7 @@ const DestinationSingle: React.FC<DestinationSingleProps> = ({ id }) => {
       <PagesHeroSection
         title={sectionData.title}
         path="destinations"
-
-        // imgUrl={sectionData.image.path} // Fallback image
+        imgUrl={getImageURL(sectionData.backgroundImage.path)}
       />
       <DestinationDetails {...sectionData} />
     </>
