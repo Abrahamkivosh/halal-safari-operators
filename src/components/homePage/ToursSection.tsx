@@ -5,12 +5,9 @@ import React from "react";
 import { Box, Heading, SimpleGrid, Button, For } from "@chakra-ui/react";
 import Link from "next/link";
 import { useColorModeValue } from "../ui/color-mode";
-import { safariPackages } from "@/utilities/constants";
-import PackageCard from "../common/PackageCard";
-import LoadingComponent from "../common/LoadingComponent";
+
 import { useDefaultSectionArray } from "@/utilities/hooks/useDefaultSectionArray";
 import ErrorComponent from "../common/ErrorComponent";
-import PackageCardSubCategory from "../categories/PackageCardSubCategory";
 
 const ToursSection = () => {
   const buttonBg = useColorModeValue("brand.primary", "brand.900");

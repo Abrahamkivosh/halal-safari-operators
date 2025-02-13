@@ -18,10 +18,11 @@ import LoadingComponent from "../common/LoadingComponent";
 import { getImageURL } from "@/utilities/functions";
 
 const PageComponent = () => {
-  const buttonBg = useColorModeValue("brand.primary", "brand.900");
+  const backgroundColor = useColorModeValue("gray.50", "gray.900");
+  const buttonBg = useColorModeValue("brand.primary", "brand.500");
   const buttonHoverBg = useColorModeValue("brand.black", "brand.primary");
-  const textColor = useColorModeValue("gray.600", "gray.300");
-  const mutedTextColor = useColorModeValue("gray.400", "gray.500");
+  const textColor = useColorModeValue("gray.900", "gray.300");
+  const mutedTextColor = useColorModeValue("gray.600", "gray.400");
   const { sectionArray: destinations, error } = useDestinations("destinations");
 
   if (error) {
@@ -31,8 +32,9 @@ const PageComponent = () => {
   return (
     <Box
       as="section"
-      mx={{ base: "4%", md: "8%" }}
+      px={{ base: "4%", md: "8%" }}
       py={{ base: "2rem", md: "4rem" }}
+      bg={backgroundColor}
     >
       {/* Hero Section */}
       <Heading
@@ -41,7 +43,7 @@ const PageComponent = () => {
         textAlign="center"
         my="2rem"
         fontWeight="extrabold"
-        // bgGradient="linear(to-r, teal.500, green.400, blue.500)"
+        color={textColor}
         lineHeight="1.2"
         _hover={{
           transition: "0.3s",
